@@ -1,0 +1,92 @@
+.pagination .page-numbers,
+.woocommerce nav.woocommerce-pagination ul li .page-numbers,
+.pagination .page-numbers:focus,
+.woocommerce nav.woocommerce-pagination ul li .page-numbers:focus {
+	font-family: $h3_font_family;
+	font-style: $h3_font_style;
+	color: $regular_accent_color_3;
+}
+
+.bne-testimonial-slider.bne-flexslider .flex-control-nav li a{
+	background: transparent;
+	border: 3px solid $regular_accent_color_2 !important;
+}
+
+.bne-testimonial-slider.bne-flexslider .flex-control-nav li a:hover,
+.bne-testimonial-slider.bne-flexslider .flex-control-nav li a.flex-active{
+	border: 3px solid $regular_accent_color_3 !important;
+}
+
+.bne-testimonial-slider.bne-flexslider .flex-direction-nav a.flex-prev:hover,
+.bne-testimonial-slider.bne-flexslider .flex-direction-nav a.flex-next:hover {
+	border: 1px solid $regular_accent_color_3 !important;
+}
+
+.pagination a.page-numbers:hover,
+.pagination span.page-numbers.current,
+.woocommerce nav.woocommerce-pagination ul li .page-numbers:hover,
+.woocommerce nav.woocommerce-pagination ul li .page-numbers.current {
+	color: $regular_accent_color_1;
+	background-color: transparent;
+}
+
+.pagination .page-numbers.next,
+.pagination .page-numbers.prev,
+.woocommerce nav.woocommerce-pagination ul li .page-numbers.next,
+.woocommerce nav.woocommerce-pagination ul li .page-numbers.prev {
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+
+.pagination .page-numbers.next:hover,
+.pagination .page-numbers.prev:hover,
+.woocommerce nav.woocommerce-pagination ul li .page-numbers.next:hover,
+.woocommerce nav.woocommerce-pagination ul li .page-numbers.prev:hover {
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_3;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+	border: 1px solid $regular_accent_color_2;
+	color: $regular_accent_color_2;
+	background: $invert_accent_color_1;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+	border: 1px solid $regular_accent_color_1;
+	color: $regular_accent_color_1;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after{ color: $regular_accent_color_2; }
+
+.swiper-button-next:hover:after,
+.swiper-button-prev:hover:after{ color: $regular_accent_color_1; }
+
+.invert .swiper-button-next,
+.invert .swiper-button-prev {
+	border: 1px solid $invert_accent_color_1;
+	color: $invert_accent_color_1;
+	background: transparent;
+}
+
+.invert .swiper-button-next:hover,
+.invert .swiper-button-prev:hover {
+	border: 1px solid $invert_accent_color_1;
+	color: $regular_accent_color_1;
+	background: $invert_accent_color_1;
+}
+
+.invert .swiper-button-next:after,
+.invert .swiper-button-prev:after{ color: $invert_accent_color_1; }
+
+.invert .swiper-button-next:hover:after,
+.invert .swiper-button-prev:hover:after{ color: $regular_accent_color_1; }
+
+.tm_products_carousel_widget .swiper-button-next:hover:after,
+.tm_products_carousel_widget .swiper-button-prev:hover:after {
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}

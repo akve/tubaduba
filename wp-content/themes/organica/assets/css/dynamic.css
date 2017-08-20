@@ -1,0 +1,105 @@
+/* Typography */
+body {
+	font-style: $body_font_style;
+	font-weight: $body_font_weight;
+	font-size: @font_size( $body_font_size[size], multiple, round, 0.8888888888888889 )px;
+	line-height: $body_line_height;
+	font-family: $body_font_family;
+	letter-spacing: $body_letter_spacing{px};
+	text-align: $body_text_align;
+	color: $regular_text_color;
+}
+
+h1,
+.h1 {
+	font-style: $h1_font_style;
+	font-weight: $h1_font_weight;
+	font-size: @font_size($h1_font_size, multiple, ceil, 0.4583333333333333)px;
+	line-height: $h1_line_height;
+	font-family: $h1_font_family;
+	letter-spacing: $h1_letter_spacing{px};
+	text-align: $h1_text_align;
+	color: $regular_h1_color;
+}
+
+h2,
+.h2 {
+	font-style: $h2_font_style;
+	font-weight: $h2_font_weight;
+	font-size: @font_size($h2_font_size, multiple, ceil, 0.6666666666666667)px;
+	line-height: 1.2;
+	font-family: $h2_font_family;
+	letter-spacing: $h2_letter_spacing{px};
+	text-align: $h2_text_align;
+	color: $regular_h2_color;
+}
+
+h3,
+.h3 {
+	font-style: $h3_font_style;
+	font-weight: $h3_font_weight;
+	font-size: @font_size($h3_font_size, multiple, ceil, 0.9)px;
+	line-height: $h3_line_height;
+	font-family: $h3_font_family;
+	letter-spacing: $h3_letter_spacing{px};
+	text-align: $h3_text_align;
+	color: $regular_h3_color;
+}
+
+h4,
+.h4 {
+	font-style: $h4_font_style;
+	font-weight: $h4_font_weight;
+	font-size: @font_size($h4_font_size, multiple, ceil, 0.8888888888888889)px;
+	line-height: $h4_line_height;
+	font-family: $h4_font_family;
+	letter-spacing: $h4_letter_spacing{px};
+	text-align: $h4_text_align;
+	color: $regular_h4_color;
+}
+
+h5,
+.h5 {
+	font-style: $h5_font_style;
+	font-weight: $h5_font_weight;
+	font-size: @font_size($h5_font_size, multiple, ceil, 0.8888888888888889)px;
+	line-height: $h5_line_height;
+	font-family: $h5_font_family;
+	letter-spacing: $h5_letter_spacing{px};
+	text-align: $h5_text_align;
+	color: $regular_h5_color;
+}
+
+h6,
+.h6 {
+	font-style: $h6_font_style;
+	font-weight: $h6_font_weight;
+	font-size: @font_size($h5_font_size, multiple, ceil, 0.875)px;
+	line-height: $h6_line_height;
+	font-family: $h6_font_family;
+	letter-spacing: $h6_letter_spacing{px};
+	text-align: $h6_text_align;
+	color: $regular_h6_color;
+}
+
+@media (min-width: 544px) {
+	body{ font-size: $body_font_size{px}; }
+	h1,
+	.h1 { font-size: @font_size($h1_font_size, multiple, ceil, 0.7916666666666667)px; }
+	h2,
+	.h2 { font-size: $h2_font_size{px}; }
+	h3,
+	.h3 { font-size: $h3_font_size{px}; }
+	h4,
+	.h4 { font-size: $h4_font_size{px}; }
+	h5,
+	.h5 { font-size: $h5_font_size{px}; }
+	h6,
+	.h6 { font-size: $h6_font_size{px}; }
+}
+
+@media (min-width: 768px) {
+	h1,
+	.h1 { font-size: $h1_font_size{px}; }
+}
+

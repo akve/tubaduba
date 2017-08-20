@@ -1,0 +1,47 @@
+.not-found {
+	padding: 0 0 20px;
+	text-align: center;
+	margin: 0 0 30px;
+
+	.page-title {
+		margin: 6px 0 8px;
+	}
+
+	.page-content {
+		margin: 0;
+	}
+
+	h1 {
+		margin-top: 46px;
+		margin-bottom: 39px;
+		font-style: normal;
+	}
+
+	h4 {
+		margin-bottom: 24px;
+	}
+
+	hr {
+		margin: 59px auto 51px;
+		max-width: 770px;
+	}
+
+	.search-form {
+		margin-top: 33px;
+		max-width: 370px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	h4 {
+		margin-bottom: 14px;
+	}
+
+	.btn {
+		margin-bottom: 11px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		padding: 0 0 40px;
+	}
+}

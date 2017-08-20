@@ -1,0 +1,151 @@
+.site-header.default {
+	.header-container {
+		text-align: center;
+		padding-bottom: 42px;
+
+		@include media-breakpoint-down(lg){
+			padding-top: 30px;
+		}
+	}
+
+	.header-container_wrap {
+		@include flexbox;
+		@include justify-content(space-between);
+		@include flex-direction(row);
+		@include flex-wrap(wrap);
+		@include align-content(flex-end);
+		@include align-items(flex-end);
+
+		.social-list {
+			text-align: left;
+			margin-right: 0;
+			margin-left: 0;
+			@include flex(0 1 25%);
+			@include align-self(auto);
+			padding: 42px 0;
+
+			.social-list__items {
+				li.menu-item {
+					a {
+						&:hover {
+							background: none;
+						}
+					}
+				}
+			}
+		}
+
+		.site-branding {
+			text-align: center;
+			margin-right: 0;
+			margin-left: 0;
+			@include flex(0 1 100%);
+			@include align-self(auto);
+			display: inline-block;
+			padding-bottom: 20px;
+		}
+
+		.main-navigation.isStuck {
+			padding: 0;
+		}
+
+		.site-header-cart {
+			text-align: right;
+			@include flex(0 1 25%);
+			@include align-self(center);
+			margin-top: 0;
+			margin-bottom: 10px;
+			margin-left: 0;
+
+			@include media-breakpoint-up(lg) {
+				@include align-self(auto);
+			}
+
+			+ .site-branding .site-logo {
+				margin-left: 61px;
+			}
+		}
+
+		.main-navigation {
+			text-align: center;
+			@include flex(0 1 100%);
+			@include align-self(auto);
+
+			ul.menu {
+				margin-left: 0;
+				max-width: 100%;
+
+				> li {
+					&:first-child {
+						margin-left: 0;
+					}
+				}
+			}
+		}
+
+		@include media-breakpoint-up(md) {
+			.site-branding {
+				@include flex(0 1 49%);
+			}
+		}
+
+		@include media-breakpoint-up(lg) {
+			.social-list {
+				@include flex(0 1 18%);
+				@include order(1);
+				padding: 15px 0 0;
+			}
+
+			.site-branding {
+				@include flex(0 1 100%);
+				@include order(-1);
+			}
+
+			.site-header-cart {
+				@include flex(0 1 6%);
+				@include order(3);
+			}
+
+			.main-navigation {
+				@include flex(0 1 65%);
+				@include order(2);
+			}
+		}
+
+		@include media-breakpoint-up(xl) {
+			.social-list {
+				@include order(2);
+				@include flex(0 1 20%);
+				padding: 26px 0 0;
+				position: relative;
+				margin-bottom: 10px;
+			}
+
+			.site-branding {
+				@include order(-1);
+				@include flex(0 1 22%);
+				text-align: left;
+				padding-bottom: 0;
+				margin-bottom: -10px;
+			}
+
+			.site-header-cart {
+				@include order(3);
+				@include flex(0 1 5%);
+				text-align: right;
+				margin-bottom: 10px;
+			}
+
+			.main-navigation {
+				@include order(1);
+				@include flex(0 1 53%);
+				text-align: center;
+				@include align-self(flex-start);
+
+				ul.menu > li {
+					margin: 0 0 15px 50px;
+				}
+			}
+		}
+	}
+}

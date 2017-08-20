@@ -1,0 +1,159 @@
+.site-footer { background-color: $footer_bg; }
+
+.footer-area-wrap { background-color: $footer_widgets_bg; }
+
+.footer-copyright {
+	color: $invert_accent_color_3;
+	border-color: $invert_text_color;
+}
+
+.site-footer .invert a,
+.site-footer .invert a:focus{ color: $regular_accent_color_1; }
+
+.site-footer .invert a.button,
+.site-footer .invert a.button:focus{ color: $invert_accent_color_1; }
+
+.site-footer .invert a.button:hover,
+.site-footer .invert a.button:focus{ color: $regular_h1_color; }
+
+.site-footer .invert a:hover,
+.site-footer .invert a:active { color: $invert_accent_color_1; }
+
+.site-footer .invert .btn,
+.site-footer .invert .btn:focus{ color: $invert_accent_color_1; }
+
+.site-footer .invert .btn:hover,
+.site-footer .invert .btn:active { color: $regular_text_color; }
+
+.site-footer .invert .search-form .search-form__submit:hover{ color: $invert_accent_color_1; }
+
+.site-footer .invert a:not([href]):hover,
+.site-footer .invert a:not([href]):active { color: $regular_link_color; }
+
+.footer-menu__items li a { color: $invert_accent_color_1; }
+
+.footer-menu__items li.current-menu-item a,
+.footer-menu__items li.current_page_item a,
+.footer-menu__items li a:hover { color: $regular_accent_color_1; }
+
+.site-footer .social-list li a{ color: @lighten($regular_accent_color_2, 9.019607843137251%);  }
+
+.site-footer .social-list li a:hover { color: $regular_accent_color_1; }
+
+.footer-text-center{
+	font-family: $h3_font_family;
+	font-style: $h3_font_style;
+	font-weight: $h2_font_weight;
+	font-size: @font_size($h3_font_size, multiple, ceil, 1)px;
+	letter-spacing: $h3_letter_spacing{px};
+	color: $invert_accent_color_1;
+}
+
+div.invert .widget .tagcloud a,
+div.invert .widget .tagcloud a:focus,
+div.invert .widget .tagcloud a:active{
+	color: $regular_accent_color_1;
+	background: transparent;
+}
+
+.invert a.button.tm-woowishlist-page-button.btn{
+	background: $regular_accent_color_4;
+	color: $invert_accent_color_1;
+}
+
+.invert a.button.tm-woowishlist-page-button.btn:hover{
+	background: $invert_accent_color_1;
+	color: $regular_h1_color;
+}
+
+div.invert .widget .tagcloud a:hover{
+	color: $invert_accent_color_1;
+	background: transparent;
+}
+
+footer .invert .textwidget {
+	color: $invert_accent_color_3;
+}
+
+footer [href*='mailto:'] {
+	font-weight: $body_font_weight;
+	font-style: $h4_font_style;
+}
+
+footer a,
+footer a:active,
+footer a:focus { color: $regular_accent_color_1; }
+
+footer a:hover { color: $invert_accent_color_1; }
+
+footer .invert .widget ul li a,
+footer .invert .widget ul li a{ color: $regular_accent_color_1; }
+
+.invert .social-list ul li a{ color: $regular_accent_color_4; }
+
+footer .invert .widget ul li a:hover,
+footer .invert .widget ul li a:hover{ color: $invert_accent_color_1; }
+
+footer .comment-author-link{ color: $regular_accent_color_1; }
+
+footer .widget ul li.recentcomments{ color: $regular_accent_color_2; }
+
+footer .widget ul li.recentcomments a{
+	color: $invert_accent_color_1;
+}
+
+footer .widget ul li.recentcomments a:hover{ color: $regular_accent_color_1; }
+
+footer .widget.widget_recent_entries ul li > a{ color: $invert_accent_color_1; }
+
+footer .widget.widget_recent_entries ul li > a:hover{ color: $regular_accent_color_1; }
+
+footer.site-footer .widget_recent_entries ul li .post-date:before{ color: $regular_accent_color_1; }
+
+.site-footer .widget_price_filter .ui-slider .ui-slider-handle{ background: $invert_accent_color_1; }
+
+.site-footer .widget_price_filter .price_slider_wrapper .ui-widget-content { background: $regular_accent_color_2; }
+
+.site-footer .star-rating:before { color: $invert_accent_color_1; }
+
+.site-footer .star-rating span:before { color: $regular_accent_color_1; }
+
+.site-footer .star-rating:before,
+.site-footer .star-rating:before { color: $invert_accent_color_1; }
+
+.site-footer .widget_product_search form button:hover {
+	color: $regular_text_color;
+	background: $invert_accent_color_1;
+}
+
+.invert .widget-custom-postson .custom-posts-holder .post .post-inner .post-content .widget-title a { color: $invert_accent_color_1; }
+
+.invert .widget-custom-postson .custom-posts-holder .post .post-inner .post-content .post-author span { color: $invert_accent_color_3; }
+
+.invert .widget-custom-postson .custom-posts-holder .post .post-inner .post-content .widget-title a:hover { color: $regular_accent_color_1; }
+
+.invert .widget-custom-postson .custom-posts-holder .post .post-inner .post-content .post-author { color: $regular_accent_color_1; }
+
+.invert .widget-custom-postson .custom-posts-holder .post .post-inner .post-content .btn { color: $invert_accent_color_1; }
+
+.invert .widget-custom-postson .custom-posts-holder .post .post-inner .post-content .btn:hover { color: $regular_accent_color_1; }
+
+.invert .social-list li a,
+footer .invert .widget .social-list li a { color: @lighten($regular_accent_color_2, 9.019607843137251%); }
+
+.invert ul.social-list li a:hover,
+footer .invert .widget .social-list li a:hover { color: $regular_accent_color_1; }
+
+.invert .widget .woocommerce-product-search button:hover {
+	color: $invert_accent_color_1;
+	background: $invert_accent_color_3;
+}
+
+body.woocommerce .invert .button:hover {
+	color: $regular_text_color;
+	background: $invert_accent_color_1;
+}
+
+.invert .woocommerce.widget_price_filter .price_label { color: $invert_accent_color_1; }
+
+.footer-area .widget h3.widget-title { font-size:  $h4_font_size{px}; }

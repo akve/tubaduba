@@ -1,0 +1,935 @@
+.widget ul li {
+	color: $regular_link_color;
+}
+.sidebar .widget > ul li a,
+.sidebar .widget.widget_nav_menu li a{
+	color: $regular_accent_color_1;
+}
+.sidebar .widget > ul li a:hover,
+.sidebar .widget.widget_nav_menu li a:hover{
+	color: $regular_text_color;
+}
+.widget_tag_cloud .tagcloud a:hover,
+.widget_product_tag_cloud .tagcloud a:hover{
+	color: $regular_text_color;
+}
+.footer-area .widget > .widget-title {
+	font-weight: $h1_font_weight;
+}
+
+/* invert color */
+.invert .widget ul li,
+.invert .widget ul li a,
+.invert .widget.widget_nav_menu li a,
+.invert .widget.widget_nav_menu li a:not([href]):hover{
+	color: $regular_accent_color_1;
+}
+.invert .widget ul li a:hover,
+.invert .widget.widget_nav_menu li a:hover {
+	color: $invert_accent_color_1;
+}
+.invert .widget select{
+	color: $invert_accent_color_2;
+}
+.invert .widget-image-grid__content .widget-image-grid__title a{
+	color: $invert_accent_color_1;
+}
+.invert .widget-image-grid__content .widget-image-grid__title a:hover{
+	color: $regular_text_color;
+}
+.invert .widget-image-grid__content .widget-image-grid__link{
+	color: $invert_accent_color_1;
+}
+.invert .widget-image-grid__content .widget-image-grid__link:hover{
+	color: $regular_text_color;
+}
+
+/* Widget calendar */
+.widget_calendar .calendar_wrap caption {
+	font-style: $h4_font_style;
+	font-weight: $h2_font_weight;
+	font-size: @font_size($h4_font_size, multiple, ceil, 1)px;
+	line-height: $h4_line_height;
+	font-family: $h4_font_family;
+	letter-spacing: $h4_letter_spacing{px};
+	text-transform: none;
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+.widget_calendar .calendar_wrap th{
+	color: $regular_text_color;
+}
+.widget_calendar .calendar_wrap tbody td a{
+	color: $regular_text_color;
+}
+.widget_calendar .calendar_wrap tbody td a:hover{
+	color: $invert_accent_color_1;
+	background: @darken($regular_accent_color_2, 26.66666666666667%);
+	border-color: @darken($regular_accent_color_2, 26.66666666666667%);
+}
+.widget_calendar .calendar_wrap #prev,
+.widget_calendar .calendar_wrap #next {
+	font-family: $h3_font_family;
+	font-style: $h3_font_style;
+	font-weight: $h2_font_weight;
+	font-size: @font_size( $h4_font_size[size], multiple, round,  .8)px;
+	line-height: 1.2;
+}
+.widget_calendar .calendar_wrap #prev a:hover,
+.widget_calendar .calendar_wrap #next a:hover {
+	color: @lighten($regular_accent_color_2, 9.411764705882348%);
+}
+
+/* invert color */
+.invert .widget_calendar .calendar_wrap caption{
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+.invert .widget_calendar .calendar_wrap th{
+	color: $invert_accent_color_1;
+}
+.invert .widget_calendar .calendar_wrap tfoot a{
+	color: $regular_accent_color_1;
+}
+.invert .widget_calendar .calendar_wrap tbody a{
+	color: $invert_accent_color_1;
+	border-color: $invert_accent_color_1;
+}
+.invert .widget_calendar .calendar_wrap tbody a:hover{
+	color: $regular_text_color;
+	background: $invert_accent_color_1;
+}
+.invert .widget_calendar .calendar_wrap #prev a:hover,
+.invert .widget_calendar .calendar_wrap #next a:hover {
+	color: $invert_accent_color_1;
+}
+
+/* Widget Tag Cloud */
+.widget_tag_cloud .tagcloud a, .widget_product_tag_cloud .tagcloud a{
+	color: $regular_accent_color_1;
+}
+.widget_tag_cloud .tagcloud a:hover, .widget_product_tag_cloud .tagcloud a:hover{
+	color: $regular_accent_color_1;
+}
+
+/* invert color */
+.invert .widget_tag_cloud .tagcloud a{
+	color: @contrast($invert_text_color, $invert_accent_color_1, $invert_text_color);
+}
+.invert .widget_tag_cloud .tagcloud a:hover{
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_2;
+}
+
+/* idget Recent Posts */
+.widget_recent_entries ul li,
+.widget_recent_comments ul li {
+	font-family: $h3_font_family;
+	font-style: $h3_font_style;
+	color: $regular_accent_color_2;
+}
+.widget_recent_entries ul li a,
+.widget_recent_comments ul li > a{
+	color: $regular_link_hover_color;
+	font-family: $body_font_family;
+	font-style: $body_font_style;
+}
+.widget_recent_entries ul li .post-author__link{
+	font-family: $h3_font_family;
+	font-style: $h3_font_style;
+	color: $regular_accent_color_2;
+}
+.widget_recent_entries ul li a:hover,
+.widget_recent_comments ul li > a:hover{
+	color: $regular_link_color;
+}
+.widget_recent_entries ul li .post-date:before{
+	color: @alpha($regular_accent_color_1, 30);
+}
+.widget_recent_entries ul li .post-author{
+	color: $regular_accent_color_2;
+}
+
+/* invert color */
+.invert .widget_recent_entries ul li a,
+.invert .widget_recent_comments ul li > a{
+	color: $invert_link_hover_color;
+}
+.invert .widget_recent_entries ul li a:hover,
+.invert .widget_recent_comments ul li > a:hover{
+	color: $invert_link_color;
+}
+.invert .widget_recent_entries ul li .post-date::before{
+	color: @alpha($regular_accent_color_1, 30);
+}
+
+.sidebar .widget .products-list li{
+	font-style: $h4_font_style;
+	font-weight: $h4_font_weight;
+	font-size: @font_size($h4_font_size, multiple, ceil, 1)px;
+	line-height: $h4_line_height;
+	font-family: $h4_font_family;
+	letter-spacing: $h4_letter_spacing{px};
+	text-align: $h4_text_align;
+	text-transform: none;
+	color: $regular_text_color;
+}
+
+.sidebar .widget a.button.compare{
+	font-style: $h5_font_style;
+	font-weight: $h5_font_weight;
+	font-size: @font_size($h5_font_size, multiple, ceil, 1)px;
+	line-height: $h5_line_height;
+	font-family: $h5_font_family;
+	letter-spacing: $h5_letter_spacing{px};
+	text-align: $h5_text_align;
+	text-transform: uppercase;
+	color: $regular_text_color;
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+
+.sidebar .widget a.button.compare:hover{
+	color: $invert_accent_color_1;
+	background: $regular_text_color;
+}
+
+.sidebar .widget .product_list_widget > li .reviewer span{
+	color: $regular_accent_color_1;
+}
+
+.sidebar .widget .product_list_widget > li .widget_title_product,
+.sidebar.widget-area .widget .product_list_widget > li .product_title_link > a{
+	color: $regular_text_color;
+}
+
+.sidebar .widget .product_list_widget > li .widget_title_product:hover,
+.sidebar.widget-area .widget .product_list_widget > li .product_title_link > a:hover{
+	color: $regular_accent_color_1;
+}
+
+.widget.widget_recent_comments li.recentcomments,
+.widget.widget_recent_comments li.recentcomments {
+	color: $regular_accent_color_2;
+}
+.widget.widget_recent_comments li.recentcomments a,
+.widget.widget_recent_comments li.recentcomments a {
+	color: $regular_text_color;
+}
+.widget.widget_recent_comments li.recentcomments span,
+.widget.widget_recent_comments li.recentcomments span {
+	color: $regular_accent_color_1;
+}
+.widget.widget_recent_comments li.recentcomments a:hover,
+.widget.widget_recent_comments li.recentcomments a:hover {
+	color: $regular_accent_color_1;
+}
+
+.invert .widget.widget_recent_comments li.recentcomments,
+.invert .widget.widget_recent_comments li.recentcomments {
+	color: $invert_accent_color_3;
+}
+.invert .widget.widget_recent_comments li.recentcomments a,
+.invert .widget.widget_recent_comments li.recentcomments a {
+	color: $invert_accent_color_1;
+}
+.invert .widget.widget_recent_comments li.recentcomments span,
+.invert .widget.widget_recent_comments li.recentcomments span {
+	color: $regular_accent_color_1;
+}
+.invert .widget.widget_recent_comments li.recentcomments a:hover,
+.invert .widget.widget_recent_comments li.recentcomments a:hover {
+	color: $regular_accent_color_1;
+}
+
+.widget.widget_recent_entries ul li .post-author {
+	color: $regular_accent_color_2;
+}
+
+.widget.widget_recent_entries ul li .post-author a {
+	color: $regular_accent_color_1;
+}
+
+.widget.widget_recent_entries ul li .post-author a:hover {
+	color: $regular_text_color;
+}
+
+.widget.widget_recent_entries ul li .post-date {
+	color: $regular_accent_color_3;
+}
+
+.widget.widget_recent_entries ul li > a{
+	color: $regular_text_color;
+	font-size: @font_size( $h4_font_size[size], multiple, round,  .8)px;
+}
+
+.invert .widget.widget_recent_entries ul li .post-author {
+	color: $invert_accent_color_3;
+}
+
+.invert .widget.widget_recent_entries ul li .post-author a {
+	color: $regular_accent_color_1;
+}
+
+.invert .widget.widget_recent_entries ul li .post-author a:hover {
+	color: $invert_accent_color_1;
+}
+
+.invert .widget.widget_recent_entries ul li .post-date {
+	color: $invert_accent_color_3;
+}
+
+.invert .widget.widget_recent_entries ul li > a{
+	color: $invert_accent_color_1;
+	font-size: @font_size( $h4_font_size[size], multiple, round,  .8)px;
+}
+
+.widget-area .widget .product_list_widget > li .widget_title_product{
+	font-size: @font_size( $body_font_size[size], multiple, round, 1 )px;
+	line-height: $body_line_height;
+	font-weight: $body_font_weight;
+}
+
+.widget.widget_recent_entries ul li > a:hover{
+	color: $regular_accent_color_1;
+}
+
+.invert .widget-area .widget .product_list_widget > li .reviewer span{
+	color: $regular_accent_color_1;
+}
+
+.invert .widget-area .widget .product_list_widget del,
+.invert .widget-area .widget .product_list_widget del .amount {
+	color: $invert_accent_color_3;
+}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
+	background: @darken($regular_accent_color_2, 21.568627450980387);
+}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range{
+	background: $regular_accent_color_1;
+}
+
+.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content{
+	background: @lighten($regular_accent_color_2, 30.588235294117652%);
+}
+
+.woocommerce .widget_price_filter .price_slider_amount {
+	font-size: @font_size( $h6_font_size[size], multiple, round, 1 )px;
+	font-weight: $body_font_weight;
+	color: $regular_text_color;
+}
+
+.widget_product_search form button{
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+
+.widget_product_search form button:hover{
+	color: $invert_accent_color_1;
+	background: $regular_text_color;
+}
+
+.sidebar .widget > ul > li > a,
+.after-content-area .widget > ul > li > a{
+	font-size: $body_font_size{px};
+	font-weight: $body_font_weight;
+}
+
+.sidebar .widget .product_list_widget > li .widget_title_product,
+.sidebar.widget-area .widget .product_list_widget > li .product_title_link > a{
+	font-size: @font_size( $h4_font_size[size], multiple, round,  .9)px;
+}
+
+.about-author_btn.btn.btn-secondary{
+	background: $regular_accent_color_1;
+	color: $invert_accent_color_1;
+}
+
+.invert .about-author_btn.btn.btn-secondary:hover{
+	background: $invert_accent_color_1;
+	color: $regular_text_color;
+}
+
+/* Widget Cart List */
+.widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .cart_list li .quantity .amount {
+	font-family: $h3_font_family;
+	font-weight: $h2_font_weight;
+	color: $regular_accent_color_1;
+}
+
+.widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .total {
+	font-family: $h3_font_family;
+	font-size: @font_size($h4_font_size, multiple, ceil, 1)px;
+	line-height: $h4_line_height;
+}
+
+.widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .total strong {
+	color: $regular_text_color;
+	font-family: $body_font_family;
+	font-style: $body_font_style;
+	font-weight: $h2_font_weight;
+	font-size: @font_size($body_font_size, multiple, ceil, 1)px;
+	line-height: $body_line_height;
+	letter-spacing: $body_letter_spacing{px};
+	color: $regular_text_color;
+}
+
+.widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .total .amount {
+	font-family: $h3_font_family;
+	color: $regular_accent_color_1;
+	font-weight: $h2_font_weight;
+	font-size: @font_size( $h4_font_size[size], multiple, round, 1)px;
+}
+
+.widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .buttons .button {
+	font-size: @font_size($h5_font_size, multiple, ceil, 1)px;
+	line-height: @font_size( $h4_font_size[size], multiple, round, 1)px;
+	color: $invert_accent_color_1;
+	background: $regular_text_color;
+	font-style: $h4_font_style;
+	font-weight: $h4_font_weight;
+	font-family: $h4_font_family;
+	letter-spacing: $h4_letter_spacing{px};
+}
+
+.widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .buttons .button:hover {
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+
+.widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .buttons .button.checkout {
+	background: $regular_accent_color_1;
+}
+
+.widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .buttons .button.checkout:hover {
+	background: $regular_text_color;
+}
+
+.widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .cart_list li a.remove:hover:before {
+	color: $regular_text_color;
+}
+
+.invert .widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .total strong{
+	color: $invert_accent_color_1;
+}
+
+.invert .widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .cart_list li a.remove:hover:before {
+	color: $invert_accent_color_1;
+}
+
+.invert .widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .buttons .button {
+	color: $regular_text_color;
+	background: $invert_accent_color_1;
+}
+
+.invert .widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .buttons .button:hover {
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+
+.invert .widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .buttons .button.checkout {
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+
+.invert .widget.woocommerce.widget_shopping_cart .widget_shopping_cart_content .buttons .button.checkout:hover {
+	color: $regular_text_color;
+	background: $invert_accent_color_1;
+}
+
+.invert .tm_about_store_widget h4{
+	color: $invert_accent_color_1;
+}
+
+.footer-area .tm_about_store_widget h4{
+	font-style: $h4_font_style;
+	font-weight: $h4_font_weight;
+	font-size: $h4_font_size{px};
+	line-height: $h4_line_height;
+	font-family: $h4_font_family;
+	letter-spacing: $h4_letter_spacing{px};
+	text-align: $h4_text_align;
+}
+
+/* Widget Shopping Cart */
+.widget_shopping_cart .cart_list li a {
+	font-style: $body_font_style;
+	font-size: @font_size($body_font_size, multiple, ceil, 0.8888888888888889)px;
+	line-height: $body_line_height;
+	font-family: $body_font_family;
+
+}
+
+.widget_shopping_cart .cart_list li dl{
+	font-style: $body_font_style;
+	font-size: @font_size($body_font_size, multiple, ceil, 1)px;
+	line-height: @font_size($body_font_size, multiple, ceil, 1.357142857142857)px;
+	font-family: $body_font_family;
+}
+
+.widget_shopping_cart .cart_list li .quantity .amount {
+	font-family: $h3_font_family;
+	font-weight: $h2_font_weight;
+	color: $regular_accent_color_1;
+}
+
+.widget_shopping_cart .total {
+	font-family: $h3_font_family;
+	font-size: @font_size($h4_font_size, multiple, ceil, 1)px;
+	line-height: $h4_line_height;
+}
+
+.widget_shopping_cart .total strong {
+	color: $regular_text_color;
+}
+
+.widget_shopping_cart .total .amount {
+	font-family: $h3_font_family;
+	color: $regular_accent_color_1;
+	font-weight: $h2_font_weight;
+}
+
+.widget_shopping_cart .buttons .button {
+	font-style: $h5_font_style;
+	font-weight: $h5_font_weight;
+	font-size: @font_size($h5_font_size, multiple, ceil, 1)px;
+	font-family: $h5_font_family;
+	color: $invert_accent_color_1;
+	background: $regular_text_color;
+}
+
+.widget_shopping_cart .buttons .button:hover {
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+
+.widget_shopping_cart .buttons .button.checkout { background: $regular_accent_color_1; }
+
+.widget_shopping_cart .buttons .button.checkout:hover { background: $regular_text_color; }
+
+.widget_shopping_cart .cart_list li a.remove:hover:before { color: $regular_text_color; }
+
+.widget_shopping_cart .cart_list li a.remove,
+.widget_shopping_cart .cart_list li a.remove:before { color: $regular_accent_color_1; }
+
+.widget_shopping_cart .cart_list li a.remove:hover { color: $regular_text_color; }
+
+.widget_shopping_cart .cart_list li a.remove:hover .dd-select a.dd-selected { color: $invert_accent_color_1; }
+
+.woocommerce-currency-switcher-form .dd-container:hover { background: $regular_text_color; }
+
+.woocommerce-currency-switcher-form .dd-container .dd-options .dd-option:hover{
+	background: $regular_text_color;
+	color: $invert_accent_color_1;
+}
+.subscribe-block__message,
+.follow-block__message {
+	font-family: $h3_font_family;
+	font-style: $h3_font_style;
+	font-weight: $h1_font_weight;
+	font-size: @font_size( $h6_font_size[size], multiple, round, 1 )px;
+	line-height: $h6_line_height;
+	letter-spacing: $h3_letter_spacing{px};
+	color: @darken($regular_accent_color_2, 10.980392156862749);
+}
+
+.full-width-header-area .subscribe-block__message,
+.full-width-header-area .follow-block__message,
+.after-content-full-width-area .subscribe-block__message,
+.after-content-full-width-area .follow-block__message,
+.before-content-area .subscribe-block__message,
+.before-content-area .follow-block__message,
+.after-loop-area .subscribe-block__message,
+.after-loop-area .follow-block__message {
+	font-family: $h3_font_family;
+	font-style: $h3_font_style;
+	font-weight: $h1_font_weight;
+	font-size: @font_size( $h3_font_size[size], multiple, round, 0.6 )px;
+	line-height: $h3_line_height;
+	letter-spacing: $h3_letter_spacing{px};
+	color: @darken($regular_accent_color_2, 10.980392156862749);
+}
+
+@media (min-width: 544px) {
+	.full-width-header-area .subscribe-block__message,
+	.full-width-header-area .follow-block__message,
+	.after-content-full-width-area .subscribe-block__message,
+	.after-content-full-width-area .follow-block__message,
+	.before-content-area .subscribe-block__message,
+	.before-content-area .follow-block__message,
+	.after-loop-area .subscribe-block__message,
+	.after-loop-area .follow-block__message {
+		font-size: @font_size( $h3_font_size[size], multiple, round, 0.8 )px;
+	}
+}
+
+.full-width-header-area .follow-block .social-list li a,
+.after-content-full-width-area .follow-block .social-list li a,
+.before-content-area .follow-block .social-list li a,
+.after-loop-area .follow-block .social-list li a {
+	color: $regular_accent_color_6;
+	background: @darken($invert_accent_color_1, 4.705882352941188%);
+}
+
+.full-width-header-area .follow-block .social-list li a:hover,
+.after-content-full-width-area .follow-block .social-list li a:hover,
+.before-content-area .follow-block .social-list li a:hover,
+.after-loop-area .follow-block .social-list li a:hover {
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_4;
+}
+
+@media (min-width: 768px) {
+	.full-width-header-area .subscribe-block__message,
+	.full-width-header-area .follow-block__message,
+	.after-content-full-width-area .subscribe-block__message,
+	.after-content-full-width-area .follow-block__message,
+	.before-content-area .subscribe-block__message,
+	.before-content-area .follow-block__message,
+	.after-loop-area .subscribe-block__message,
+	.after-loop-area .follow-block__message {
+		font-size: $h4_font_size{px};
+	}
+}
+
+.before-content-area .widget > .widget-title,
+.after-loop-area .widget > .widget-title,
+.after-content-full-width-area .widget > .widget-title,
+.full-width-header-area .bne_testimonial_slider_widget > .widget-title,
+.before-content-area .bne_testimonial_slider_widget > .widget-title,
+.after-loop-area .bne_testimonial_slider_widget > .widget-title,
+.after-content-full-width-area .bne_testimonial_slider_widget > .widget-title ,
+.related.products h1,
+.upsells.products h1{
+	font-family: $h1_font_family;
+	font-style: $h1_font_style;
+	font-weight: $h1_font_weight;
+	font-size: @font_size($h1_font_size, multiple, ceil, 0.4583333333333333)px;
+	line-height: $h1_line_height;
+	letter-spacing: $h1_letter_spacing{px};
+	color: $regular_accent_color_3;
+}
+
+@media (min-width: 544px) {
+	.full-width-header-area .widget > .widget-title,
+	.before-content-area .widget > .widget-title,
+	.after-loop-area .widget > .widget-title,
+	.after-content-full-width-area .widget > .widget-title,
+	.full-width-header-area .bne_testimonial_slider_widget > .widget-title,
+	.before-content-area .bne_testimonial_slider_widget > .widget-title,
+	.after-loop-area .bne_testimonial_slider_widget > .widget-title,
+	.after-content-full-width-area .bne_testimonial_slider_widget > .widget-title,
+	.related.products h1,
+	.upsells.products h1{
+		font-size: $h3_font_size{px};
+	}
+}
+
+.full-width-header-area.invert .subscribe-block h3.widget-title,
+.full-width-header-area.invert .follow-block h3.widget-title,
+.before-content-area.invert .subscribe-block h3.widget-title,
+.before-content-area.invert .follow-block h3.widget-title,
+.after-loop-area.invert .subscribe-block h3.widget-title,
+.after-loop-area.invert .follow-block h3.widget-title,
+.after-content-full-width-area.invert .subscribe-block h3.widget-title,
+.after-content-full-width-area.invert .follow-block h3.widget-title{
+	color: $invert_accent_color_1;
+}
+
+.full-width-header-area .subscribe-block h3.widget-title,
+.full-width-header-area .follow-block h3.widget-title,
+.before-content-area .subscribe-block h3.widget-title,
+.before-content-area .follow-block h3.widget-title,
+.after-loop-area .subscribe-block h3.widget-title,
+.after-loop-area .follow-block h3.widget-title,
+.after-content-full-width-area .subscribe-block h3.widget-title,
+.after-content-full-width-area .follow-block h3.widget-title {
+	font-family: $h3_font_family;
+	font-style: $h3_font_style;
+	font-weight: $body_font_weight;
+	font-size: @font_size( $h4_font_size[size], multiple, round, 1)px;
+	letter-spacing: $h3_letter_spacing{px};
+	color: $regular_text_color;
+}
+
+.full-width-header-area .subscribe-block h3.widget-title span,
+.full-width-header-area .follow-block h3.widget-title span,
+.before-content-area .subscribe-block h3.widget-title span,
+.before-content-area .follow-block h3.widget-title span,
+.after-loop-area .subscribe-block h3.widget-title span,
+.after-loop-area .follow-block h3.widget-title span,
+.after-content-full-width-area .subscribe-block h3.widget-title span,
+.after-content-full-width-area .follow-block h3.widget-title span {
+	font-weight: $h2_font_weight;
+}
+
+
+
+@media (min-width: 544px) {
+	.full-width-header-area .subscribe-block h3.widget-title,
+	.full-width-header-area .follow-block h3.widget-title,
+	.before-content-area .subscribe-block h3.widget-title,
+	.before-content-area .follow-block h3.widget-title,
+	.after-loop-area .subscribe-block h3.widget-title,
+	.after-loop-area .follow-block h3.widget-title,
+	.after-content-full-width-area .subscribe-block h3.widget-title,
+	.after-content-full-width-area .follow-block h3.widget-title {
+		font-size: @font_size( $h2_font_size[size], multiple, round,  )px;
+		line-height: $h2_line_height;
+	}
+}
+
+@media (min-width: 768px) {
+	.full-width-header-area .subscribe-block h3.widget-title,
+	.full-width-header-area .follow-block h3.widget-title,
+	.before-content-area .subscribe-block h3.widget-title,
+	.before-content-area .follow-block h3.widget-title,
+	.after-loop-area .subscribe-block h3.widget-title,
+	.after-loop-area .follow-block h3.widget-title,
+	.after-content-full-width-area .subscribe-block h3.widget-title,
+	.after-content-full-width-area .follow-block h3.widget-title {
+		font-size: @font_size( $h2_font_size[size], multiple, round,  1.13333)px;
+		line-height: $h3_line_height;
+	}
+}
+
+.invert .subscribe-block__message,
+.invert .follow-block__message { color: $invert_accent_color_1; }
+
+.invert .subscribe-block__input[type="email"]{
+	color: $invert_accent_color_1;
+}
+
+.subscribe-block__input[type="email"]{
+	color: $regular_text_color;
+}
+
+.widget_tag_cloud .tagcloud a,
+.widget_product_tag_cloud .tagcloud a{
+	font-family: $body_font_family;
+	font-style: $body_font_style;
+	font-weight: $body_font_weight;
+	font-size: @font_size($h4_font_size, multiple, ceil, 1)px !important;
+	line-height: $body_line_height;
+	letter-spacing: $h4_letter_spacing{px};
+}
+
+.widget_tag_cloud .tagcloud a:hover,
+.widget_product_tag_cloud .tagcloud a:hover{
+	color: $regular_link_hover_color;
+}
+
+.invert .widget_tag_cloud .tagcloud a,
+.invert .widget_product_tag_cloud .tagcloud a{
+	color: $regular_link_hover_color;
+}
+
+.invert .widget_tag_cloud .tagcloud a:hover,
+.invert .widget_product_tag_cloud .tagcloud a:hover{
+	color: $invert_accent_color_1;
+}
+
+.widget-area .widget .product-categories-thumbnail div .title_count,
+.products .product-category>a h3 mark{ color: $regular_text_color; }
+
+.widget-area .widget .product-categories-thumbnail div .title_count,
+.products .product-category > a h3 mark{ font-family: $body_font_family; }
+
+.tm_about_store_widget_bg,
+.tm_about_store_widget{ background-color: @lighten($regular_accent_color_2,38.627450980392155% ); }
+.tm_about_store_widget_bg .textwidget strong,
+.tm_about_store_widget .textwidget strong {
+	font-weight: $h2_font_weight;
+}
+
+.tm_about_store_widget_bg .textwidget em,
+.tm_about_store_widget .textwidget em {
+	color: $regular_accent_color_1;
+}
+
+.tm_custom_menu_widget .widget-title {
+	font-size: @font_size( $h3_font_size[size], multiple, round, 1 )px;
+}
+
+@media (min-width: 544px) {
+	.tm_custom_menu_widget .widget-title {
+		font-size: @font_size( $h3_font_size[size], multiple, round, 1.7 )px;
+	}
+}
+
+.widget_organica_custom_menu_widget .tm_custom_menu_widget .menu li a {
+	color: $regular_link_color;
+}
+
+.widget_organica_custom_menu_widget .tm_custom_menu_widget .menu li a:hover {
+	color: $regular_link_hover_color;
+}
+
+.invert .widget_organica_custom_menu_widget .tm_custom_menu_widget .menu li a:hover {
+	color: $invert_accent_color_1;
+}
+
+.widget_product_categories_image a h3 {
+	font-family: $h3_font_family;
+	font-style: $h3_font_style;
+	font-weight: $h2_font_weight;
+	font-size: @font_size($h3_font_size, multiple, ceil, 1)px;
+	line-height: $h3_line_height;
+	letter-spacing: $h3_letter_spacing{px};
+	background: $invert_accent_color_1;
+	color: $regular_accent_color_1;
+}
+
+.widget_product_categories_image a:hover h3 {
+	background: $regular_accent_color_1;
+	color: $invert_accent_color_1;
+}
+
+.widget_product_categories_image a h3 mark.count{
+	color: $invert_accent_color_1;
+	font-size: @font_size($body_font_size, multiple, ceil, 1)px;
+}
+
+.rd-material-tabs__list .rd-material-tab a {
+	color: $regular_accent_color_1;
+}
+
+.rd-material-tabs__list .rd-material-tab a:hover,
+.rd-material-tabs__list .rd-material-tab.rd-material-tab-active a {
+	color: $regular_text_color;
+}
+
+.tm-products-smart-box-widget__rd-material-tabs > .row > .col-lg-3{
+	background: @lighten($regular_accent_color_2,38.627450980392155% );
+	-webkit-background-clip: content-box;
+	-moz-background-clip: content-box;
+	background-clip: content-box;
+}
+
+
+
+.tm-products-smart-box-widget__rd-material-tabs .product .price .amount,
+.tm-products-smart-box-widget__rd-material-tabs div.product span.price ins {
+	font-size: @font_size( $body_font_size[size], multiple, round, 1 )px;
+}
+.tm-products-smart-box-widget__rd-material-tabs .product .price del .amount {
+	font-size: @font_size($body_font_size, multiple, ceil, 0.8888888888888889)px;
+}
+
+.tm-products-smart-box-widget__rd-material-tabs .product h3 {
+	font-family: $h6_font_family;
+	font-style: $h6_font_style;
+	font-weight: $h6_font_weight;
+	font-size: @font_size($h6_font_size, multiple, ceil, 0.875)px;
+	line-height: $h6_line_height;
+	letter-spacing: $h6_letter_spacing{px};
+}
+
+.widget-area .widget .product_list_widget > li .reviewer{
+	font-family: $body_font_family;
+	font-style: $body_font_style;
+	font-weight: $body_font_weight;
+	font-size: @font_size($h4_font_size, multiple, ceil, 0.8888888888888889)px;
+	line-height: $body_line_height;
+	letter-spacing: $h4_letter_spacing{px};
+}
+
+.invert .woocommerce div.product .product-widget-categories li a,
+.invert .woocommerce div.product .product-widget-tags li a,
+.invert .woocommerce div.product .product-widget-categories li,
+.invert .woocommerce div.product .product-widget-tags li,
+.invert .woocommerce .product .product-categories a,
+.invert .woocommerce .product .product-tags a,
+.invert .woocommerce .product .product-categories li,
+.invert .woocommerce .product .product-tags li {
+	color: $regular_accent_color_1;
+}
+
+.invert .woocommerce div.product .product-widget-categories li a:hover,
+.invert .woocommerce div.product .product-widget-tags li a:hover,
+.invert .woocommerce .product .product-categories a:hover,
+.invert .woocommerce .product .product-tags a:hover{
+	color: $invert_accent_color_1;
+}
+
+.invert .woocommerce .products div.product h3,
+.woocommerce .products div.product {
+	color: $invert_accent_color_1;
+}
+
+.widget .count{
+	font-size: @font_size( $body_font_size[size], multiple, round, 1 )px;
+	font-weight: $body_font_weight;
+}
+
+.top-panel__wrap .search_switcher_block .currency_switcher .chosen-container .chosen-results li{
+	font-style: $body_font_style;
+}
+
+.before-content-area .tm_products_carousel_widget,
+.after-content-full-width-area .tm_products_carousel_widget,
+.widget .widget-image-grid,
+.bne_testimonials_slider_widget,
+.related.products,
+.widget.widget-image-grid.widget,
+.before-content-area .bne_testimonials_slider_widget,
+.breadcrumbs + *{
+	border-top-color: @lighten($regular_accent_color_2, 17.64705882352942%);
+}
+
+.related.products{
+	border-top: 1px dashed $regular_accent_color_2;
+}
+
+.woocommerce .products .product .tm-woocompare-button,
+.woocommerce .products .product .tm-woowishlist-button{
+	color: $regular_accent_color_2;
+}
+
+.bne-element-container .bne-testimonial-slider .slides li h3 {
+	color: $regular_accent_color_4;
+	font-family: $h5_font_family;
+	font-weight: $body_font_weight;
+}
+
+.bne-element-container .bne-testimonial-slider .slides li .bne-testimonial-description{
+	font-size: @font_size( $body_font_size[size], multiple, round, 0.8888888888888889 )px;
+	font-weight: $body_font_weight;
+	color: $regular_text_color;
+}
+
+@media (min-width: 544px) {
+	.bne-element-container .bne-testimonial-slider .slides li .bne-testimonial-description {
+		font-size: @font_size($body_font_size[size], multiple, round, 1 )px;
+	}
+}
+
+.bne-element-container .bne-testimonial-slider .slides li .flex-content:before{
+	font-family: $h3_font_family;
+	color: $regular_accent_color_4;
+}
+
+.after-content-full-width-area.invert{
+	background: $regular_accent_color_6;
+}
+
+.bne_testimonials_slider_widget{  background: @lighten($regular_accent_color_2, 39.019607843137265%);  }
+
+.widget_tm_woocommerce_wishlist a.button.tm-woowishlist-page-button.btn{
+	font-family: $h4_font_family;
+	font-style: $h4_font_style;
+	font-weight: $h4_font_weight;
+	font-size: @font_size($h4_font_size, multiple, ceil, .6)px;
+	line-height: $h4_line_height;
+letter-spacing: $h4_letter_spacing{px};
+}
+
+.widget_tm_woocompare_recent_compare_list button.button.tm-woocompare-empty{
+	background: $regular_accent_color_4;
+}
+
+.widget_tm_woocompare_recent_compare_list button.button.tm-woocompare-empty:hover{
+	background: $invert_accent_color_1;
+}

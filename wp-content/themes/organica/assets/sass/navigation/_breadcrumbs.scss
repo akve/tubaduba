@@ -1,0 +1,68 @@
+.breadcrumbs {
+	position: relative;
+	margin: 0 0 10px 0;
+
+
+	@include media-breakpoint-up(sm) {
+		padding:0 0 23px 0;
+	}
+
+	> .container {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	&__title {
+		.page-title {
+			margin: 0;
+		}
+	}
+
+	&__items {
+		float: left;
+	}
+
+	&__browse {
+		float: left;
+		margin-right: 10px;
+	}
+
+	&__wrap {
+		float: left;
+		margin: 0;
+
+		@media (min-width: 992px) {
+			margin: 4px 0;
+		}
+	}
+
+	&__item {
+		display: inline-block;
+		vertical-align: bottom;
+
+		&-sep {
+			margin: 0 10px;
+		}
+	}
+
+	.woocommerce.woocommerce-wishlist &,
+	.woocommerce.post-type-archive-product & {
+		margin: 0 0 10px 0;
+	}
+
+	.error404 & {
+		margin: 0 0 8px;
+	}
+
+	.home & {
+		margin-bottom: 30px;
+
+		@include media-breakpoint-up(lg) {
+			margin-bottom: 50px;
+		}
+	}
+
+	& + *{
+		border-top: 1px dashed ;
+	}
+}

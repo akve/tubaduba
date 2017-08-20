@@ -1,0 +1,91 @@
+.organica-smartslider .sp-arrows .sp-arrow {
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+
+.organica-smartslider .sp-arrows .sp-arrow:hover {
+	color: @darken($regular_accent_color_2, 25.88235294117647%);
+	background: $invert_accent_color_1;
+}
+
+.slider-pro.organica-smartslider__instance .sp-title{
+	font-style: $h2_font_style;
+	font-family: $h1_font_family;
+	font-weight: $h2_font_weight;
+}
+
+.slider-pro.organica-smartslider__instance .sp-title a {
+	color: $invert_accent_color_1;
+}
+
+.slider-pro.organica-smartslider__instance .sp-content {
+	font-style: $h1_font_style;
+	font-family: $h1_font_family;
+	font-weight: $h2_font_weight;
+	color: $invert_accent_color_1;
+}
+
+.slider-pro.organica-smartslider__instance .sp-title a:before {
+	background: $regular_text_color;
+}
+
+.slider-pro.organica-smartslider__instance .sp-buttons .sp-button {
+	border-color: $invert_accent_color_1;
+}
+
+.slider-pro.organica-smartslider__instance .sp-buttons .sp-button:hover,
+.slider-pro.organica-smartslider__instance .sp-buttons .sp-button.sp-selected-button {
+	border-color: $invert_accent_color_1;
+	background: $invert_accent_color_1;
+}
+
+@media (min-width: 992px){
+	.slider-pro.organica-smartslider__instance .sp-title{
+		color: $invert_accent_color_1;
+	}
+}
+
+.sp-thumbnail-container {
+	border: 5px solid $invert_accent_color_1;
+}
+
+.sp-thumbnail-container:hover,
+.sp-thumbnail-container.sp-selected-thumbnail{
+	border: 5px solid $regular_accent_color_1;
+}
+
+.sp-next-thumbnail-arrow:after,
+.sp-next-thumbnail-arrow:before,
+.sp-previous-thumbnail-arrow:after,
+.sp-previous-thumbnail-arrow:before {
+	background: $invert_accent_color_1;
+}
+
+.sp-next-thumbnail-arrow:hover:after,
+.sp-next-thumbnail-arrow:hover:before,
+.sp-previous-thumbnail-arrow:hover:after,
+.sp-previous-thumbnail-arrow:hover:before {
+	background: $regular_accent_color_1;
+}
+
+.slider-pro.organica-smartslider__instance div.sp-more a {
+	font-style: $h1_font_style;
+	font-weight: $h1_font_weight;
+	font-family: $h1_font_family;
+	background: $regular_accent_color_1;
+	color: $invert_accent_color_1;
+}
+
+.slider-pro.organica-smartslider__instance div.sp-more a:hover {
+	background: $invert_accent_color_1;
+	color: $regular_accent_color_1;
+}
+
+.slider-pro.organica-smartslider__instance .sp-full-screen-button {
+	color: $invert_accent_color_1;
+}
+
+.slider-pro.organica-smartslider__instance .sp-full-screen-button:hover {
+	color: $regular_accent_color_1;
+}
+

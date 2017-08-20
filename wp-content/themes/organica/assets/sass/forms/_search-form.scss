@@ -1,0 +1,88 @@
+.search-form,
+.woocommerce-product-search {
+	margin: 0;
+	@include flexbox;
+
+	label {
+		@include flex(0 1 100%);
+	}
+
+	&__field[type="search"] {
+		vertical-align: top;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 11px 17px 10px;
+		font-size: 16px;
+
+		.top-panel & {
+			background: none;
+			border: none;
+			padding: 6px 10px;
+			width: 90px;
+			font-size: 18px;
+		}
+	}
+
+	&__submit {
+		padding: 11px 21px 13px;
+		min-width: 104px;
+		vertical-align: top;
+		white-space: nowrap;
+		text-transform: capitalize;
+
+		i.material-icons {
+			margin: 0 auto;
+			display: block;
+			@include font-size(1.5);
+			line-height: 20px;
+			height: 20px;
+		}
+
+		.top-panel & {
+			padding: 5px 0;
+			background: none;
+
+			&:hover {
+				background: none;
+			}
+
+			&:active,
+			&:focus,
+			&:hover {
+				box-shadow: none;
+			}
+		}
+	}
+}
+
+.widget_search {
+	input[type="search"] {
+		color: #626262;
+
+		&::-webkit-input-placeholder {
+			color: #626262;
+		}
+		&::-moz-placeholder {
+			color: #626262;
+		}
+		&:-moz-placeholder {
+			color: #626262;
+		}
+		&:-ms-input-placeholder {
+			color: #626262;
+		}
+	}
+}
+
+.widget .woocommerce-product-search {
+	.search-field {
+		vertical-align: top;
+		width: 100%;
+		font-size: 16px;
+		padding: 4px 17px 2px;
+	}
+
+	button {
+		padding: 13px 19px 4px;
+	}
+}

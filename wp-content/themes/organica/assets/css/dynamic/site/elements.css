@@ -1,0 +1,243 @@
+a {
+	color: $regular_link_color;
+}
+
+a:hover,
+a:focus,
+a:active{
+	color: $regular_link_hover_color;
+}
+
+a[href*='callto:']{
+	color: $regular_link_hover_color;
+}
+
+a[href*='callto:']:hover{
+	color: $regular_link_color;
+}
+
+ul,
+ol {
+	color: $regular_accent_color_4;
+}
+
+ul li:before,
+ol li:before {
+	color: $regular_accent_color_4;
+}
+
+ul li a,
+ol li a{
+	color: $regular_accent_color_4;
+}
+
+ul li a:hover,
+ol li a:hover{
+	color: $regular_accent_color_1;
+}
+
+ul li a:not([href]):hover,
+ol li a:not([href]):hover{
+	color: $regular_accent_color_4;
+}
+
+code {
+	color: $invert_text_color;
+	background: $regular_accent_color_1;
+}
+
+.contact-form-wrap span{
+	color: $regular_accent_color_4;
+}
+
+.widget select {
+	background-color: @lighten($regular_accent_color_2, 35.68627450980392%)!important;
+	border: 1px solid @lighten($regular_accent_color_2, 35.68627450980392%);
+	font-style: $h3_font_style;
+}
+
+.woocommerce-ordering .chosen-single{
+	border-bottom: 1px solid @lighten($regular_accent_color_2, 25.68627450980392%)!important;
+}
+
+blockquote {
+	color: $regular_accent_color_1;
+}
+
+body blockquote,
+blockquote q,
+blockquote p,
+body blockquote.single-format-quote,
+.posts-list--grid-2-cols blockquote,
+.posts-list--grid-2-cols .post-format-quote {
+	font-weight: $h2_font_weight;
+	font-size: @font_size($body_font_size, multiple, ceil, 1)px;
+	line-height: $body_line_height;
+	font-family: $body_font_family;
+	color: $regular_text_color;
+}
+
+blockquote:before{
+	color: $regular_accent_color_4;
+	font-family: $h1_font_family;
+}
+
+blockquote cite {
+	font-style: $h3_font_style;
+	font-size: @font_size( $body_font_size[size], multiple, round, 1.1 )px;
+	font-weight: $h1_font_weight;
+	color: $regular_accent_color_4;
+}
+
+blockquote.single-format-quote:before,
+blockquote.single-format-quote cite {
+	color: $regular_accent_color_1;
+}
+
+code {
+	color: $invert_text_color;
+	background: $regular_accent_color_1;
+}
+
+/*
+ Chosen styles
+ */
+.chosen-container-single.chosen-results li,
+.chosen-container-single.chosen-single { font-weight: $body_font_weight; }
+
+.chosen-container-single.chosen-container li,
+.chosen-container-single.chosen-container .active-result {
+	color: $regular_text_color;
+	background: $invert_accent_color_1;
+}
+
+.chosen-container-single.chosen-container li:hover,
+.chosen-container-single.chosen-container .active-result:hover,
+.chosen-container-single.chosen-container .chosen-results li.highlighted:hover{
+	color: $regular_accent_color_1;
+	background: $invert_accent_color_1;
+}
+
+.chosen-container-single.chosen-container .chosen-results li.highlighted{
+	background: $invert_accent_color_1;
+	color: $regular_text_color;
+	background-image: none;
+}
+
+.chosen-container-single.chosen-container .chosen-single{
+	background: $invert_accent_color_1;
+}
+
+.chosen-container.chosen-container-single .chosen-drop{
+	border-top: 1px solid $regular_accent_color_1;
+}
+
+.top-panel .chosen-container .chosen-drop {
+	background: $regular_text_color;
+	color: $invert_accent_color_1;
+}
+
+.top-panel .chosen-container-active.chosen-with-drop .chosen-single,
+.top-panel .chosen-container-single .chosen-single {
+	background: $top_panel_bg;
+	color: $regular_h1_color;
+}
+
+.chosen-container-single .chosen-single{
+	background: @lighten($regular_accent_color_2, 35.68627450980392%);
+	color: $regular_text_color;
+}
+
+.chosen-container .chosen-results{
+	color: $regular_text_color;
+	background: $invert_accent_color_1;
+	border: 1px solid @lighten($regular_accent_color_2,30.588235294117652%);
+}
+
+.chosen-container .chosen-results li.highlighted{
+	background: $regular_accent_color_1;
+	color: $invert_accent_color_1;
+}
+
+.currency_switcher .chosen-container .chosen-results{
+	background: $regular_text_color;
+	color: $invert_accent_color_1;
+}
+
+.currency_switcher .chosen-container{
+	background: $regular_text_color;
+	color: $invert_accent_color_1;
+	border: none;
+}
+
+.currency_switcher .chosen-container .chosen-single{
+	color: $invert_accent_color_1;
+}
+
+.rd-mobile-currency .currency_switcher .chosen-container .chosen-single:hover{
+	color: $regular_accent_color_1;
+}
+
+.currency_switcher .chosen-container .chosen-single:before{
+	color: $invert_accent_color_1;
+}
+
+.site-content .chosen-single{
+	font-style: $h4_font_style;
+}
+
+.currency_switcher .chosen-container .chosen-results li{
+	background: $top_panel_bg;
+	color: $regular_h1_color;
+}
+
+.currency_switcher .chosen-container .chosen-results li + li {
+	border-top: 1px solid @darken($regular_accent_color_2, 23.33333333333333%);
+}
+
+.chosen-container .chosen-results li{
+	background: @lighten($regular_accent_color_2, 35.68627450980392%);
+	color: $regular_text_color;
+	font-style: $h4_font_style;
+}
+
+.chosen-container .chosen-results li:hover{
+	background: $regular_accent_color_1;
+	color: $invert_accent_color_1;
+}
+
+.chosen-container .chosen-results li + li{
+	border-top: 1px solid $regular_accent_color_1!important;
+}
+
+
+.widget_recent_entries ul li .post-date:before{
+	color: $regular_text_color;
+}
+
+.motoslider_wrapper .text-white {
+	color: $invert_accent_color_1;
+}
+
+.mfp-bg,
+.mfp-figure:after{
+	background: $invert_accent_color_1;
+}
+
+.mfp-iframe-holder .mfp-close:before,
+.mfp-image-holder .mfp-close:before,
+.mfp-arrow.mfp-arrow-right:before,
+.mfp-arrow.mfp-arrow-left:before,
+.mfp-counter{
+	color: $regular_h1_color;
+}
+
+.mfp-iframe-holder .mfp-close:hover:before,
+.mfp-image-holder .mfp-close:hover:before,
+.mfp-arrow.mfp-arrow-right:hover:before,
+.mfp-arrow.mfp-arrow-left:hover:before{
+	color: $regular_accent_color_1;
+}
+.preloader{
+	fill: $regular_accent_color_1;
+}

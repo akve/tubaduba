@@ -1,0 +1,69 @@
+.site-footer {
+	padding-right: 15px;
+	padding-left: 15px;
+
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="url"]:focus,
+	input[type="password"]:focus,
+	input[type="search"]:focus,
+	input[type="number"]:focus,
+	input[type="tel"]:focus,
+	input[type="range"]:focus,
+	input[type="date"]:focus,
+	input[type="month"]:focus,
+	input[type="week"]:focus,
+	input[type="time"]:focus,
+	input[type="datetime"]:focus,
+	input[type="datetime-local"]:focus,
+	input[type="color"]:focus,
+	select:focus,
+	textarea:focus{
+		box-shadow: none;
+		outline: none;
+	}
+}
+
+.footer-copyright {
+	font-size: 15px;
+	line-height: 1.733333333333333;
+	font-weight: 400;
+}
+
+.footer-menu__items li { border-left: none; }
+
+.footer-text-center{
+	line-height: 1.6;
+}
+
+footer .textwidget {
+	font-weight: 400;
+	line-height: 1.625;
+}
+
+@include media-breakpoint-up(sm){
+	footer .textwidget {
+		line-height: 1.777777777777778;
+	}
+}
+
+footer .widget ul li.recentcomments a{
+	font-size: 16px;
+}
+
+.footer-area .swiper-container .swiper-wrapper .swiper-slide .inner .entry-header{
+	margin-bottom: 15px;
+}
+
+.footer-area .widget  .widget-title {
+	font-weight: 300;
+}
+
+.footer-area .tm_about_store_widget {
+	background-color: transparent !important;
+}
+
+
+@import "footer/layout-default";
+@import "footer/layout-centered";
+@import "footer/layout-minimal";

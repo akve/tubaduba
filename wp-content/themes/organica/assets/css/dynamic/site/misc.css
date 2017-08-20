@@ -1,0 +1,14 @@
+#toTop {
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+
+#toTop:before { color: $regular_accent_color_1; }
+
+#toTop span{ color: $invert_accent_color_1; }
+
+#toTop:hover {background: $footer_bg; }
+
+#toTop:hover span{ color: $invert_accent_color_1; }
+
+.tm-circle .tm-child:before { background-color: $regular_accent_color_1; }

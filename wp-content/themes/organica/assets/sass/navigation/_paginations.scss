@@ -1,0 +1,146 @@
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+		overflow: hidden;
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+
+		> a {
+			display: inline-block;
+			vertical-align: top;
+
+			&:before {
+				@include material-icon();
+				font-size: 20px;
+				content: '\E408';
+				vertical-align: top;
+			}
+		}
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 50%;
+
+		> a {
+			display: inline-block;
+			vertical-align: top;
+
+			&:after {
+				@include material-icon();
+				font-size: 20px;
+				content: '\E409';
+				vertical-align: top;
+			}
+		}
+	}
+}
+
+.woocommerce nav.woocommerce-pagination {
+	text-align: left;
+	margin-top: 15px;
+	margin-left: -8px;
+	padding: 0 0 70px;
+
+	ul li, ul li {
+		a, span {
+			padding: 0;
+		}
+
+		a.page-numbers {
+			margin: 10px 14px 15px 0;
+
+			&.next, &.prev {
+				position: relative;
+				font-size: 0;
+
+				&:after {
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					display: block;
+					font-family: 'Material Icons';
+					font-size: 22px;
+					line-height: 50px;
+					font-weight: 400;
+					font-style: normal;
+					text-indent: 0;
+				}
+			}
+
+			&.next {
+				margin-left: 9px;
+
+				&:after {
+					content: "\e409";
+				}
+			}
+
+			&.prev {
+				margin-right: 9px;
+
+				&:after {
+					content: "\e408";
+				}
+			}
+		}
+	}
+}
+
+.pagination,
+.woocommerce nav.woocommerce-pagination {
+	margin-top: 33px;
+	padding: 0 0 100px;
+
+	.page-numbers {
+		border: none;
+		display: inline-block;
+		text-align: center;
+	}
+
+	.page-numbers,
+	.page-numbers ul li{
+
+		&,
+		&:focus{
+			font-size: 26px;
+			line-height: .9;
+			font-weight: 700;
+			background-color: transparent;
+		}
+	}
+
+	a.page-numbers, span.page-numbers {
+		margin: 10px 14px 15px 0;
+		vertical-align: top;
+
+		&.prev, &.next {
+			margin-top: 0;
+			margin-bottom: 10px;
+			width: 49px;
+			height: 49px;
+		}
+
+		&.next {
+			margin-left: -4px;
+		}
+	}
+}
+
+.pagination{
+	.page-numbers{
+		.material-icons{
+			font-size: 22px;
+			line-height: 50px;
+		}
+	}
+}

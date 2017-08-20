@@ -1,0 +1,70 @@
+.swiper-pagination .swiper-pagination-bullet{
+	background: $invert_accent_color_1;
+	border: 3px solid $regular_accent_color_2;
+}
+.swiper-pagination .swiper-pagination-bullet:hover, .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background: $regular_accent_color_1;
+    opacity: 1;
+		border: 3px solid $regular_accent_color_1;
+}
+.swiper-button-next, .swiper-button-prev{
+	color: $regular_text_color;
+	background: $invert_accent_color_1;
+}
+.swiper-container .swiper-button-next i, .swiper-container .swiper-button-prev i {
+	color: $invert_link_color;
+}
+.swiper-button-next:hover{
+	color: $invert_link_color;
+	background: $invert_accent_color_1;
+}
+.swiper-button-prev:hover{
+	color: $invert_link_color;
+	background: $invert_accent_color_1;
+}
+.footer-area .swiper-wrapper .post .inner{
+	background: $regular_accent_color_2;
+}
+.footer-area .swiper-wrapper .post.swiper-slide .inner, .footer-area .swiper-wrapper .post.swiper-slide.hentry{
+	background: none;
+}
+.invert .footer-area .swiper-container .swiper-wrapper .swiper-slide .inner:hover{
+	background: none;
+}
+.invert .footer-area .swiper-container .swiper-wrapper .swiper-slide .inner .entry-footer .btn,
+.invert .footer-area .swiper-container .swiper-wrapper .swiper-slide .inner .entry-footer .btn i,
+.invert .footer-area .swiper-container .swiper-wrapper .swiper-slide .inner .entry-footer .btn span{
+	color: $invert_accent_color_1;
+}
+.invert .footer-area .swiper-container .swiper-wrapper .swiper-slide .inner .entry-content a:hover,
+.invert .footer-area .swiper-container .swiper-wrapper .swiper-slide .inner .entry-content a:hover{
+	color: $invert_accent_color_1;
+}
+.invert .footer-area .swiper-container .swiper-wrapper .swiper-slide .inner .entry-footer .btn:hover,
+.invert .footer-area .swiper-container .swiper-wrapper .swiper-slide .inner .entry-footer .btn:hover i,
+.invert .footer-area .swiper-container .swiper-wrapper .swiper-slide .inner .entry-footer .btn:hover span{
+	color: $regular_accent_color_1;
+}
+
+.footer-area .swiper-wrapper .post h2 {
+	font-size: @font_size( $h3_font_size[size], multiple, round, 1 )px;
+}
+.invert .swiper-container .swiper-wrapper .swiper-slide .inner:hover{
+	background: $regular_accent_color_2;
+}
+.invert .swiper-container .swiper-wrapper .swiper-slide .inner a:hover{
+	color: $invert_accent_color_1;
+}
+.invert .swiper-container .swiper-wrapper .swiper-slide .inner .btn:hover,
+.invert .swiper-container .swiper-wrapper .swiper-slide .inner .btn:hover span,
+.invert .swiper-container .swiper-wrapper .swiper-slide .inner .btn:hover i{
+	color: $invert_accent_color_1;
+}
+.invert .swiper-pagination .swiper-pagination-bullet{
+	background: transparent;
+	border-color: $invert_accent_color_1;
+}
+.invert .swiper-pagination .swiper-pagination-bullet:hover{
+	background: $regular_accent_color_1;
+	border-color: $regular_accent_color_1;
+}

@@ -1,0 +1,154 @@
+.main-navigation ul.menu > li > a,
+.main-navigation ul.menu > li > a:visited,
+.main-navigation ul.menu > li > a:active,
+.rd-mobilepanel,
+.rd-mobilemenu_ul > li a,
+.rd-mobilemenu_ul > li a.rd-with-ul .rd-submenu-toggle,
+.rd-mobilemenu_ul > li a.rd-with-ul:hover .rd-submenu-toggle{
+	color: $regular_h1_color;
+}
+
+.rd-mobilepanel{ background: $top_panel_bg; }
+
+.rd-mobilepanel_toggle span:after,
+.rd-mobilepanel_toggle span:before,
+.rd-mobilepanel_toggle span { background: $invert_accent_color_1; }
+
+.navbar-search-toggle:before,
+.navbar-search-toggle:after,
+.navbar-search-toggle{ color: $invert_accent_color_1; }
+
+@media (max-width: 767px) {
+	.site-header .top-panel__wrap .widget_product_search form.navbar-search button,
+	.site-header .top-panel__wrap .widget_product_search form.navbar-search button i {
+		color: $invert_accent_color_1;
+	}
+}
+
+.main-navigation ul.menu > li > a:before { background: $regular_accent_color_1; }
+
+.rd-mobilemenu_ul{ background: $invert_accent_color_1; }
+
+.rd-mobilemenu_ul .social-list li{ background: transparent; }
+
+.main-navigation ul ul a,
+.main-navigation ul ul a:not([href]):hover { color: $regular_text_color; }
+
+.main-navigation ul.sub-menu { background: $top_panel_bg; }
+
+.main-navigation ul.menu > li > a,
+.rd-mobilemenu_ul > li a {
+	font-style: $body_font_style;
+	font-weight: $body_font_weight;
+	font-size: @font_size($h5_font_size, multiple, ceil, 1)px;
+	line-height: @font_size($h5_font_size, multiple, ceil, 1)px;
+	font-family: $body_font_family;
+}
+
+.rd-mobilemenu_ul .rd-mobilemenu_submenu li a,
+.rd-mobilemenu_ul .rd-mobile-menu-shop a {
+	font-style: $body_font_style;
+	font-weight: $body_font_weight;
+	font-family: $body_font_family;
+}
+
+.rd-mobilemenu_ul .rd-mobile-menu-shop a{ font-weight: 600; }
+
+.rd-mobilemenu_ul .rd-mobilemenu_submenu li a,
+.rd-mobilemenu_ul .rd-mobilemenu_submenu li.menu-item {
+	background: $top_panel_bg;
+	color: $invert_accent_color_1;
+}
+
+.rd-mobilemenu_ul .rd-mobilemenu_submenu li a:not([href]),
+.rd-mobilemenu_ul .rd-mobile-menu-shop a:not([href]){ color: $invert_accent_color_1; }
+
+.rd-mobilemenu_ul .rd-mobilemenu_submenu { background: $top_panel_bg; }
+
+.rd-mobilemenu_ul .rd-mobile-menu-shop a { color: $regular_text_color; }
+
+.top-panel__menu-list.rd-mobile-menu-shop li a,
+.top-panel__menu-list.rd-mobile-menu-shop li a{ color: $top_panel_bg; }
+
+.top-panel__menu-list.rd-mobile-menu-shop li.current-menu-item a,
+.top-panel__menu-list.rd-mobile-menu-shop li.current_page_item a,
+.top-panel__menu-list.rd-mobile-menu-shop li a:hover { color: $regular_accent_color_1; }
+
+#lang_sel.rd-mobile-lang { color: $regular_text_color; }
+
+#lang_sel.rd-mobile-lang ul > li > a:after { color: $regular_text_color; }
+
+#lang_sel.rd-mobile-lang ul li a:hover{ color: $regular_accent_color_1; }
+
+.main-navigation ul.sub-menu > li:hover > a:after { color: $regular_accent_color_4; }
+
+.main-navigation .menu-item_description {
+	font-style: $h1_font_style;
+	font-family: $h1_font_family;
+}
+
+.site-header-cart .header-cart-dropdown .shopping_cart-dropdown-wrap h4 {
+	font-size: @font_size($h3_font_size, multiple, ceil, 1)px;
+	line-height: @font_size($h3_font_size, multiple, ceil, 1)px;
+	font-style: $h1_font_style;
+	font-weight: $h1_font_weight;
+	font-family: $h1_font_family;
+}
+
+.site-header-cart .cart-contents .count span{
+	font-family: $body_font_family;
+	font-style: $body_font_style;
+	font-size: @font_size( $h4_font_size[size], multiple, round, .55)px;
+	font-weight: $h2_font_weight;
+	color: $invert_accent_color_1;
+	background: $regular_accent_color_1;
+}
+
+.site-header-cart .cart-contents .count i{ color: $regular_accent_color_3 ; }
+
+.rd-mobile-currency form:before{ color: $regular_text_color; }
+
+.main-navigation ul ul .page_item_has_children > a:after,
+.main-navigation ul ul .menu-item-has-children > a:after{ color: $regular_accent_color_1; }
+
+
+
+.main-navigation ul ul li > ul.sub-menu li:hover > a,
+.main-navigation ul ul li > ul.sub-menu li.menu-hover > a,
+.main-navigation ul ul li > ul.sub-menu li.current_page_item > a,
+.main-navigation ul ul li > ul.sub-menu li.current-menu-item > a,
+.main-navigation ul ul li > ul.sub-menu li.current_page_ancestor > a:hover {
+	color: $regular_accent_color_1;
+}
+
+.top-panel__menu-list.rd-mobile-menu-shop li a,
+.top-panel__menu-list.rd-mobile-menu-shop li a,
+.rd-mobilemenu_ul .rd-mobilemenu_submenu li a:not([href]),
+.rd-mobilemenu_ul .rd-mobile-menu-shop a:not([href]),
+.rd-mobilemenu_ul .rd-mobilemenu_submenu li a,
+.rd-mobilemenu_ul .rd-mobilemenu_submenu li.menu-item,
+.navbar-search-toggle:before,
+.navbar-search-toggle:after,
+.navbar-search-toggle,
+.site-header .top-panel__wrap .widget_product_search form.navbar-search button,
+.site-header .top-panel__wrap .widget_product_search form.navbar-search button i{
+	color: $regular_text_color;
+}
+
+
+.top-panel__menu-list.rd-mobile-menu-shop li a:hover,
+.top-panel__menu-list.rd-mobile-menu-shop li a:hover,
+.rd-mobilemenu_ul .rd-mobilemenu_submenu li a:not([href]):hover,
+.rd-mobilemenu_ul .rd-mobile-menu-shop a:not([href]):hover,
+.rd-mobilemenu_ul .rd-mobilemenu_submenu li a:hover,
+.rd-mobilemenu_ul .rd-mobilemenu_submenu li.menu-item:hover,
+.site-header .top-panel__wrap .widget_product_search form.navbar-search button:hover,
+.site-header .top-panel__wrap .widget_product_search form.navbar-search button:hover i{
+	color: $regular_accent_color_1;
+}
+
+.rd-mobilepanel_toggle span:after,
+.rd-mobilepanel_toggle span:before,
+.rd-mobilepanel_toggle span{
+	background: $regular_text_color;
+}
