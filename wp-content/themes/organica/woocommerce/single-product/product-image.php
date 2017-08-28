@@ -32,6 +32,8 @@ if ( has_post_thumbnail() ) {
 
 	$vertical                 = get_theme_mod( 'single_product_slider_layout', 'vertical' ) == 'vertical' ? true : false;
 	$image_size               = get_option( 'shop_single_image_size' );
+	$image_size['width'] = 499;
+	$image_size['height'] = 575;
 	$thumb_size               = get_option( 'shop_thumbnail_image_size' );
 	$visible_thumbs           = $vertical ? intval( $image_size['height'] / $thumb_size['height'] ) : intval( $image_size['width'] / $thumb_size['width'] );
 	$space                    = $vertical ? round( ( $image_size['height'] - $thumb_size['height'] * $visible_thumbs ) / ( $visible_thumbs - 1 ) ) : round( ( $image_size['width'] - $thumb_size['width'] * $visible_thumbs ) / ( $visible_thumbs - 1 ) );
@@ -48,6 +50,7 @@ if ( has_post_thumbnail() ) {
 	wp_localize_script( 'jssor-init', 'jssor_options', $jssor_options );
 
 	?>
+
 	<div class="single-product-images single-product-images-<?php echo $vertical ? 'vertical' : 'horizontal'; ?>"
 	     id="jssor_1"
 	     style="width: <?php echo $container_size['width']; ?>px; height: <?php echo $container_size['height']; ?>px;">
@@ -61,6 +64,7 @@ if ( has_post_thumbnail() ) {
 				style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
 			<div style="position:absolute;display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
 		</div>
+
 		<div data-u="slides" class="single-product-main_image"
 		     style="width: <?php echo $image_size['width']; ?>px; height: <?php echo $image_size['height']; ?>px;">
 			<?php do_action( 'woocommerce_product_thumbnails' ); ?>

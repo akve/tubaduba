@@ -21,12 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
-$heading = apply_filters( 'woocommerce_product_additional_information_heading', esc_html__( 'Additional Information', 'organica' ) );
+$heading = apply_filters( 'woocommerce_product_additional_information_heading', esc_html__( 'Дополнительная информация', 'organica' ) );
 
 ?>
 
-<?php if ( $heading ): ?>
-	<h5><?php echo $heading; ?></h5>
-<?php endif; ?>
 
 <?php wc_display_product_attributes( $product ); ?>

@@ -73,6 +73,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 									printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail );
 								}
 							?>
+							<!--<?php var_dump($cart_item)?>-->
 						</td>
 
 						<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">

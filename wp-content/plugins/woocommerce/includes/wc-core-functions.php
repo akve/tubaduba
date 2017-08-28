@@ -1692,3 +1692,36 @@ function wc_make_phone_clickable( $phone ) {
 function wc_get_post_data_by_key( $key, $default = '' ) {
 	return wc_clean( isset( $_POST[ $key ] ) ? $_POST[ $key ] : $default );
 }
+
+
+add_filter('woocommerce_add_cart_item_data','wdm_add_item_data',1,10);
+function wdm_add_item_data($cart_item_data, $product_id) {
+
+    global $woocommerce;
+    $new_value = array();
+    $new_value['_custom_options'] = $_POST['custom_options'];
+
+    if(empty($cart_item_data)) {
+        return $new_value;
+    } else {
+        return array_merge($cart_item_data, $new_value);
+    }
+}
+
+add_filter('woocommerce_get_cart_item_from_session', 'wdm_get_cart_items_from_session', 1, 3 );
+function wdm_get_cart_items_from_session($item,$values,$key) {
+
+    if (array_key_exists( '_custom_options', $values ) ) {
+        $item['_custom_options'] = $values['_custom_options'];
+    }
+
+    return $item;
+}
+
+add_filter('woocommerce_cart_item_name','add_usr_custom_session',1,3);
+function add_usr_custom_session($product_name, $values, $cart_item_key ) {
+
+    $return_string = $product_name . "<br />" . $values['_custom_options']['description'];// . "<br />" . print_r($values['_custom_options']);
+    return $return_string;
+
+}

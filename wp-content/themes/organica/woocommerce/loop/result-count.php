@@ -37,9 +37,9 @@ if ( ! woocommerce_products_will_display() )
 	if ( 1 === $total ) {
 		esc_html_e( 'Showing the single result', 'organica' );
 	} elseif ( $total <= $per_page || -1 === $per_page ) {
-		printf( ' <span>%2$s  %1$d %3$s </span>', $total, esc_html__('Showing all ','organica'), esc_html__(' results','organica'));
+		printf( ' <span>%2$s  %1$d %3$s </span>', $total, esc_html__('Показать все ','organica'), esc_html__(' результатов ','organica'));
 	} else {
-		printf( _x( 'Showing %1$d&ndash;%2$d of %3$d results', '%1$d = first, %2$d = last, %3$d = total', 'organica' ), $first, $last, $total );
+		printf( _x( 'Видны %1$d&ndash;%2$d из %3$d товаров', '%1$d = first, %2$d = last, %3$d = total', 'organica' ), $first, $last, $total );
 	}
 	?>
 </p>

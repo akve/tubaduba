@@ -49,13 +49,39 @@ if ( $product->is_in_stock() ) : ?>
 				'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( $_POST['quantity'] ) : $product->get_min_purchase_quantity(),
 			) );
 
+			
+
 			/**
 			 * @since 3.0.0.
 			 */
 			do_action( 'woocommerce_after_add_to_cart_quantity' );
 		?>
+		<div style='float:left'>
+			Размер: 
+			<select name="custom_options[size]">
+				<option>42</option>
+				<option>44</option>
+				<option>46</option>
+				<option>48</option>
+				<option>50</option>
+				<option>52</option>
+				<option>54</option>
+			</select>
+			Цвет:
+<?php 
+function getColors($product){
+	//$colors = $product;
+	$terms = wc_get_product_terms( $product->get_id(), 'pa_color', array('fields' => 'all') );
+	return $terms[1];
+}
+//var_dump(wc_get_product_terms( $product->get_id(), 'pa_color', array('fields' => 'all') ));
+var_dump(getColors($product))?>
+		</div>
+		<div style="clear:both">
+		</div>
 
-		<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+
+		<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt">В корзину</button>
 
 		<?php
 			/**

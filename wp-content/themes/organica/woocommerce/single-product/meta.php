@@ -31,12 +31,12 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 
 	<?php if ( wc_product_sku_enabled() ) : ?>
 
-		<span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'organica' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'organica' ); ?></span></span>
+		<span class="sku_wrapper"><?php esc_html_e( 'Код:', 'organica' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'organica' ); ?></span></span>
 
 	<?php endif; ?>
 	<?php
 	$sep    = '<span>,</span>';
-	$before = '<span class="posted_in">' . _n( 'Category:', 'Categories:', $cat_count, 'organica' ) . ' ';
+	$before = '<span class="posted_in">' . _n( 'Коллекция:', 'Коллекции:', $cat_count, 'organica' ) . ' ';
 	$after  = '</span>';
 
 	if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '3.0', '>=' ) ) {
@@ -50,7 +50,7 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 
 	<?php
 	$sep    = '<span>,</span> ';
-	$before = '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', $tag_count, 'organica' ) . ' ';
+	$before = '<span class="tagged_as">' . _n( 'Тэг:', 'Тэги:', $tag_count, 'organica' ) . ' ';
 	$after  = '</span>';
 
 	if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '3.0', '>=' ) ) {
