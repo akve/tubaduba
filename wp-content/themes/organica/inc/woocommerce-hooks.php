@@ -347,13 +347,22 @@ function organica_woocommerce_show_page_title() {
  * @return string
  */
 function organica_woocommerce_loop_add_to_cart_link( $link, $product ) {
-
+/*
 		return sprintf( '<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" data-quantity="1" class="add_to_cart_button %s">%s</a>', esc_url( $product->add_to_cart_url() ), esc_attr( $product->get_id() ), esc_attr( $product->get_sku() ), implode( ' ', array_filter( array(
 			'button',
 			'product_type_' . $product->get_type( ),
 			$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
 			$product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
 		) ) ), ( $product->is_purchasable() && $product->is_in_stock() && $product->is_type( 'simple' ) ) ? '<span class="product_actions_tip add_to_cart_button__text add">' . esc_html__( 'Add to cart', 'organica' ) . '</span>' . '<span class="product_actions_tip add_to_cart_button__text added">' . esc_html__( 'Added to cart!', 'organica' ) . '</span>' : '<span class="product_actions_tip add_to_cart_button__text select">' . $product->add_to_cart_text() . '</span>' );
+		*/
+return "";
+		/*return sprintf( '<a href="%s" data-product_id="%s" data-product_sku="%s" data-quantity="1" class="add_to_cart_button %s">%s</a>', esc_url( $product->get_permalink() ), esc_attr( $product->get_id() ), esc_attr( $product->get_sku() ), implode( ' ', array_filter( array(
+			'button',
+			'product_type_' . $product->get_type( ),
+			$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+			$product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
+		) ) ), ( $product->is_purchasable() && $product->is_in_stock() && $product->is_type( 'simple' ) ) ? '<span class="product_actions_tip add_to_cart_button__text add">' . esc_html__( 'Add to cart', 'organica' ) . '</span>' . '<span class="product_actions_tip add_to_cart_button__text added">' . esc_html__( 'Added to cart!', 'organica' ) . '</span>' : '<span class="product_actions_tip add_to_cart_button__text select">' . $product->add_to_cart_text() . '</span>' );*/
+
 }
 
 function organica_cart_link_fragment( $fragments ) {

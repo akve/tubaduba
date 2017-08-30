@@ -86,7 +86,7 @@ function tm_woowishlist_get_settings() {
 			'id'      => 'tm_woowishlist_empty_text',
 			'title'   => __( 'Empty wishlist text', 'tm-wc-compare-wishlist' ),
 			'desc'    => '<br>' . __( 'Enter text which will be displayed on the wishlist page when is no products.', 'tm-wc-compare-wishlist' ),
-			'default' => __( 'No products added to wishlist.', 'tm-wc-compare-wishlist' ),
+			'default' => __( 'Пока что в списке желаний нет ни одного товара.', 'tm-wc-compare-wishlist' ),
 		),
 		array(
 			'type'    => 'select',

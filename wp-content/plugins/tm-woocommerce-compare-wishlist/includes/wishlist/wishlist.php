@@ -166,7 +166,7 @@ function tm_woowishlist_process_button_action() {
  */
 function tm_woowishlist_empty_message() {
 
-	$empty_text = get_option( 'tm_woowishlist_empty_text', __( 'No products added to wishlist.', 'tm-wc-compare-wishlist' ) );
+	$empty_text = get_option( 'tm_woowishlist_empty_text', __( 'Пока что в списке желаний нет ни одного товара.', 'tm-wc-compare-wishlist' ) );
 
 	return apply_filters( 'tm_woowishlist_empty_message', sprintf( '<p class="tm-woowishlist-empty">%s</p>', $empty_text ), $empty_text );
 }
