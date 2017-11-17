@@ -19,12 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<header><h4><?php esc_html_e( 'Customer Details', 'organica' ); ?></h4></header>
+<header><h4><?php esc_html_e( 'Ваши детали', 'organica' ); ?></h4></header>
 
 <table class="shop_table customer_details">
 	<?php if ( $order->get_customer_note() ) : ?>
 		<tr>
-			<th><?php esc_html_e( 'Note:', 'organica' ); ?></th>
+			<th><?php esc_html_e( 'Примечания:', 'organica' ); ?></th>
 			<td><?php echo wptexturize( $order->get_customer_note() ); ?></td>
 		</tr>
 	<?php endif; ?>
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php if ( $order->get_billing_phone() ) : ?>
 		<tr>
-			<th><?php esc_html_e( 'Telephone:', 'organica' ); ?></th>
+			<th><?php esc_html_e( 'Телефон:', 'organica' ); ?></th>
 			<td><?php echo esc_html( $order->get_billing_phone() ); ?></td>
 		</tr>
 	<?php endif; ?>
@@ -54,7 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php endif; ?>
 
 <header class="title">
-	<h4><?php esc_html_e( 'Billing Address', 'organica' ); ?></h4>
+	<h4><?php esc_html_e( 'Адрес', 'organica' ); ?></h4>
 </header>
 <address>
 	<?php echo ( $address = $order->get_formatted_billing_address() ) ? $address : esc_html__( 'N/A', 'organica' ); ?>

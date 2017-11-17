@@ -235,7 +235,7 @@ function woocommerce_template_loop_category_title( $category ) {
 		<?php
 		echo $category->name;
 		if ( $category->count > 0 ) {
-			echo apply_filters( 'woocommerce_subcategory_count_html', ' <mark class="count"><span class="count__number">' . $category->count . '</span> ' . _n( 'products', ' products', $category->count ,'organica' ) . '</mark>', $category );
+			echo apply_filters( 'woocommerce_subcategory_count_html', ' <mark class="count"><span class="count__number">' . $category->count . '</span> товаров </mark>', $category );
 		}
 		?>
 	</h3>

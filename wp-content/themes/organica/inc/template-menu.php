@@ -65,6 +65,10 @@ function organica_top_menu() {
 		return;
 	}
 	?>
+	
+	<!--<a href="/wishlist" title="Мой список пожеланий"><i class="material-icons whishlist-link"></i></a>-->
+	<?php
+	return;?>
 	<div class="div_dropdown_top_menu">
 		<i class="material-icons material-icons-more_horiz"></i>
 	<?php

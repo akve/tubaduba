@@ -8,7 +8,9 @@
 
 		<div class="row">
 
-			<div id="primary" <?php organica_primary_content_class(); ?>>
+			<?php get_sidebar(); // Loads the sidebar.php template.  ?>
+
+			<div id="primary" class="col-xs-11 col-md-8 col-xl-9">
 
 				<?php do_action( 'organica_render_widget_area', 'before-loop-area' ); ?>
 
@@ -22,7 +24,6 @@
 
 			</div><!-- #primary -->
 
-			<?php get_sidebar(); // Loads the sidebar.php template.  ?>
 
 		</div><!-- .row -->
 

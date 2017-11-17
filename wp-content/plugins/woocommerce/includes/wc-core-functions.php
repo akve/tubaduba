@@ -1718,10 +1718,150 @@ function wdm_get_cart_items_from_session($item,$values,$key) {
     return $item;
 }
 
-add_filter('woocommerce_cart_item_name','add_usr_custom_session',1,3);
+add_filter('woocommerce_cart_item_name','add_usr_custom_session',1,5);
 function add_usr_custom_session($product_name, $values, $cart_item_key ) {
 
-    $return_string = $product_name . "<br />" . $values['_custom_options']['description'];// . "<br />" . print_r($values['_custom_options']);
+	$add = "";
+	if (array_key_exists("color",$values['_custom_options'])) {
+		$add .= $values['_custom_options']['color'];
+	}
+	if (array_key_exists("size",$values['_custom_options'])) {
+		if ($add != "") {
+			$add .= ", ";
+		}
+		$add .= "Размер ". $values['_custom_options']['size'];
+	}
+    $return_string = $product_name . "<br />" . $add; // . "<br />" . print_r($values['_custom_options']);
     return $return_string;
 
+}
+
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+
+function custom_override_checkout_fields( $fields ) {
+$fields = 
+
+	array (
+  'billing' => 
+  array (
+    'billing_first_name' => 
+    array (
+      'label' => 'Имя',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-first',
+      ),
+      'autocomplete' => 'given-name',
+      'autofocus' => true,
+      'priority' => 10,
+    ),
+    'billing_last_name' => 
+    array (
+      'label' => 'Фамилия',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-last',
+      ),
+      'autocomplete' => 'family-name',
+      'priority' => 20,
+    ),
+    'billing_height' => 
+    array (
+      'label' => 'Ваш рост (см)',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'priority' => 30,
+    ),
+    'billing_city' => 
+    array (
+      'label' => 'Город',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'autocomplete' => 'address-level2',
+      'priority' => 70,
+    ),
+    'billing_address_1' => 
+    array (
+      'label' => 'Адрес доставки',
+      'placeholder' => 'Отделение Новой Почты',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'autocomplete' => 'address-line1',
+      'priority' => 50,
+    ),
+    'billing_phone' => 
+    array (
+      'label' => 'Телефон',
+      'required' => true,
+      'type' => 'tel',
+      'class' => 
+      array (
+        0 => 'form-row-first',
+      ),
+      'validate' => 
+      array (
+        0 => 'phone',
+      ),
+      'autocomplete' => 'tel',
+      'priority' => 100,
+    ),
+    'billing_email' => 
+    array (
+      'label' => 'Email',
+      'required' => true,
+      'type' => 'email',
+      'class' => 
+      array (
+        0 => 'form-row-last',
+      ),
+      'validate' => 
+      array (
+        0 => 'email',
+      ),
+      'autocomplete' => 'email username',
+      'priority' => 110,
+    )
+  ),
+  'account' => 
+  array (
+    'account_password' => 
+    array (
+      'type' => 'password',
+      'label' => 'Account password',
+      'required' => true,
+      'placeholder' => 'Password',
+    )
+  ),
+  'order' => 
+  array (
+    'order_comments' => 
+    array (
+      'type' => 'textarea',
+      'class' => 
+      array (
+        0 => 'notes',
+      ),
+      'label' => 'Примечания',
+      'placeholder' => 'Возможно, вы хотите что-то сказать о заказе или доставке?',
+    )
+  )
+);
+		
+		
+     return $fields;
 }

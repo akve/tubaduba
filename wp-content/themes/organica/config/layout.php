@@ -29,7 +29,7 @@ function organica_set_layout() {
 			),
 			'1/4' => array(
 				'content' => array( 'col-xs-12', 'col-md-8', 'col-xl-9', 'col-md-push-4', 'col-xl-push-3' ),
-				'sidebar' => array( 'col-xs-12', 'col-md-4', 'col-xl-3', 'col-md-pull-8', 'col-xl-pull-9' ),
+				'sidebar' => array( 'col-xs-12', 'col-md-4', 'col-xl-3' ), // 'col-md-pull-8', 'col-xl-pull-9'
 			),
 			'0' => array(
 				'content' => array( 'col-xs-12', 'col-md-12' )

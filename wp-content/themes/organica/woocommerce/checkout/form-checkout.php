@@ -15,6 +15,314 @@
  * @version     2.3.0
  */
 
+
+
+/*
+
+	array (
+  'billing' => 
+  array (
+    'billing_first_name' => 
+    array (
+      'label' => 'First name',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-first',
+      ),
+      'autocomplete' => 'given-name',
+      'autofocus' => true,
+      'priority' => 10,
+    ),
+    'billing_last_name' => 
+    array (
+      'label' => 'Last name',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-last',
+      ),
+      'autocomplete' => 'family-name',
+      'priority' => 20,
+    ),
+    'billing_company' => 
+    array (
+      'label' => 'Company name',
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+      ),
+      'autocomplete' => 'organization',
+      'priority' => 30,
+    ),
+    'billing_country' => 
+    array (
+      'type' => 'country',
+      'label' => 'Country',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+        2 => 'update_totals_on_change',
+      ),
+      'autocomplete' => 'country',
+      'priority' => 40,
+    ),
+    'billing_address_1' => 
+    array (
+      'label' => 'Street address',
+      'placeholder' => 'House number and street name',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'autocomplete' => 'address-line1',
+      'priority' => 50,
+    ),
+    'billing_address_2' => 
+    array (
+      'placeholder' => 'Apartment, suite, unit etc. (optional)',
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'required' => false,
+      'autocomplete' => 'address-line2',
+      'priority' => 60,
+    ),
+    'billing_city' => 
+    array (
+      'label' => 'Town / City',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'autocomplete' => 'address-level2',
+      'priority' => 70,
+    ),
+    'billing_state' => 
+    array (
+      'type' => 'state',
+      'label' => 'State / County',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'validate' => 
+      array (
+        0 => 'state',
+      ),
+      'autocomplete' => 'address-level1',
+      'priority' => 80,
+      'country_field' => 'billing_country',
+    ),
+    'billing_postcode' => 
+    array (
+      'label' => 'Postcode / ZIP',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'validate' => 
+      array (
+        0 => 'postcode',
+      ),
+      'autocomplete' => 'postal-code',
+      'priority' => 90,
+    ),
+    'billing_phone' => 
+    array (
+      'label' => 'Phone',
+      'required' => true,
+      'type' => 'tel',
+      'class' => 
+      array (
+        0 => 'form-row-first',
+      ),
+      'validate' => 
+      array (
+        0 => 'phone',
+      ),
+      'autocomplete' => 'tel',
+      'priority' => 100,
+    ),
+    'billing_email' => 
+    array (
+      'label' => 'Email address',
+      'required' => true,
+      'type' => 'email',
+      'class' => 
+      array (
+        0 => 'form-row-last',
+      ),
+      'validate' => 
+      array (
+        0 => 'email',
+      ),
+      'autocomplete' => 'email username',
+      'priority' => 110,
+    ),
+  ),
+  'shipping' => 
+  array (
+    'shipping_first_name' => 
+    array (
+      'label' => 'First name',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-first',
+      ),
+      'autocomplete' => 'given-name',
+      'autofocus' => true,
+      'priority' => 10,
+    ),
+    'shipping_last_name' => 
+    array (
+      'label' => 'Last name',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-last',
+      ),
+      'autocomplete' => 'family-name',
+      'priority' => 20,
+    ),
+    'shipping_company' => 
+    array (
+      'label' => 'Company name',
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+      ),
+      'autocomplete' => 'organization',
+      'priority' => 30,
+    ),
+    'shipping_country' => 
+    array (
+      'type' => 'country',
+      'label' => 'Country',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+        2 => 'update_totals_on_change',
+      ),
+      'autocomplete' => 'country',
+      'priority' => 40,
+    ),
+    'shipping_address_1' => 
+    array (
+      'label' => 'Street address',
+      'placeholder' => 'House number and street name',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'autocomplete' => 'address-line1',
+      'priority' => 50,
+    ),
+    'shipping_address_2' => 
+    array (
+      'placeholder' => 'Apartment, suite, unit etc. (optional)',
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'required' => false,
+      'autocomplete' => 'address-line2',
+      'priority' => 60,
+    ),
+    'shipping_city' => 
+    array (
+      'label' => 'Town / City',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'autocomplete' => 'address-level2',
+      'priority' => 70,
+    ),
+    'shipping_state' => 
+    array (
+      'type' => 'state',
+      'label' => 'State / County',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'validate' => 
+      array (
+        0 => 'state',
+      ),
+      'autocomplete' => 'address-level1',
+      'priority' => 80,
+      'country_field' => 'shipping_country',
+    ),
+    'shipping_postcode' => 
+    array (
+      'label' => 'Postcode / ZIP',
+      'required' => true,
+      'class' => 
+      array (
+        0 => 'form-row-wide',
+        1 => 'address-field',
+      ),
+      'validate' => 
+      array (
+        0 => 'postcode',
+      ),
+      'autocomplete' => 'postal-code',
+      'priority' => 90,
+    ),
+  ),
+  'account' => 
+  array (
+    'account_password' => 
+    array (
+      'type' => 'password',
+      'label' => 'Account password',
+      'required' => true,
+      'placeholder' => 'Password',
+    ),
+  ),
+  'order' => 
+  array (
+    'order_comments' => 
+    array (
+      'type' => 'textarea',
+      'class' => 
+      array (
+        0 => 'notes',
+      ),
+      'label' => 'Примечания',
+      'placeholder' => 'Возможно, вы хотите что-то сказать о заказе или доставке?',
+    ),
+  ),
+)
+		
+		
+*/
+		
+		
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -51,7 +359,7 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 
 	<?php endif; ?>
 
-	<h2 id="order_review_heading"><?php esc_html_e( 'Your order', 'organica' ); ?></h2>
+	<h2 id="order_review_heading"><?php esc_html_e( 'Ваш заказ', 'organica' ); ?></h2>
 
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 

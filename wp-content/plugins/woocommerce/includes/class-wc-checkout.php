@@ -199,8 +199,8 @@ class WC_Checkout {
 					'order_comments' => array(
 						'type'        => 'textarea',
 						'class'       => array( 'notes' ),
-						'label'       => __( 'Order notes', 'woocommerce' ),
-						'placeholder' => esc_attr__( 'Notes about your order, e.g. special notes for delivery.', 'woocommerce' ),
+						'label'       => __( 'Примечания', 'woocommerce' ),
+						'placeholder' => esc_attr__( 'Возможно, вы хотите что-то сказать о заказе или доставке?', 'woocommerce' ),
 					),
 				),
 			);
@@ -614,11 +614,11 @@ class WC_Checkout {
 				switch ( $fieldset_key ) {
 					case 'shipping' :
 						/* translators: %s: field name */
-						$field_label = sprintf( __( 'Shipping %s', 'woocommerce' ), $field_label );
+						$field_label = sprintf( __( '%s', 'woocommerce' ), $field_label );
 					break;
 					case 'billing' :
 						/* translators: %s: field name */
-						$field_label = sprintf( __( 'Billing %s', 'woocommerce' ), $field_label );
+						$field_label = sprintf( __( '%s', 'woocommerce' ), $field_label );
 					break;
 				}
 
@@ -636,7 +636,7 @@ class WC_Checkout {
 
 					if ( '' !== $data[ $key ] && ! WC_Validation::is_phone( $data[ $key ] ) ) {
 						/* translators: %s: phone number */
-						$errors->add( 'validation', sprintf( __( '%s is not a valid phone number.', 'woocommerce' ), '<strong>' . esc_html( $field_label ) . '</strong>' ) );
+						$errors->add( 'validation', sprintf( __( '%s неправильный телефон.', 'woocommerce' ), '<strong>' . esc_html( $field_label ) . '</strong>' ) );
 					}
 				}
 
@@ -645,7 +645,7 @@ class WC_Checkout {
 
 					if ( ! is_email( $data[ $key ] ) ) {
 						/* translators: %s: email address */
-						$errors->add( 'validation', sprintf( __( '%s is not a valid email address.', 'woocommerce' ), '<strong>' . $field_label . '</strong>' ) );
+						$errors->add( 'validation', sprintf( __( '%s неправильный email-адрес.', 'woocommerce' ), '<strong>' . $field_label . '</strong>' ) );
 						continue;
 					}
 				}
@@ -672,7 +672,7 @@ class WC_Checkout {
 
 				if ( $required && '' === $data[ $key ] ) {
 					/* translators: %s: field name */
-					$errors->add( 'required-field', apply_filters( 'woocommerce_checkout_required_field_notice', sprintf( __( '%s is a required field.', 'woocommerce' ), '<strong>' . $field_label . '</strong>' ), $field_label ) );
+					$errors->add( 'required-field', apply_filters( 'woocommerce_checkout_required_field_notice', sprintf( __( '%s - обязательное поле', 'woocommerce' ), '<strong>' . $field_label . '</strong>' ), $field_label ) );
 				}
 			}
 		}

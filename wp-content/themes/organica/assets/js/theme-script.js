@@ -5,6 +5,7 @@
 	CherryJsCore.theme_script = {
 		init: function () {
 			var self = this;
+			window._jq = $;
 
 			// Document ready event check
 			if (CherryJsCore.status.is_ready) {
@@ -145,6 +146,7 @@
 					breakpointsSettings = {}
 				}
 
+console.log("!!!!!!!!!!!");
 				var swiper = new Swiper('#' + uniqId, {
 						slidesPerView: slidesPerView,
 						slidesPerGroup: slidesPerGroup,
@@ -415,12 +417,34 @@
 		page_preloader_init: function (self) {
 
 			if ($('.page-preloader-cover')[0]) {
-				$('.page-preloader-cover').delay(500).fadeTo(500, 0, function () {
-					$(this).remove();
+				//console.log("!!");
+				/*$('.page-preloader-cover').animate({ textIndent: 0 }, {
+				    step: function(go) {
+				    	console.log(go)
+				      $(this).css('-moz-transform','-webkit-transform('+go+')');
+				      $(this).css('-webkit-transform','scale('+go+')');
+				      $(this).css('-o-transform','scale('+go+')');
+				      $(this).css('transform','scale('+go+')');
+				    },
+				    duration: 500,
+				    complete: function(){ 
+				    	//alert('done') 
+				    }
+				});*/
+//console.log("?");
+				//$('.page-preloader-inner').css('-webkit-transform', 'opacity(0.9)');
+				$('.page-preloader-cover').css('-webkit-transform', 'scale(1.5) rotate(0.1deg)').css('opacity','1.0').delay(500).fadeTo(500, 0, function () {
+					$('.page-preloader-outer').css('opacity','0');
 				});
+				setTimeout(function(){
+					$('.page-preloader-outer').remove();
+				},3000);
+				//$('.basebase')[0].setAttribute("transform", "scale(15)")
+				//$('.page-preloader-cover').delay(500).fadeTo(500, 0, function () {
+				//	$(this).remove();
+				//});
 			}
 		},
-
 		to_top_init: function (self) {
 			if ($.isFunction(jQuery.fn.UItoTop)) {
 				$().UItoTop({

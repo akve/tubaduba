@@ -24,7 +24,7 @@ if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 }
 ?>
 <tr class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'order_item', $item, $order ) ); ?>">
-	<td class="product-name" colspan="2" data-title="<?php esc_html_e( 'Product', 'organica' ); ?>">
+	<td class="product-name" colspan="2" data-title="<?php esc_html_e( 'Товар', 'organica' ); ?>">
 		<?php
 			$is_visible = $product && $product->is_visible();
 
@@ -38,13 +38,13 @@ if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 			do_action( 'woocommerce_order_item_meta_end', $item_id, $item, $order );
 		?>
 	</td>
-	<td data-title="<?php esc_html_e( 'Quantity', 'organica' ); ?>">
+	<td data-title="<?php esc_html_e( 'Количество', 'organica' ); ?>">
 		<?php
 
 			echo apply_filters( 'woocommerce_order_item_quantity_html', $item['qty'], $item );
 		?>
 	</td>
-	<td class="product-total" data-title="<?php esc_html_e( 'Total', 'organica' ); ?>">
+	<td class="product-total" data-title="<?php esc_html_e( 'Всего', 'organica' ); ?>">
 		<?php echo $order->get_formatted_line_subtotal( $item ); ?>
 	</td>
 </tr>

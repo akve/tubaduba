@@ -19,6 +19,7 @@
     Swiper
     ===========================*/
     var Swiper = function (container, params) {
+        //console.log("???", JSON.stringify(params));
         if (!(this instanceof Swiper)) return new Swiper(container, params);
 
         var defaults = {

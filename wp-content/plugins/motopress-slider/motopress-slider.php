@@ -675,8 +675,8 @@ class MPSLAdmin {
 
     public function mpslMenu() {
         global $mpsl_settings;
-        $isHideMenu = apply_filters('mpsl_hide_menu', false);
-        if (!isMPSLDisabledForCurRole() && !$isHideMenu) {
+        $isHideMenu = false;// apply_filters('mpsl_hide_menu', false);
+        if (true) {
 			$menu_icon = (version_compare( $GLOBALS['wp_version'], '3.8', '<' )) ? '' : 'dashicons-slides';
             $this->menuHook = add_menu_page($mpsl_settings['product_name'], $mpsl_settings['product_name'], 'read', $this->mpsl_settings['plugin_name'], array($this, 'renderPage'), $menu_icon);
             $isHideOptionsMenu = apply_filters('mpsl_hide_options_page', false);

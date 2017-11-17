@@ -26,13 +26,13 @@ $show_purchase_note    = $order->has_status( apply_filters( 'woocommerce_purchas
 $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_current_user_id();
 ?>
 <br><br>
-<h4><?php esc_html_e( 'Order Details', 'organica' ); ?></h4>
+<h4><?php esc_html_e( 'Детали заказа', 'organica' ); ?></h4>
 <table class="shop_table shop_table_responsive order_details">
 	<thead>
 	<tr>
-		<th colspan="2" class="product-name"><?php esc_html_e( 'Product', 'organica' ); ?></th>
-		<th class="product-quantity"><?php esc_html_e( 'Quantity', 'organica' ); ?></th>
-		<th class="product-total"><?php esc_html_e( 'Total', 'organica' ); ?></th>
+		<th colspan="2" class="product-name"><?php esc_html_e( 'Товар', 'organica' ); ?></th>
+		<th class="product-quantity"><?php esc_html_e( 'Количество', 'organica' ); ?></th>
+		<th class="product-total"><?php esc_html_e( 'Всего', 'organica' ); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -56,9 +56,10 @@ $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_cu
 	<tfoot>
 	<?php
 	foreach ( $order->get_order_item_totals() as $key => $total ) {
+		if ($total['label'] == 'Subtotal:') continue;
 		?>
 		<tr>
-			<th colspan="3" scope="row"><?php echo $total['label']; ?></th>
+			<th colspan="3" scope="row">Итого</th>
 			<td data-title="<?php echo $total['label']; ?>"<?php echo ' class="' . $key . '"'; ?>><?php echo $total['value']; ?></td>
 		</tr>
 		<?php

@@ -14,6 +14,11 @@ if ( 'fullwidth' === $sidebar_position
      || ( function_exists( 'is_product' ) && is_product() ) ) {
 	return;
 }
-
+if ('one-right-sidebar' === $sidebar_position) {
+?>
+	<div class="sidebar-expander" onclick="expandSidebar()"><i class="fa fa-filter"></i></div>
+<?php
+}
 do_action( 'organica_render_widget_area', 'sidebar' );
 
+?>

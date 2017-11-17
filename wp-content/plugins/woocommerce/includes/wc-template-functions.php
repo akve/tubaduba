@@ -1473,7 +1473,7 @@ if ( ! function_exists( 'woocommerce_widget_shopping_cart_button_view_cart' ) ) 
 	 * @subpackage	Cart
 	 */
 	function woocommerce_widget_shopping_cart_button_view_cart() {
-		echo '<a href="' . esc_url( wc_get_cart_url() ) . '" class="button wc-forward">' . esc_html__( 'В корзину', 'woocommerce' ) . '</a>';
+		echo '';//'<a href="' . esc_url( wc_get_cart_url() ) . '" class="button wc-forward">' . esc_html__( 'В корзину', 'woocommerce' ) . '</a>';
 	}
 }
 
@@ -2661,5 +2661,5 @@ function wc_logout_url( $redirect = '' ) {
  * @since 3.1.0
  */
 function wc_empty_cart_message() {
-	echo '<p class="cart-empty">' . apply_filters( 'wc_empty_cart_message', __( 'Your cart is currently empty.', 'woocommerce' ) ) . '</p>';
+	echo '<p class="cart-empty">' . apply_filters( 'wc_empty_cart_message', __( 'Ваша корзина сейчас пуста', 'woocommerce' ) ) . '</p>';
 }

@@ -1,4 +1,32 @@
 <?php
+
+function trn_menu() {
+	add_menu_page("TubaManage", "TubaManage", 'administrator', 'tuba_manage', 'tuba_manage_page');
+}
+
+function WPParseAndGet($template, $r = false)
+{
+	if (file_exists(get_template_directory()."{$template}.html")) {
+		$file = file_get_contents(get_template_directory()."{$template}.html");
+		$file = preg_replace("/%%TEMPLATE_Directory%%/", get_template_directory_uri(), $file);
+
+		if ($r) 
+			return $file;
+		else
+			echo $file;
+	} else {
+		echo "";
+	}
+}
+
+function tuba_manage_page() {
+	# angular handles the rest
+	WPParseAndGet("/admin/admin");
+}
+
+add_action('admin_menu', 'trn_menu');
+
+
 if ( ! class_exists( 'Organica_Theme_Setup' ) ) {
 
 	/**
@@ -450,7 +478,7 @@ if ( ! class_exists( 'Organica_Theme_Setup' ) ) {
 		 */
 		public function register_assets() {
 			wp_register_script( 'jquery-slider-pro', ORGANICA_THEME_JS . '/jquery.sliderpro.min.js', array( 'jquery', ), '1.2.4', true );
-			wp_register_script( 'jquery-swiper', ORGANICA_THEME_JS . '/swiper.jquery.min.js', array( 'jquery' ), '3.3.0', true );
+			wp_register_script( 'jquery-swiper', ORGANICA_THEME_JS . '/swiper.jquery.js', array( 'jquery' ), '3.3.0', true );
 			wp_register_script( 'magnific-popup', ORGANICA_THEME_JS . '/jquery.magnific-popup.min.js', array( 'jquery', ), '1.0.1', true );
 			wp_register_script( 'jquery-stickup', ORGANICA_THEME_JS . '/jquery.stickup.min.js', array( 'jquery' ), '1.0.0', true );
 			wp_register_script( 'jquery-totop', ORGANICA_THEME_JS . '/jquery.ui.totop.min.js', array( 'jquery' ), '1.2.0', true );

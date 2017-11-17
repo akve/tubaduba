@@ -115,6 +115,21 @@ jQuery( function( $ ) {
 		init_checkout: function() {
 			$( '#billing_country, #shipping_country, .country_to_state' ).change();
 			$( document.body ).trigger( 'update_checkout' );
+
+		    var data = window.localStorage['ordervalues'] ? window.localStorage['ordervalues'] : {};
+		    var cookie = window.localStorage['ordervalues'];
+		    if (cookie) {
+		      cookie = JSON.parse(cookie);
+		      $("#billing_first_name").val(cookie.oName);
+		      $("#billing_height").val(cookie.oHeight);
+		      $("#billing_last_name").val(cookie.oLastName);
+		      $("#billing_email").val(cookie.oEmail);
+		      $("#billing_phone").val(cookie.oPhone);
+		      $("#billing_source").val(cookie.oSource);
+		      //$("#oCountry").val(cookie.oCountry);
+		      $("#billing_city").val(cookie.oCity);
+		      $("#billing_address_1").val(cookie.oAddress);
+		    }
 		},
 		maybe_input_changed: function( e ) {
 			if ( wc_checkout_form.dirtyInput ) {

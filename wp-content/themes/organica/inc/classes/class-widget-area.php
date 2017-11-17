@@ -110,7 +110,10 @@ if ( ! class_exists( 'Organica_Widget_Area' ) ) {
 			$before_wrapper = isset( $this->widgets_settings[ $area_id ]['before_wrapper'] ) ? $this->widgets_settings[ $area_id ]['before_wrapper'] : '<div id="%1$s" %2$s>';
 			$after_wrapper  = isset( $this->widgets_settings[ $area_id ]['after_wrapper'] ) ? $this->widgets_settings[ $area_id ]['after_wrapper'] : '</div>';
 
-			$classes = array( $area_id, 'widget-area' );
+			$class_area_id = $area_id;
+			if ($area_id == "full-width-header-area") $class_area_id = "container";
+
+			$classes = array( $class_area_id, 'widget-area' );
 			$classes = apply_filters( 'organica_widget_area_classes', $classes, $area_id );
 			if ( is_array( $classes ) ) {
 				$classes = join( ' ', $classes );

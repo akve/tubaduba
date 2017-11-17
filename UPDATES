@@ -1,0 +1,1 @@
+update wpap_postmeta set meta_value='' where meta_key='_sale_price';

@@ -47,7 +47,7 @@ if ( $products->have_posts() ) : ?>
 
 	<div class="related products">
 
-		<h1><?php printf('<span>%1s</span> %2s', esc_html__( 'Related', 'organica' ), esc_html__( 'Products', 'organica' )); ?></h1>
+		<h1><?php printf('<span>%1s</span> %2s', esc_html__( 'Похожие', 'organica' ), esc_html__( 'товары', 'organica' )); ?></h1>
 		<?php woocommerce_product_loop_start(); ?>
 
 			<?php while ( $products->have_posts() ) : $products->the_post(); ?>

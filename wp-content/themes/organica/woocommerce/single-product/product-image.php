@@ -32,9 +32,13 @@ if ( has_post_thumbnail() ) {
 
 	$vertical                 = get_theme_mod( 'single_product_slider_layout', 'vertical' ) == 'vertical' ? true : false;
 	$image_size               = get_option( 'shop_single_image_size' );
-	$image_size['width'] = 499;
+	$image_size['width'] = 378;
 	$image_size['height'] = 575;
 	$thumb_size               = get_option( 'shop_thumbnail_image_size' );
+	//79x120
+	$thumb_size['width'] = 79;
+	$thumb_size['height'] = 120;
+	//var_dump($thumb_size);
 	$visible_thumbs           = $vertical ? intval( $image_size['height'] / $thumb_size['height'] ) : intval( $image_size['width'] / $thumb_size['width'] );
 	$space                    = $vertical ? round( ( $image_size['height'] - $thumb_size['height'] * $visible_thumbs ) / ( $visible_thumbs - 1 ) ) : round( ( $image_size['width'] - $thumb_size['width'] * $visible_thumbs ) / ( $visible_thumbs - 1 ) );
 	$container_size['height'] = $vertical ? $image_size['height'] : $image_size['height'] + $thumb_size['height'] + $space;

@@ -22,19 +22,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 <table class="shop_table shop_table_responsive woocommerce-checkout-review-order-table">
 	<thead>
 		<tr>
-			<th class="product-name" colspan="2"><?php esc_html_e( 'Product', 'organica' ); ?></th>
-			<th class="product-quantity"><?php esc_html_e( 'Quantity', 'organica' ); ?></th>
-			<th class="product-total"><?php esc_html_e( 'Total', 'organica' ); ?></th>
+			<th class="product-name" colspan="2"><?php esc_html_e( 'Товар', 'organica' ); ?></th>
+			<th class="product-quantity"><?php esc_html_e( 'Количество', 'organica' ); ?></th>
+			<th class="product-total"><?php esc_html_e( 'Всего', 'organica' ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php
 			do_action( 'woocommerce_review_order_before_cart_contents' );
-
+			$CART_FOR_JS = "";
+			$CART_FOR_JS_SIMPLE = "";
+			$SUM = 0;
+			$CART_FOR_JS .= "<table class='table'><tr><th>Товар</th><th>Цена</th></tr>"; // <th>Цвет / Размер</th>
 			foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-				$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 
+				$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 				if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
+
+						$P = $_product->get_price();
+						$SUM += $P;
+						$TITLE = apply_filters( 'woocommerce_cart_item_name', sprintf( '%s', $_product->get_title() ), $cart_item, $cart_item_key );
+					    		  //"</td><td>" . WC()->cart->get_item_data( $cart_item ) .
+					    $CART_FOR_JS .= "<tr><td>" . $TITLE .
+					              "</td><td>" .$P . "</td></tr>";
+					    $CART_FOR_JS_SIMPLE .= $TITLE . "/"  . $P . " -- ";
+					    
 					?>
 					<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 						<td class="product-thumbnail">
@@ -48,28 +60,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 								}
 							?>
 						</td>
-						<td class="product-name" data-title="<?php esc_html_e( 'Product', 'organica' ); ?>">
+						<td class="product-name" data-title="<?php esc_html_e( 'Товар', 'organica' ); ?>">
 							<h6><?php echo apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $_product->get_permalink( $cart_item ) ), $_product->get_title() ), $cart_item, $cart_item_key ); ?>
 							</h6>
 							<?php echo WC()->cart->get_item_data( $cart_item ); ?>
 						</td>
-						<td class="product-quantity" data-title="<?php esc_html_e( 'Quantity', 'organica' ); ?>">
+						<td class="product-quantity" data-title="<?php esc_html_e( 'Количество', 'organica' ); ?>">
 						<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', $cart_item['quantity'], $cart_item, $cart_item_key ); ?>
 						</td>
-						<td class="product-total" data-title="<?php esc_html_e( 'Total', 'organica' ); ?>">
+						<td class="product-total" data-title="<?php esc_html_e( 'Всего', 'organica' ); ?>">
 							<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); ?>
 						</td>
 					</tr>
 					<?php
 				}
 			}
+			$CART_FOR_JS .= "</table>";
+
+			$CART_FOR_JS .= "Итого: " . $SUM;
+			$CART_FOR_JS_SIMPLE .= "Итого " .$SUM;
 
 			do_action( 'woocommerce_review_order_after_cart_contents' );
 		?>
 	</tbody>
 	<tfoot>
 
-		<tr class="cart-subtotal">
+		<tr class="cart-subtotal" style="display:none">
 			<th colspan="3"><?php esc_html_e( 'Subtotal', 'organica' ); ?></th>
 			<td data-title="<?php esc_html_e( 'Subtotal', 'organica' ); ?>"><?php wc_cart_totals_subtotal_html(); ?></td>
 		</tr>
@@ -117,11 +133,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
 		<tr class="order-total">
-			<th colspan="3"><?php esc_html_e( 'Total', 'organica' ); ?></th>
-			<td data-title="<?php esc_html_e( 'Total', 'organica' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
+			<th colspan="3"><?php esc_html_e( 'Всего', 'organica' ); ?></th>
+			<td data-title="<?php esc_html_e( 'Всего', 'organica' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
 		</tr>
 
 		<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 
 	</tfoot>
 </table>
+<script>
+	var CART_HTML = "<?php echo $CART_FOR_JS?>";
+	var CART_PLAIN = "<?php echo $CART_FOR_JS_SIMPLE?>";
+	var SUM = "<?php echo $SUM?>";
+</script>
+

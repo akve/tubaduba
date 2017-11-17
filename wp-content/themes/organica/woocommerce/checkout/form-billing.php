@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php else : ?>
 
-		<h3><?php esc_html_e( 'Billing Details', 'organica' ); ?></h3>
+		<h3><?php esc_html_e( 'Детали заказа', 'organica' ); ?></h3>
 
 	<?php endif; ?>
 

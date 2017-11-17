@@ -1,7 +1,7 @@
 /* global jssor_options */
 
 jQuery( document ).ready(function ($) {
-
+return;
 	var jssor_1_options = {
 		$Loop: 0,
 		$DragOrientation: 1,

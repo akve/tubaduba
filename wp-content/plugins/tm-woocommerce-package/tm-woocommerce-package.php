@@ -302,7 +302,7 @@ class TM_WooCommerce {
 
 		// Swiper assets register
 		wp_register_style( 'jquery-swiper', '//cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css', array(), '3.4.2', 'all' );
-		wp_register_script( 'jquery-swiper', '//cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js', array( 'jquery' ), '3.4.2', true );
+		//wp_register_script( 'jquery-swiper', '//cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js', array( 'jquery' ), '3.4.2', true );
 
 		// Material Tabs assets register
 		wp_register_style( 'jquery-rd-material-tabs', tm_wc()->plugin_url() . '/assets/css/rd-material-tabs.css', array(), '1.0.0', 'all' );
