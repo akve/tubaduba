@@ -22,7 +22,7 @@
 
   	<script   src="/img/jq.js"  ></script>
   	<script   src="/wp-content/themes/organica/assets/js/js-combined.js?ver=2.3.1"  ></script>
-  	<script   src="/i/jqui/jquery-ui.min.js"  ></script>
+  	<script   src="/i/jqui2/jquery-ui.min.js"  ></script>
 	<script type="text/javascript" src="/wp-content/themes/organica/order-config.php"></script>
 	<script   src="/wp-content/themes/organica/assets/js/jssor.slider.mini.js?ver=1.0.0"  ></script>
 	<script   src="/wp-content/themes/organica/assets/js/jquery.magnific-popup.min.js?ver=1.0.1"  ></script>
@@ -30,7 +30,7 @@
 	<script type="text/javascript" src="/wp-content/themes/organica/store2.php"></script>
 
 	<link rel='stylesheet' id='magnific-popup-css'  href='/wp-content/themes/organica/assets/css/magnific-popup.min.css?ver=1.0.1' type='text/css' media='all' />
-	<link rel='stylesheet' id='magnific-popup-css'  href='/i/jqui/jquery-ui.min.css' type='text/css' media='all' />
+	<link rel='stylesheet' id='magnific-popup-css'  href='/i/jqui2/jquery-ui.min.css' type='text/css' media='all' />
 	<?php wp_head(); ?>
 </head>
 
@@ -41,7 +41,7 @@
 <div id="checkoutDialog" style="display:none;">
 </div>
 <div id="sizeDialog" style="display:none;" title="Таблица размеров">
-  <table border="1" cellpadding="1" cellspacing="1" class="des" style="width: 700px;">
+  <table border="1" cellpadding="1" cellspacing="1" class="des" style="width: 690px;">
   <tbody>
     <tr>
       <th>

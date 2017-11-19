@@ -1,6 +1,6 @@
 <?php
-
-
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 
 // ********************************
 // EMAIL
@@ -13,25 +13,29 @@ if ($_POST['country'] == "russia") {
 	if ($_POST['country'] == "crimea") {
 		$to = array("postnikov@gmail.com", "tubadubacrimea@gmail.com", "suryaindress@gmail.com", "I_lisavia@mail.ru", $_POST['email']) ;
 	} else {
-		$to = array("postnikov@gmail.com", "tubadubauk@gmail.com", "suryaindress@gmail.com", $_POST['email']) ;
+		$to = array("tubadubauk@gmail.com") ;
 	}
 }
 
 if (false) {
+
+	if ($_POST['email'] != "one-click-order") {
+		$to = array("tubadubauk@gmail.com", $_POST['email']) ;
+	}
 	
 	require_once dirname( __FILE__ ) . '/swiftmailer/swiftmailer-5.x/lib/swift_required.php';
 	
 	// Mail Transport
 	$transport = Swift_SmtpTransport::newInstance('ssl://smtp.gmail.com', 465)
-	    ->setUsername('suryaindress@gmail.com') // Your Gmail Username
-	    ->setPassword('alotofsun'); // Your Gmail Password
+	    ->setUsername('tubadubauk@gmail.com') // Your Gmail Username
+	    ->setPassword('Adeshguruji108'); // Your Gmail Password
 
 	// Mailer
 	$mailer = Swift_Mailer::newInstance($transport);
 
 	// Create a message
 	$message = Swift_Message::newInstance($subject)
-	    ->setFrom(array('suryaindress@gmail.com' => 'Tuba-Duba shop')) // can be $_POST['email'] etc...
+	    ->setFrom(array('tubadubauk@gmail.com' => 'Tuba-Duba shop')) // can be $_POST['email'] etc...
 	    ->setTo($to) // your email / multiple supported.
 	    ->setBody($content, 'text/html');
 
@@ -64,7 +68,7 @@ if ($_POST['country'] == "ukraine") {
 		}
 		$client->setApplicationName("Sheets API Testing");
 		$client->setScopes(['https://www.googleapis.com/auth/drive','https://spreadsheets.google.com/feeds']);
-		$fileId = '14Sg7c84WBR1EMOA60PqYN3yv2VUV07BJ8KTqPlQ24l4';// ;'1bJDlunPdkjTf-UKimABtgsCw9W0WzoEhCzWBSkPn2UM'; //
+		$fileId = '14Sg7c84WBR1EMOA60PqYN3yv2VUV07BJ8KTqPlQ24l4'; // '1bJDlunPdkjTf-UKimABtgsCw9W0WzoEhCzWBSkPn2UM';
 		$tokenArray = $client->fetchAccessTokenWithAssertion();
 		$accessToken = $tokenArray["access_token"];
 
@@ -76,28 +80,26 @@ if ($_POST['country'] == "ukraine") {
 		 //id	name	height	phone	email	country	city	address	where	comments	status	time	what
 			foreach($_POST as $key => $value) {
 				if ($key != "body") {
-					$postBody = $postBody . "<gsx:" . $key . ">" . $value . "</gsx:" . $key . ">";
+					$postBody = $postBody . "<gsx:" . $key . ">" . str_replace(array("<br>","<br/>","<BR>","<BR/>"),"",$value) . "</gsx:" . $key . ">";
 
 				}
 			  //echo "POST parameter '$key' has '$value'";
 			}
 
-		//$postBody = $postBody . "<gsx:status>new</gsx:status>";
+		$postBody = $postBody . "<gsx:status>new</gsx:status>";
 		 $postBody = $postBody . '</entry>';
-		echo $postBody;
 		 $httpClient = new GuzzleHttp\Client(['headers' => $headers]);
 		 $resp = $httpClient->request($method, $url, ['body' => $postBody]);
 		 $body = $resp->getBody()->getContents();
 		 $code = $resp->getStatusCode();
 		 $reason = $resp->getReasonPhrase();
-
 	} catch (Exception $e) {
 		echo "Error:" . $e;
 	}
 }
 // ********************************
 // SMS
-if ($_POST['country'] == "ukraine" && false) {
+if ($_POST['country'] == "ukraine") {
 	try {  
 		$number = $_POST['phone'];
 	    // Підключаємося до серверу  
@@ -132,6 +134,7 @@ if ($_POST['country'] == "ukraine" && false) {
 		        'text' => $text   
 		    ];  
 		    $result = $client->SendSMS($sms);  
+		    echo "OK:1";
 	    }
 
 	} catch(Exception $e) {  

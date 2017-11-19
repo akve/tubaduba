@@ -157,47 +157,6 @@ function interceptUrl(obj){
   //console.log(obj, document.location);
 }
 
-function changeColor(hash, index) {
-  var item = tStore.layer2[hash];
-  console.log("Changing color to ", hash, index);
-  var color = item.colors[index];
-  //$(".colorchosen").hide();
-  //$("#colorchosen" + index).show('slow');
-  $(".colorPointer").hide();
-  $(".colorchooser .color").removeClass("color-active");
-  $(".colorchooser #color"+index).addClass("color-active");
-  $(".colorAddToCart").hide();
-
-  lastColor = index;
-  var html = "";
-  html += "<div style='float:left'><h4>Цвет: " + color.id + "</h4>";
-  if (color.d){
-    html += "<h4> Диаметр: "+color.d+"</h4>";
-  }
-  html +='</div>'
-  html += "<div class='orderButton buttons' style='float:right'><input type='button' onclick='proceedStoreOrder(true)' value='Добавить в корзину'></div>";
-  //if (color.images) {
-    // image 1 goes to main, image 2 is a sample
-    //$(".big-image img")[0].src=color.images[0];
-    html += "<img src='"+ tStore.colorsHash[color.id].path_big +"' class='fabricsample'><br>";
-    //html += "<table><tr><td width=50% style='padding:0'><img src='"+color.images[0]+"' style='width:100%;padding:2%'></td><td width=50% style='padding:0'><img src='"+color.images[1]+"' style='width:100%;padding:2%'></td></table>";
-  //}
-  $(".orderText").html(html);
-  if ($(document).width() < 800) {
-    $('html, body').animate({
-        scrollTop: ($(".orderText").offset().top-50)
-    }, 1000);
-    //$(".orderButton").show('slow');
-  } else {
-    //$(".orderButton").show('slow');
-  }
-  //cart.push({item:item, color: color});
-  //drawCart();
-  //$("#orderDetails").show();
-
-  return false;
-}
-
 function proceedStoreOrder(isShow){
   if (isShow) {
     var hash = document.location.hash;
@@ -211,10 +170,10 @@ function proceedStoreOrder(isShow){
     var price = item.price;
     if (item.pricediscount) price = item.pricediscount;
     cart.push({item:item, price:price, color: color, size:$("#size").val()});
-    //onAddToCart();
-    saveCart();
-    if (window.fbq) fbq('track', 'AddToCart');
-    onSwitchToCart();
+    onAddToCart();
+    //saveCart();
+    //if (window.fbq) fbq('track', 'AddToCart');
+    //onSwitchToCart();
     /*$("#orderDetails").show();
     $('html, body').animate({
           scrollTop: ($("#orderDetails").offset().top - 50)
@@ -225,10 +184,34 @@ function proceedStoreOrder(isShow){
   }
 }
 
+function oneClickOrder(){
+    var phone = "" + $("#phone").val();
+    phone = phone.replace(/[-\(\)]/g,"");
+    phone = phone.replace(/ /g,"");
+    console.log(phone);
+    if (phone.length != 10) {
+      alert("Введите пожалуйста телефон");
+      return;
+    }
+    var hash = document.location.hash;
+    hash = hash.replace("#","");
+    var item = tStore.layer2[hash];
+    var color = item.colors[lastColor];
+    //$(".colorchosen").hide();
+    //lastColor = -1;
+    //$(".orderButton").hide();
+    console.log(item, color, $("#size").val());
+    var price = item.price;
+    if (item.pricediscount) price = item.pricediscount;
+    cart.push({item:item, price:price, color: color, size:$("#size").val()});
+
+    sendOrder(true, phone);
+}
+
 function onAddToCart(){
   saveCart();
   if (window.fbq) fbq('track', 'AddToCart');
-  res = "<h1>Благодарим!</h1>";
+  res = "<h1>Товар добавлен!</h1>";
   res += "<div style='font-size:16px;margin-top:20px;color:#a01a29;text-align:center;padding-top:5px;'>Теперь в корзине товаров: <b>" + cart.length + "</b></div>";
   $( "#checkoutDialog" ).html(res);
 
@@ -238,12 +221,12 @@ function onAddToCart(){
     modal:true,
     show: {
       effect: "fade",
-      duration: 1000
+      duration: 500
     },
     dialogClass: "no-title",
     hide: {
       effect: "explode",
-      duration: 1000
+      duration: 500
     },
     buttons: {
       "Продолжить покупки": function() {
@@ -439,285 +422,16 @@ function generateBC(hash){
   $(".shopTopBreadcrumbs").html(html);
 }
 
-  /*<div id="product-1994" class="post-1994 product type-product status-publish has-post-thumbnail product_cat-spring-autumn has-thumb first instock sale shipping-taxable purchasable product-type-simple">
-
-  <div class="row"><div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="single-image-container">
-  <div class="single-product-images single-product-images-horizontal" id="jssor_1" style="width: 570px; height: 1079.68px; visibility: visible;" jssor-slider="true">
-          
-        <!-- Loading Screen -->
-    
-
-    
-    <!-- Thumbnail Navigator -->
-    
-  <div style="position: absolute; top: 0px; left: 0px; width: 378px; height: 716px; transform-origin: 0px 0px 0px; transform: scale(1.50794);"><div class="single-product-images single-product-images-horizontal" style="width: 378px; height: 716px; visibility: visible; display: block; position: relative; top: 0px; left: 0px; overflow: visible;"><div class="enlarge"></div><div data-u="loading" style="top: 0px; left: 0px; width: 378px; height: 575px; display: none;">
-      <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-      <div style="position:absolute;display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-    </div><div data-u="slides" class="single-product-main_image" style="width: 378px; height: 575px; z-index: 0; position: absolute;"><div style="position: absolute; z-index: 0; pointer-events: none;"></div></div><div data-u="slides" class="single-product-main_image" style="width: 378px; height: 575px; z-index: 0; position: absolute; overflow: hidden;"><div style="top: 0px; left: 0px; width: 378px; height: 575px; position: absolute; background-color: rgb(0, 0, 0); opacity: 0; display: none;"></div>
-      <br>
-<b>Notice</b>:  WC_Product::get_gallery_attachment_ids is <strong>deprecated</strong> since version 3.0! Use WC_Product::get_gallery_image_ids instead. in <b>/Users/akve/work/tubaduba/wp-includes/functions.php</b> on line <b>3831</b><br>
-<div class="easyzoom is-ready" style="top: 0px; left: 0px; width: 378px; height: 575px; position: absolute; overflow: hidden;">
-<a href="http://localhost/wp-content/uploads/2017/04/sleep_04-2.jpg" style="display: block; top: 0px; left: 0px; width: 378px; height: 575px; position: relative;">
-<img data-u="image" src="http://localhost/wp-content/uploads/2017/04/sleep_04-2.jpg" border="0" style="top: 0px; left: 0px; width: 378px; height: 575px; position: absolute;">
-</a>
-<img data-u="thumb" src="http://localhost/wp-content/uploads/2017/04/sleep_04-2.jpg" style="display: none;">
-<div data-u="loading" style="top: 0px; left: 0px; width: 378px; height: 575px; z-index: 1000; display: none;">
-      <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-      <div style="position:absolute;display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-    </div></div>
-<div class="easyzoom" style="top: 0px; left: 0px; width: 378px; height: 575px; position: absolute; overflow: hidden; transform: translate3d(378px, 0px, 0px);">
-<a href="http://localhost/wp-content/uploads/2017/04/sleep_01-1.jpg" style="display: block; top: 0px; left: 0px; width: 378px; height: 575px; position: relative;">
-<img data-u="image" src="http://localhost/wp-content/uploads/2017/04/sleep_01-1.jpg" border="0" style="top: 0px; left: 0px; width: 378px; height: 575px; position: absolute;">
-</a>
-<img data-u="thumb" src="http://localhost/wp-content/uploads/2017/04/sleep_01-1.jpg" style="display: none;">
-<div data-u="loading" style="top: 0px; left: 0px; width: 378px; height: 575px; z-index: 1000; display: none;">
-      <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-      <div style="position:absolute;display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-    </div></div>
-<div class="easyzoom" style="top: 0px; left: 0px; width: 378px; height: 575px; position: absolute; overflow: hidden; transform: translate3d(378px, 0px, 0px);">
-<a href="http://localhost/wp-content/uploads/2017/04/sleep_02-1.jpg" style="display: block; top: 0px; left: 0px; width: 378px; height: 575px; position: relative;">
-<img data-u="image" src="http://localhost/wp-content/uploads/2017/04/sleep_02-1.jpg" border="0" style="top: 0px; left: 0px; width: 378px; height: 575px; position: absolute;">
-</a>
-<img data-u="thumb" src="http://localhost/wp-content/uploads/2017/04/sleep_02-1.jpg" style="display: none;">
-<div data-u="loading" style="top: 0px; left: 0px; width: 378px; height: 575px; z-index: 1000; display: none;">
-      <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-      <div style="position:absolute;display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-    </div></div>
-<div class="easyzoom" style="top: 0px; left: 0px; width: 378px; height: 575px; position: absolute; overflow: hidden; transform: translate3d(378px, 0px, 0px);">
-<a href="http://localhost/wp-content/uploads/2017/04/sleep_04-1.jpg" style="display: block; top: 0px; left: 0px; width: 378px; height: 575px; position: relative;">
-<img data-u="image" src="http://localhost/wp-content/uploads/2017/04/sleep_04-1.jpg" border="0" style="top: 0px; left: 0px; width: 378px; height: 575px; position: absolute;">
-</a>
-<img data-u="thumb" src="http://localhost/wp-content/uploads/2017/04/sleep_04-1.jpg" style="display: none;">
-<div data-u="loading" style="top: 0px; left: 0px; width: 378px; height: 575px; z-index: 1000; display: none;">
-      <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-      <div style="position:absolute;display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-    </div></div>
-    </div><div data-u="thumbnavigator" class="jssort01-99-66" style="left: 0px; bottom: 0px; width: 378px; height: 120px; visibility: visible;" jssor-slider="true">
-      <!-- Thumbnail Item Skin Begin -->
-      
-      
-      
-      <!-- Thumbnail Item Skin End -->
-    <div style="position: absolute; top: 0px; left: 0px; width: 378px; height: 120px; transform-origin: 0px 0px 0px; transform: scale(1);"><div class="jssort01-99-66" style="left: 0px; bottom: 0px; width: 378px; height: 120px; visibility: visible; display: block; position: relative; top: 0px; overflow: visible;"><div data-u="slides" style="position: absolute; overflow: hidden; left: -0.5px; top: 0px; width: 379px; height: 120px; z-index: 0;"><div style="position: absolute; z-index: 0; pointer-events: none;"></div></div><div data-u="slides" style="position: absolute; overflow: hidden; left: -0.5px; top: 0px; width: 379px; height: 120px; z-index: 0;"><div style="top: 0px; left: 0px; width: 79px; height: 120px; position: absolute; background-color: rgb(0, 0, 0); opacity: 0;"></div>
-        
-      <div style="top: 0px; left: 0px; width: 79px; height: 120px; position: absolute; overflow: hidden;"><div data-u="prototype" class="p pav" style="height: 120px; width: 79px; left: 0px; top: 0px;">
-          <div class="w">
-            <img data-u="thumb" src="http://localhost/wp-content/uploads/2017/04/sleep_04-2.jpg" class="t" style="">
-          </div>
-          <div class="c"></div>
-        </div><div style="top: 0px; left: 0px; width: 79px; height: 120px; z-index: 1000; display: none;"></div></div><div style="top: 0px; left: 0px; width: 79px; height: 120px; position: absolute; overflow: hidden; transform: translate3d(100px, 0px, 0px);"><div data-u="prototype" class="p" style="height: 120px; width: 79px; left: 0px; top: 0px;">
-          <div class="w">
-            <img data-u="thumb" src="http://localhost/wp-content/uploads/2017/04/sleep_01-1.jpg" class="t" style="">
-          </div>
-          <div class="c"></div>
-        </div><div style="top: 0px; left: 0px; width: 79px; height: 120px; z-index: 1000; display: none;"></div></div><div style="top: 0px; left: 0px; width: 79px; height: 120px; position: absolute; overflow: hidden; transform: translate3d(200px, 0px, 0px);"><div data-u="prototype" class="p" style="height: 120px; width: 79px; left: 0px; top: 0px;">
-          <div class="w">
-            <img data-u="thumb" src="http://localhost/wp-content/uploads/2017/04/sleep_02-1.jpg" class="t" style="">
-          </div>
-          <div class="c"></div>
-        </div><div style="top: 0px; left: 0px; width: 79px; height: 120px; z-index: 1000; display: none;"></div></div><div style="top: 0px; left: 0px; width: 79px; height: 120px; position: absolute; overflow: hidden; transform: translate3d(300px, 0px, 0px);"><div data-u="prototype" class="p" style="height: 120px; width: 79px; left: 0px; top: 0px;">
-          <div class="w">
-            <img data-u="thumb" src="http://localhost/wp-content/uploads/2017/04/sleep_04-1.jpg" class="t" style="">
-          </div>
-          <div class="c"></div>
-        </div><div style="top: 0px; left: 0px; width: 79px; height: 120px; z-index: 1000; display: none;"></div></div></div><span u="arrowleft" class="jssora11l" style="display: none;"></span><span u="arrowright" class="jssora11r" style="display: none;"></span></div></div></div></div></div></div>
-  
-  <span class="onsale">Sale</span>
-</div></div><div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-  <div class="summary entry-summary">
-
-    <h2 itemprop="name" class="product_title entry-title">Короткое, слегка расклешенное, платье с хомутом</h2>
-<p class="price"><del><span class="woocommerce-Price-amount amount">695<span class="woocommerce-Price-currencySymbol">₴</span></span></del> <ins><span class="woocommerce-Price-amount amount">666<span class="woocommerce-Price-currencySymbol">₴</span></span></ins></p>
-<div class="product_meta">
-
-  
-  
-    <span class="sku_wrapper">Код: <span class="sku" itemprop="sku">shortsmallklesh</span></span>
-
-    <span class="posted_in">Коллекция: <a href="http://localhost/product-category/spring-autumn/" rel="tag">Весна-Осень</a></span>
-  
-  
-</div>
-
-<div class="woocommerce-product-details__short-description">
-    <p>Платье для миниатюрных принцесс) <br>  Небольшой клеш позволяет чувствовать себя максимально свободно и легко))<br>
-Идеально подходит как для волшебных прогулок, так и для волшебных снов))<br>
-Создано с любовью и легкостью <br> Материал: Ткань-ТУБА 95% хлопок,5% эластан<br>Размеры: 42-52<br>
-(Цена соответствует размерам 42-48)<br>
- (см. <a href="'http://tuba-duba.com/dress-table-size/'">таблица размеров</a>)</p>
-</div>
-
-  
-  <form class="cart" method="post" enctype="multipart/form-data">
-    <div class="">
-      <div class="sizechooser">
-        <select name="custom_options[size]" id="custom__size">
-          <option value="">-- размер --</option>
-          <option>42</option>
-          <option>44</option>
-          <option>46</option>
-          <option>48</option>
-          <option>50</option>
-          <option>52</option>
-          <option>54</option>
-        </select>
-      </div>
-      <div class="colorchooser">
-
-      </div>
-    </div>
-    <div style="clear:both">
-
-        
-    </div>
-    <input type="hidden" name="custom_options[color]" id="co_color" value="">
-
-    <script>
-    (function ($) {
-      window._jq = $;
-})();
-      function onBeforeAddToCart(){
-        if (!window._jq('#custom__size').val()) {
-          alert('Выберите, пожалуйста, свой размер');
-          return false;
-        }
-        if (window._jq(".colorchooser .color").length >0) {
-          if (!window._jq("#co_color").val()) {
-            alert('Выберите, пожалуйста, цвет');
-            return false;
-          }
-        }
-      }
-
-      function chooseColor(slug,name){
-        window._jq(".colorchooser .color").removeClass("color-active");
-        window._jq("#color__" + slug).addClass("color-active");
-        window._jq("#co_color").val(name);
-      }
-    </script>
-
-
-    <button type="submit" name="add-to-cart" value="1994" class="single_add_to_cart_button button alt" onclick="return onBeforeAddToCart()">В корзину</button>
-
-      </form>
-
-  
-<button type="button" class="button tm-woowishlist-button btn btn-default tm-woowishlist-button-single" data-id="1994" data-nonce="2a26f8e141"><span class="tm_woowishlist_product_actions_tip"><span class="text">Add to Wishlist</span></span></button>
-<div class="woo-social-buttons"><span class="smsb_facebook custom"><a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost/product/korotkoe_slegka_raskleshennoe_plate_s_homutom/" target="_blank"><img src="your_website_url_here/wp-content/uploads/2016/02/spacer.gif" alt="Facebook"></a></span><span class="smsb_twitter custom"><a href="https://twitter.com/intent/tweet?source=webclient&amp;original_referer=http://localhost/product/korotkoe_slegka_raskleshennoe_plate_s_homutom/&amp;text=Короткое, слегка расклешенное, платье с хомутом&amp;url=http://localhost/product/korotkoe_slegka_raskleshennoe_plate_s_homutom/" target="_blank"><img src="your_website_url_here/wp-content/uploads/2016/02/spacer.gif" alt="Twitter"></a></span><span class="smsb_googleplus custom"><a href="https://plus.google.com/share?url=http://localhost/product/korotkoe_slegka_raskleshennoe_plate_s_homutom/" target="_blank"><img src="your_website_url_here/wp-content/uploads/2016/02/spacer.gif" alt="Google Plus"></a></span><span class="smsb_pinterest custom"><a href="http://pinterest.com/pin/create/bookmarklet/?media=http://localhost/wp-content/uploads/2017/04/sleep_04-2.jpg&amp;url=http://localhost/product/korotkoe_slegka_raskleshennoe_plate_s_homutom/&amp;title=Короткое, слегка расклешенное, платье с хомутом&amp;description=Короткое, слегка расклешенное, платье с хомутом" target="_blank"><img src="your_website_url_here/wp-content/uploads/2016/02/spacer.gif" alt="Pinterest"></a></span><span class="smsb_linkedin custom"><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost/product/korotkoe_slegka_raskleshennoe_plate_s_homutom/&amp;title=Короткое, слегка расклешенное, платье с хомутом&amp;summary=&amp;source=" target="_blank"><img src="your_website_url_here/wp-content/uploads/2016/02/spacer.gif" alt="Linkedin"></a></span><div style="clear:both"></div></div></div>
-  </div><!-- .summary -->
-
-  
-  <div class="woocommerce-tabs wc-tabs-wrapper">
-    <ul class="tabs wc-tabs" role="tablist">
-              <li class="description_tab active" id="tab-title-description" role="tab" aria-controls="tab-description">
-          <a href="#tab-description">Описание</a>
-        </li>
-              <li class="reviews_tab" id="tab-title-reviews" role="tab" aria-controls="tab-reviews">
-          <a href="#tab-reviews">Обзоры (0)</a>
-        </li>
-          </ul>
-          <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description" style="display: block;">
-        
-
-<p>Платье для миниатюрных принцесс) <br>  Небольшой клеш позволяет чувствовать себя максимально свободно и легко))<br>
-Идеально подходит как для волшебных прогулок, так и для волшебных снов))<br>
-Создано с любовью и легкостью <br> Материал: Ткань-ТУБА 95% хлопок,5% эластан<br>Размеры: 42-52<br>
-(Цена соответствует размерам 42-48)<br>
- (см. <a href="http://tuba-duba.com/dress-table-size/">таблица размеров</a>)</p>
-      </div>
-          <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content wc-tab" id="tab-reviews" role="tabpanel" aria-labelledby="tab-title-reviews" style="display: none;">
-        <div id="reviews">
-  <div id="comments">
-    <h3>Reviews</h3>
-
-    
-      <p class="woocommerce-noreviews">There are no reviews yet.</p>
-
-      </div>
-
-  
-    <div id="review_form_wrapper" class="row">
-      <div id="review_form" class="col-lg-6">
-          <div id="respond" class="comment-respond">
-    <h3 id="reply-title" class="comment-reply-title">Be the first to review “Короткое, слегка расклешенное, платье с хомутом” <small><a rel="nofollow" id="cancel-comment-reply-link" href="/product/korotkoe_slegka_raskleshennoe_plate_s_homutom/#respond" style="display:none;">Cancel reply</a></small></h3>      <form action="http://localhost/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
-        <p class="comment-form-rating"><span class="for_rating">Your Rating<span class="required">*</span></span>
-                    <p class="stars"><span><a class="star-1" href="#">1</a><a class="star-2" href="#">2</a><a class="star-3" href="#">3</a><a class="star-4" href="#">4</a><a class="star-5" href="#">5</a></span></p><select name="rating" id="rating" style="display: none;">
-                      <option value="">Rate…</option>
-                      <option value="5">Perfect</option>
-                      <option value="4">Good</option>
-                      <option value="3">Average</option>
-                      <option value="2">Not that bad</option>
-                      <option value="1">Very Poor</option>
-                    </select></p><p class="comment-form-comment"><label for="comment">Your Review <span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p><p class="form-submit"><button name="submit" type="submit" id="submit" class="submit button">Submit</button> <input type="hidden" name="comment_post_ID" value="1994" id="comment_post_ID">
-<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-</p><input type="hidden" id="_wp_unfiltered_html_comment_disabled" name="_wp_unfiltered_html_comment" value="cee7169b81"><script>(function(){if(window===window.parent){document.getElementById('_wp_unfiltered_html_comment_disabled').name='_wp_unfiltered_html_comment';}})();</script>
-      </form>
-      </div><!-- #respond -->
-        </div>
-    </div>
-
-  
-  <div class="clear"></div>
-</div>
-
-
-      </div>
-      </div>
-
-
-  <div class="related products">
-
-    <h1><span>Похожие</span> товары</h1>
-    <div class="row products">
-      
-        <div class="first swiper-slide post-1995 product type-product status-publish has-post-thumbnail product_cat-spring-autumn has-thumb  instock shipping-taxable purchasable product-type-simple">
-
-  <div class="block_product_thumbnail"><a href="http://localhost/product/Korotkoe_plate_s_kapyushonom_i_rukavami_/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="1" height="1" src="http://localhost/wp-content/uploads/2017/04/3.-Baklagan-factura_sh.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt=""></a></div><a href="http://localhost/product/Korotkoe_plate_s_kapyushonom_i_rukavami_/" class="woocommerce-loop-product__title">Короткое платье с капюшоном и рукавами ¾</a>
-  <span class="price"><span class="woocommerce-Price-amount amount">655<span class="woocommerce-Price-currencySymbol">₴</span></span></span>
-<div class="block_wishlist_compare"><button type="button" class="button tm-woowishlist-button btn btn-default" data-id="1995" data-nonce="3eb52d8435"><span class="tm_woowishlist_product_actions_tip"><span class="text">Add to Wishlist</span></span></button></div>
-</div>
-
-      
-        <div class="swiper-slide post-2000 product type-product status-publish has-post-thumbnail product_cat-spring-autumn has-thumb last instock shipping-taxable purchasable product-type-simple">
-
-  <div class="block_product_thumbnail"><a href="http://localhost/product/Korotkoe_plate_s_kapyushonom/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="1" height="1" src="http://localhost/wp-content/uploads/2016/10/withsleevsandhood6-2.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt=""></a></div><a href="http://localhost/product/Korotkoe_plate_s_kapyushonom/" class="woocommerce-loop-product__title">Короткое платье с капюшоном</a>
-  <span class="price"><span class="woocommerce-Price-amount amount">645<span class="woocommerce-Price-currencySymbol">₴</span></span></span>
-<div class="block_wishlist_compare"><button type="button" class="button tm-woowishlist-button btn btn-default" data-id="2000" data-nonce="1ae7374408"><span class="tm_woowishlist_product_actions_tip"><span class="text">Add to Wishlist</span></span></button></div>
-</div>
-
-      
-        <div class="first swiper-slide post-1990 product type-product status-publish has-post-thumbnail product_cat-spring-autumn has-thumb  instock shipping-taxable purchasable product-type-simple">
-
-  <div class="block_product_thumbnail"><a href="http://localhost/product/Plate_super-KLESH_s_homutom/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="1" height="1" src="http://localhost/wp-content/uploads/2017/04/Biruza.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt=""></a></div><a href="http://localhost/product/Plate_super-KLESH_s_homutom/" class="woocommerce-loop-product__title">Платье супер-КЛЕШ с хомутом</a>
-  <span class="price"><span class="woocommerce-Price-amount amount">990<span class="woocommerce-Price-currencySymbol">₴</span></span></span>
-<div class="block_wishlist_compare"><button type="button" class="button tm-woowishlist-button btn btn-default" data-id="1990" data-nonce="544becfb0a"><span class="tm_woowishlist_product_actions_tip"><span class="text">Add to Wishlist</span></span></button></div>
-</div>
-
-      
-        <div class="swiper-slide post-2003 product type-product status-publish has-post-thumbnail product_cat-spring-autumn has-thumb last instock shipping-taxable purchasable product-type-simple">
-
-  <div class="block_product_thumbnail"><a href="http://localhost/product/TUBA-kofta_s_krasivim_homutom/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="1" height="1" src="http://localhost/wp-content/uploads/2016/11/5.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt=""></a></div><a href="http://localhost/product/TUBA-kofta_s_krasivim_homutom/" class="woocommerce-loop-product__title">ТУБА-кофта с красивым хомутом</a>
-  <span class="price"><span class="woocommerce-Price-amount amount">485<span class="woocommerce-Price-currencySymbol">₴</span></span></span>
-<div class="block_wishlist_compare"><button type="button" class="button tm-woowishlist-button btn btn-default" data-id="2003" data-nonce="7113d3218c"><span class="tm_woowishlist_product_actions_tip"><span class="text">Add to Wishlist</span></span></button></div>
-</div>
-
-      
-    </div>
-  </div>
-
-
-</div><!-- #product-1994 -->
-
-
-    </div>*/
 function generatePage2(hash){
 
   var singleImage = `<div class="easyzoom"><a href="IMAGE"><img data-u="image" src="IMAGE"></a><img data-u="thumb" src="IMAGETHUMB"></div>`;
 
+  var consts = {W1:378,H1:716,HSM:575,HTHUMB:120,WTHUMB:79};
+  //single-product-images single-product-images-horizontal
   var htmlImages = `  
-      <div class="single-product-images single-product-images-horizontal"
+      <div class=""
            id="jssor_1"
-           style="width: width: 378px;height:716px;">
+           style="width: W1px;height:H1px;">
           <div class="enlarge"></div>
           <!-- Loading Screen -->
           <div data-u="loading">
@@ -727,16 +441,16 @@ function generatePage2(hash){
           </div>
 
           <div data-u="slides" class="single-product-main_image"
-               style="width: 378px; height: 575px;">
+               style="width: W1px; height: HSMpx;">
               IMAGETHUMBS
           </div>
           <!-- Thumbnail Navigator -->
           <div data-u="thumbnavigator" class="jssort01-99-66"
-               style="left: 40px; bottom: 0;width: 378px; height: 120px;">
+               style="left: 0px; bottom: 0;width: W1px; height: HTHUMBpx;">
             <!-- Thumbnail Item Skin Begin -->
             <div data-u="slides">
               <div data-u="prototype" class="p"
-                   style="height: 120px; width: 79px">
+                   style="height: HTHUMBpx; width: WTHUMBpx">
                 <div class="w">
                   <div data-u="thumbnailtemplate" class="t"></div>
                 </div>
@@ -749,36 +463,68 @@ function generatePage2(hash){
             
           </div>
       </div>`;
+  var isSmall = window.innerWidth < 600;
+  for (var i in consts) {
+    if (isSmall) {
+      consts[i] = consts[i] / 1.5;
+    } else {
+      consts[i] = consts[i] / 1.2;
+    }
+    htmlImages = htmlImages.replace( i + "px", consts[i] +  "px");
+    htmlImages = htmlImages.replace( i + "px", consts[i] +  "px");
+    htmlImages = htmlImages.replace( i + "px", consts[i] +  "px");
+    htmlImages = htmlImages.replace( i + "px", consts[i] +  "px");
+  }
+  console.log(htmlImages)
 
-  var price = `<p class="price"><del><span class="woocommerce-Price-amount amount">PRICEDISCOUNT<span class="woocommerce-Price-currencySymbol">₴</span></span></del> <ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol">₴</span></span></ins></p>`;
-  var priceSimple = `<p class="price"><ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol">₴</span></span></ins></p>`;
+
+
+  var price = `<p class="price" style='margin:0'><del><span class="woocommerce-Price-amount amount">PRICEDISCOUNT<span class="woocommerce-Price-currencySymbol">₴</span></span></del> <ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol">₴</span></span></ins></p>`;
+  var priceSimple = `<p class="price" style='margin:0'><ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol">₴</span></span></ins></p>`;
 
   var newHTML = `
   <div class='woocommerce'><div id="product" class="product type-product status-publish has-post-thumbnail product_cat-spring-autumn has-thumb first instock sale shipping-taxable purchasable product-type-simple">
 
     <div class="row">
-      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+      <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
         <div class="single-image-container">
           IMAGECONTAINER
         </div>
       </div>
 
-      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-        <div class="summary entry-summary">
+      <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+        <div class="summary entry-summary" style="border-bottom: 1px solid #c6c6c6;margin-top:0;margin-bottom:0">
 
           <h2 itemprop="name" class="product_title entry-title">TITLE</h2>
           PRICE
       <!--<div class="product_meta">
           <span class="sku_wrapper">Код: <span class="sku" itemprop="sku">SKU</span></span>
       </div>-->
-
+        </div>
+      <div class='product-form'>
+        <h1>Заказ в 3 шага</h1>
+        <div class="form-step">
+          <div class='form-step-id'><span>1</span></div>
+          <div class="form-step-name">Размер:</div>
+          <div class="form-step-form">FORM-SIZE</div>
+        </div>
+        <div class="form-step">
+          <div class='form-step-id'><span>2</span></div>
+          <div class="form-step-name">Цвет:</div>
+          <div class="form-step-form">FORM-COLOR</div>
+        </div>
+        <div class="form-step step-3">
+          <div class='form-step-id'><span>3</span></div>
+          <div class='form-step-button1'>FORM-BUTTON1</div>
+          <div class='form-step-button2'>FORM-BUTTON2</div>
+        </div>
+      </div>
+      <div style='clear:both'></div>
       <div class="woocommerce-product-details__short-description">
           <p>DESCRIPTION</p>
-          
       </div>
-      FORM
     </div>
-  </div></div>
+  </div>
     `;
 
   $(".shopFirst").hide('slow');
@@ -811,7 +557,6 @@ function generatePage2(hash){
       newHTML = newHTML.replace(/TITLE/g, item.title);
       newHTML = newHTML.replace(/DESCRIPTION/g, item.description);
 
-      var form = "<div class='product-form'>";
       var sizes = "";
       if (item.sizes == "numbers") {
         var ss = [42,44,46,48,50,52,54];
@@ -826,34 +571,21 @@ function generatePage2(hash){
       if (item.sizes == "oversize") {
         sizes = "OVERSIZE <br>Длина ткани по кругу 70 см<br>Тянется на любой размер ";
       }
-
-      form +="<table><tr><td>Размер:</td><td>"+sizes+"</td></tr>";
-
-      form += "<tr><td>Цвет:</td><td><div class='colorchooser'>";
+      newHTML = newHTML.replace(/FORM-SIZE/g, sizes);
+      
+      var colors = "<div class='colorchooser'>";
+      colors += "<div class='colorname'></div><div class='fabricsample'></div>";
         //res += "<div class='colorPointerMobile'>Выберите цвет &raquo;</div>";
 
       var colorGroups = {one:[],two:[], three:[]};
-      item.colors.forEach(function(color, index){
-        if (color.invisible || !color.id) return;
-        var d = parseInt(color.d);
-        if (color.d < 51) {
-          colorGroups.one.push({color:color, index:index});
-        } else {
-          if (color.d > 57) {
-            colorGroups.three.push({color:color, index:index});
-          } else {
-            colorGroups.two.push({color:color, index:index});
-          }
-        }
-      });
-      var showGroup = function(group, header) {
-        //form +="<div style='clear:both'>"+header+"</div>";
-        group.forEach(function(c){
-          var color = c.color;
-          var index = c.index;
+      item.colors.forEach(function(c, index){
+        if (c.invisible || !c.id) return;
+        //colorGroups.one.push({color:color, index:index});
+        var color = c.id;
+          //var index = c.index;
           var bg="";//color.color;
-          if (tStore.colorsHash[color.id]) {
-            var path = tStore.colorsHash[color.id].path;
+          if (tStore.colorsHash[color]) {
+            var path = tStore.colorsHash[color].path;
             if (path.indexOf("/") <0) {
               path = "/i/colors/" + path;
             }
@@ -862,30 +594,34 @@ function generatePage2(hash){
           } else {
             if (color.images && color.images.length>0) bg += ' url("'+color.images[0]+'")';
           }
-          form += "<a class='color' id='color"+index+"' title='"+color.id+"' onclick='changeColor(\""+hash+ "\","+index+")' style='background:"+bg+";background-size:32px 32px;'>";
-          form += "</a>"
-        })
-      }
-      if (colorGroups.one.length > 0) showGroup(colorGroups.one,'Узкие');
-      if (colorGroups.two.length > 0) showGroup(colorGroups.two,'Средние');
-      if (colorGroups.three.length > 0) showGroup(colorGroups.three,'Широкие');
+          colors += "<a class='color' id='color"+index+"' title='"+color+"' onclick='changeColor(\""+hash+ "\","+index+")' style='background:"+bg+";background-size:32px 32px;'>";
+          colors += "</a>"
+
+      });
+      colors += "</div>";
+      newHTML = newHTML.replace(/FORM-COLOR/g, colors);
 
 
-      form += "</div></td></tr></table>";
-      //res += "<div class='pricetext'>" + item.pricetext + "</div>";
-      form += "<div class='colorAddToCart'><div class='orderButton buttons' style='float:right'><input type='button' onclick='alert(\"Выберите, пожалуйста, сначала цвет\")' value='Добавить в корзину'></div></div>";
+      /*form += "<div class='colorAddToCart'><div class='orderButton buttons' style='float:right'><input type='button' onclick='alert(\"Выберите, пожалуйста, сначала цвет\")' value='Добавить в корзину'></div></div>";
       form += "<div class='orderText'></div>"
-      form += "<div style='clear:both;'></div>";
+      form += "<div style='clear:both;'></div>";*/
+      var form = "";
+      form += '<div class="help-title">добавить</div> <div class="orderButton buttons" ><a onclick="proceedStoreOrder(true)" class="button"><i class="fa fa-cart-plus" style="font-size: 16px;"></i>&nbsp;В корзину</a></div>';
+      newHTML = newHTML.replace(/FORM-BUTTON1/g, form);
+      form ='<div class="help-title">или купить в 1 клик</div> <div class="order-oneclick buttons"><input type="text" id="phone" value="+38" placeholder="+38(___)-___-__-__" /><a onclick="oneClickOrder()" class="button" style="padding: 10px 16px 9px 16px;">OK</a></div>';
+      newHTML = newHTML.replace(/FORM-BUTTON2/g, form);
 
-      newHTML = newHTML.replace(/FORM/g, form);
+      newHTML = newHTML.replace(/FORM-BUTTONS/g, form);
 
 
 
       res += newHTML;
       $(".shopSecond .inner").html(res);
+      $("#phone").mask("(999) 999-99-99");
 
       initJSSOR();
       prefillOrder();
+      changeColor(item.id,0, true);
       //$(".shopSecond").show('slow');
  
   }
@@ -899,6 +635,82 @@ function generatePage2(hash){
   $("#sidebar").hide();
   $(".sidebar-expander").css({display:'flex'});
 
+}
+
+function previewColor(color){
+  var res = "";
+  res += "<img src='"+color+"' width='100%'/>";
+  $( "#checkoutDialog" ).html(res);
+  $( "#checkoutDialog" ).dialog({
+    autoOpen: false,
+    modal:true,
+    show: {
+      effect: "fade",
+      duration: 500
+    },
+    dialogClass: "no-title",
+    hide: {
+      effect: "fade",
+      duration: 500
+    },
+    'title':'Ткань детальнее',
+    buttons: {
+      /*"OK": function() {
+        $( "#checkoutDialog" ).dialog( "close" );
+      }*/
+    }
+  });
+
+  $( "#checkoutDialog" ).dialog( "open" );
+}
+
+function changeColor(hash, index, skipScroll) {
+  var item = tStore.layer2[hash];
+  console.log("Changing color to ", hash, index);
+  var color = item.colors[index];
+  //$(".colorchosen").hide();
+  //$("#colorchosen" + index).show('slow');
+  //$(".colorPointer").hide();
+  $(".colorchooser .color").removeClass("color-active");
+  $(".colorchooser #color"+index).addClass("color-active");
+
+  lastColor = index;
+  $(".colorname").html(color.id);// "<a href='#' onclick='previewColor(\""+tStore.colorsHash[color.id].path_big+"\");return false;'>"+color.id+"</a>");
+  $(".fabricsample").html("<img src='"+tStore.colorsHash[color.id].path_big+"' height=100 style='height:120px'>");
+  //$(".colorAddToCart").hide();
+
+  return;
+  var html = "";
+  html += "<div style='float:left'><h4>Цвет: " + color.id + "</h4>";
+  if (color.d){
+    html += "<h4> Диаметр: "+color.d+"</h4>";
+  }
+  html +='</div>'
+  html +='<div class="order-oneclick buttons" style="float:left;"><input type="text" id="phone" value="+38" placeholder="+38(___)-___-__-__" /><a onclick="oneClickOrder()" class="button" style="padding: 10px 16px 9px 16px;">OK</a></div>';
+  html += '<div class="orderButton buttons" style="float:right"><a onclick="proceedStoreOrder(true)" class="button"><i class="fa fa-cart-plus" style="font-size: 16px;"></i>&nbsp;В корзину</a></div>';
+//  html += "<div class='orderButton buttons' style='float:right'><input type='button' onclick='proceedStoreOrder(true)' value='Добавить в корзину'></div>";
+  //if (color.images) {
+    // image 1 goes to main, image 2 is a sample
+    //$(".big-image img")[0].src=color.images[0];
+    html += "<img src='"+ tStore.colorsHash[color.id].path_big +"' class='fabricsample'><br>";
+    //html += "<table><tr><td width=50% style='padding:0'><img src='"+color.images[0]+"' style='width:100%;padding:2%'></td><td width=50% style='padding:0'><img src='"+color.images[1]+"' style='width:100%;padding:2%'></td></table>";
+  //}
+  $(".orderText").html(html);
+  $("#phone").mask("(999) 999-99-99");
+
+  if ($(document).width() < 800 && !skipScroll) {
+    $('html, body').animate({
+        scrollTop: ($(".orderText").offset().top-50)
+    }, 1000);
+    //$(".orderButton").show('slow');
+  } else {
+    //$(".orderButton").show('slow');
+  }
+  //cart.push({item:item, color: color});
+  //drawCart();
+  //$("#orderDetails").show();
+
+  return false;
 }
 
 function expandSidebar(){
@@ -926,7 +738,14 @@ function generatePage1(groupHash){
     var hashParsed = parseHash(groupHash);
     generateBC(hashParsed);
     res += '<div class="woocommerce">';
+    var showCategories = false;
+    if (hashParsed.category || hashParsed.all) {
+      showCategories = true;
+    }
 
+    if (!showCategories) {
+      res += "<div class='row products'>";
+    }
     tStore.groups.forEach(function(group) {
       var groupAdded = false;
       if (group.invisible == '1' || (hashParsed.group && hashParsed.group.indexOf(group.id) < 0 )) return;
@@ -951,13 +770,13 @@ function generatePage1(groupHash){
             });
             if (!hasDresstype) return;
           }
-          if (!groupAdded) {
+          if (!groupAdded && showCategories) {
             res += "<h2 class='cat-group-header'>Коллекция: " + group.title + "</h2><div class='row products'>";
           }
           groupAdded = true;
 
-          var r = `<div class="first col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 post-1983 product type-product status-publish has-post-thumbnail product_cat-tubes has-thumb  instock shipping-taxable purchasable product-type-simple">
-            <div class="block_product_thumbnail"><a href="{URL}" onclick='interceptUrl(this)' class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="1" height="1" src="{IMAGE}" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt=""></a></div><a href="{URL}" onclick='interceptUrl(this)' class="woocommerce-loop-product__title">{TITLE}</a>
+          var r = `<div class="first col-xs-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 post-1983 product type-product status-publish has-post-thumbnail product_cat-tubes has-thumb  instock shipping-taxable purchasable product-type-simple">
+            <div class="block_product_thumbnail"><a href="{URL}" onclick='interceptUrl(this)' class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="1" height="1" src="{IMAGE}" style="width:auto;" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt=""></a></div><a href="{URL}" onclick='interceptUrl(this)' class="woocommerce-loop-product__title">{TITLE}</a>
             {PRICE}
           </div>`;
           var priceSimple = `<span class="price"><span class="woocommerce-Price-amount amount">{PRICE}<span class="woocommerce-Price-currencySymbol">₴</span></span></span>`;
@@ -981,8 +800,13 @@ function generatePage1(groupHash){
             }
             res += r;
       });
-      res += '</div>';
+      if (!groupAdded && showCategories) {
+            res += '</div>';
+      }
     })
+    if (!showCategories) {
+      res += "</div>";
+    }
   }
     $(".shopFirst .inner").html(res);
 
@@ -1029,7 +853,7 @@ function prefillOrder(){
     }
 }
 
-function sendOrder(isFromReadyShop){
+function sendOrder(isFromReadyShop, singleClickPhone){
 if (orderInProgress) return;
 //if (window.SUPERCOUNTRY && window.SUPERCOUNTRY == "ru") country = "russia";
 //if (window.SUPERCOUNTRY && window.SUPERCOUNTRY == "crimea") country = "crimea";
@@ -1039,34 +863,44 @@ if (orderInProgress) return;
     alert('Заказ пуст, наберите плиз себе товары');
     return;
   }
-orderInProgress = true;
-  var data = {
-    oName: $("#oName").val(),
-    oLastName:$("#oLastName").val(),
-    oHeight:$("#oHeight").val(),
-    oEmail:$("#oEmail").val(),
-    oPhone:$("#oPhone").val(),
-    oCountry:country,
-    oCity:$("#oCity").val(),
-    oSource:$("#oSource").val(),
-    oComments:$("#oComments").val(),
-    oAddress:$("#oAddress").val()
-  };
-
-  window.localStorage['ordervalues'] = JSON.stringify(data);
-
-
-
-  
+  orderInProgress = true;
+  var data;
   var checks = ["oName", "oHeight", "oLastName", "oEmail", "oPhone", "oCity", "oAddress"];
-  for (var i=0;i<checks.length;i++){
-    if (!data[checks[i]]) {
-      alert("Заполните пожалуйста все поля заказа");
-      return;
+
+  if (singleClickPhone) {
+    if (window.localStorage['ordervalues']) {
+      data = JSON.parse(window.localStorage['ordervalues']);
+      data['oPhone'] = singleClickPhone;
+      data['oEmail'] = 'one-click-order';
+      checks.push("oComments");
+      checks.push("oSource");
     }
+  } else {
+    data = {
+      oName: $("#oName").val(),
+      oLastName:$("#oLastName").val(),
+      oHeight:$("#oHeight").val(),
+      oEmail:$("#oEmail").val(),
+      oPhone:$("#oPhone").val(),
+      oCountry:country,
+      oCity:$("#oCity").val(),
+      oSource:$("#oSource").val(),
+      oComments:$("#oComments").val(),
+      oAddress:$("#oAddress").val()
+    };
+    window.localStorage['ordervalues'] = JSON.stringify(data);
+    for (var i=0;i<checks.length;i++){
+      if (!data[checks[i]]) {
+        alert("Заполните пожалуйста все поля заказа");
+        return;
+      }
+    }
+    checks.push("oComments");
+    checks.push("oSource");
   }
-  checks.push("oComments");
-  checks.push("oSource");
+//  data.oPhone = data.oPhone.replace(/-/g,"");
+
+
   var a = new Date();
   var id= ""+(a.getMonth() + 1) +"-" + a.getDate()+"-" + parseInt(Math.random() * 10000);
   var html="";
@@ -1089,8 +923,8 @@ orderInProgress = true;
   //html += "<tr><td>Откуда узнали</td><td>" + data.oSource + "</td></tr>";
   html += "<tr><td>Комментарии</td><td>" + data.oComments + "</td></tr>";
   html += "</table>";
-        var htmlEmail = "<h3>Спасибо за заказ:)<br>Его номер " + id  + "</h3>" + html;
-  var html="<h3>Спасибо за заказ:)<br>Его номер " + id  + "</h3>" + html;
+  var htmlEmail = "<h3>Спасибо за заказ!<br>Его номер " + id  + "</h3>" + html;
+  var html="<h3>Спасибо за заказ! <br>Его номер " + id  + "</h3>" + html;
 //http://tuba-duba.com
 
   data = {
@@ -1099,7 +933,7 @@ orderInProgress = true;
     height: data.oHeight,
     phone: data.oPhone,
     email: data.oEmail,
-    country: country,
+    country: "ukraine",
     city: data.oCity,
     address: data.oAddress,
     source: data.oSource,
@@ -1127,20 +961,64 @@ orderInProgress = true;
     }
   }
 
-  $.post("/sendorder.php", data, function(response){
-orderInProgress = false;
+  if (!singleClickPhone) {
+    $("button#proceedOrder").css({opacity:0.7}).val("В процессе...");
+  }
+
+  var jqxhr =  $.post("/sendorder.php", data, function(response){
+    $("button#proceedOrder").css({opacity:1}).val("Оформить заказ");
+    
     if (window.fbq) fbq('track', 'Purchase', {value: '100', currency: 'UAH'});
     if (response.indexOf("1")>=0) {
       cart = [];
       window.localStorage['cart'] = [];
-      $("#orderDetails").html(html);
-      $("#orderDetails").show('slow');
-      $("#proceedOrder").hide();
-      $("#sendOrder").hide();
-      $("#lastOrderButtons").hide();
+      if (!singleClickPhone) {
+        $("#orderDetails").html(html);
+        $("#orderDetails").show('slow');
+        $("#proceedOrder").hide();
+        $("#sendOrder").hide();
+        $("#lastOrderButtons").hide();
+      } else {
+        okQuick();
+      }
     }
   });
+  jqxhr.fail(function() {
+    alert( "Произошла какая-то ошибка :( Позвоните, пожалуйста, в поддержку." );
+  })
+  jqxhr.always(function() {
+    orderInProgress = false;
+  });
   
+}
+
+function okQuick(){
+  cart = [];
+  saveCart();
+  var res = "";
+  res += "Спасибо! Наш менеджер скоро свяжется с вами. <br>Если вы получили SMS, значит, все точно хорошою ";
+  $( "#checkoutDialog" ).html(res);
+  $( "#checkoutDialog" ).dialog({
+    autoOpen: false,
+    modal:true,
+    show: {
+      effect: "fade",
+      duration: 500
+    },
+    dialogClass: "no-title",
+    hide: {
+      effect: "fade",
+      duration: 500
+    },
+    'title':'Заказ отправлен',
+    buttons: {
+      "Продолжить": function() {
+        $( "#checkoutDialog" ).dialog( "close" );
+      }
+    }
+  });
+
+  $( "#checkoutDialog" ).dialog( "open" );
 }
   
 function saveCart(){
@@ -1194,6 +1072,7 @@ function drawCart(calcOnly, plain){
   <thead>
     <tr>
       <th class="product-name" colspan="2">Товар</th>
+      <th class="product-quantity">Размер</th>
       <th class="product-quantity">Цвет</th>
       <th class="product-total">Цена</th>
       <th></th>
@@ -1206,8 +1085,8 @@ function drawCart(calcOnly, plain){
             </tbody>
   <tfoot>
     <tr class="order-total">
-      <th colspan="3">Итого</th>
-      <td data-title="Итого" style='text-align:center'><strong><span class="woocommerce-Price-amount amount">TOTAL<span class="woocommerce-Price-currencySymbol">₴</span></span></strong> </td>
+      <th colspan="4">Итого</th>
+      <td style='text-align:center'><strong><span class="woocommerce-Price-amount amount">TOTAL<span class="woocommerce-Price-currencySymbol">₴</span></span></strong> </td>
       <td></td>
     </tr>
   </tfoot>
@@ -1215,14 +1094,15 @@ function drawCart(calcOnly, plain){
   </div></div>`;
   var itemTemplate = `<tr class="cart_item"><td class="product-thumbnail">
                   <a href="URL"><img width="60" style='width:60px;' src="IMAGE" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt=""></a>           </td>
-                <td class="product-name" data-title="Товар">
-                  <h6><a href="URL">TITLE</a><br> SIZE              </h6>
+                <td class="product-name" >
+                  <h6><a href="URL">TITLE</a></h6>
                 </td>
+                <td style='text-align:center'>SIZE</td>
                 
-                <td class="product-quantity" data-title="Количество">
-                COLOR           
+                <td class="product-quantity">
+                <small>COLOR</small>
                 </td>
-                <td class="product-total" data-title="Всего">
+                <td class="product-total" >
                   <span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol">₴</span></span>           </td>
                 <td><a href='#' onclick='removeFromCart("INDEX");return false;'><i class='fa fa-remove'></i></a></td>
                 </tr>`;
@@ -1294,8 +1174,8 @@ function drawCart(calcOnly, plain){
        itemHTML = itemHTML.replace(/COLOR/, c.color.id);
        itemHTML = itemHTML.replace(/URL/g, '/shop#' + c.item.id);
        itemHTML = itemHTML.replace(/IMAGE/, c.item.images.length? c.item.images[0].path : '');
-       itemHTML = itemHTML.replace(/SIZE/, c.size ? 'Размер ' + c.size : '');
-       itemHTML = itemHTML.replace(/PRICE/, c.price);
+       itemHTML = itemHTML.replace(/SIZE/, c.size ? c.size : '');
+       itemHTML = itemHTML.replace(/PRICE/, parseInt(c.price));
        itemHTML = itemHTML.replace(/INDEX/, index);
        itemsHtml += itemHTML;
     });
@@ -1311,7 +1191,7 @@ function drawCart(calcOnly, plain){
 
 
   if (!calcOnly) {
-   $("#orderItems").html(templateTotal);
+   $("#orderItems").html($(document).width() < 800 ? html : templateTotal); //
   }
   return html;
 }
@@ -1432,8 +1312,8 @@ var JSSORINDEX = 1;
 var jssor_1_slider;
 /* ORIGINAL */
 function initJSSOR(){
-  console.log('INITJSS', $('#jssor_1'));
-  console.trace()
+  //console.log('INITJSS', $('#jssor_1'));
+  //console.trace()
   delete jssor_1_slider;
 
   var jssor_options = {orientation: "1", cols: "4", spaceX: "21", spaceY: "21"};
@@ -1607,6 +1487,6 @@ var res = `<div class="swiper-container woocommerce tm_products_carousel_widget"
     res = res.replace("SLIDES",r);
     $(".shopFrontPage").html(res);
     var mySwiper = new Swiper('.swiper-container', 
-    {"slidesPerView":4,"slidesPerGroup":1,"slidesPerColumn":1,"spaceBetween":100,"speed":500,"loop":false,"freeMode":false,"grabCursor":true,"mousewheelControl":false,"paginationClickable":true,"nextButton":"#swiper-carousel-5a08913f6b0a9-next","prevButton":"#swiper-carousel-5a08913f6b0a9-prev","pagination":"#swiper-carousel-5a08911ab4c92-pagination","breakpoints":{"480":{"slidesPerView":1,"spaceBetween":8},"768":{"slidesPerView":2,"spaceBetween":15},"992":{"slidesPerView":3,"spaceBetween":23}}}
+    {"slidesPerView":4,"slidesPerGroup":1,"slidesPerColumn":1,"spaceBetween":100,"speed":500,"loop":false,"freeMode":false,"grabCursor":true,"mousewheelControl":false,"paginationClickable":true,"nextButton":"#swiper-carousel-5a08913f6b0a9-next","prevButton":"#swiper-carousel-5a08913f6b0a9-prev","pagination":"#swiper-carousel-5a08911ab4c92-pagination","breakpoints":{"480":{"slidesPerView":2,"spaceBetween":8},"768":{"slidesPerView":2,"spaceBetween":15},"992":{"slidesPerView":3,"spaceBetween":23}}}
     );
 }
