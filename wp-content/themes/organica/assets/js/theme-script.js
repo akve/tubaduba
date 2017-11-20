@@ -365,6 +365,12 @@ console.log("!!!!!!!!!!!");
 					},
 					timeout: 800
 				});
+				if (window.innerWidth > 768) {
+						$('#masthead > div.header-container > div > ul.site-header-cart').remove();	
+						$('.main-navigation #main-menu').append(`<li class='site-header-cart menu-item menu-item-type-post_type menu-item-object-page menu-item-1955' ><div class="cart-contents">
+					<span class="count"><i class="fl-glypho-shopping-cart7"></i><span>0</span></span>
+				</div></li>`);
+				}
 
 				var $parentNode,
 					$self,

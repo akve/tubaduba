@@ -479,8 +479,8 @@ function generatePage2(hash){
 
 
 
-  var price = `<p class="price" style='margin:0'><del><span class="woocommerce-Price-amount amount">PRICEDISCOUNT<span class="woocommerce-Price-currencySymbol">₴</span></span></del> <ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol">₴</span></span></ins></p>`;
-  var priceSimple = `<p class="price" style='margin:0'><ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol">₴</span></span></ins></p>`;
+  var price = `<p class="price" style='margin:0'><del><span class="woocommerce-Price-amount amount">PRICEDISCOUNT<span class="woocommerce-Price-currencySymbol"> грн</span></span></del> <ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol"> грн</span></span></ins></p>`;
+  var priceSimple = `<p class="price" style='margin:0'><ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol"> грн</span></span></ins></p>`;
 
   var newHTML = `
   <div class='woocommerce'><div id="product" class="product type-product status-publish has-post-thumbnail product_cat-spring-autumn has-thumb first instock sale shipping-taxable purchasable product-type-simple">
@@ -632,8 +632,10 @@ function generatePage2(hash){
   }*/
 
   $(".shopSecond").show('slow');
-  $("#sidebar").hide();
-  $(".sidebar-expander").css({display:'flex'});
+  if (window.innerWidth < 768) {
+    $("#sidebar").hide();
+    $(".sidebar-expander").css({display:'flex'});
+  }
 
 }
 
@@ -739,7 +741,7 @@ function generatePage1(groupHash){
     generateBC(hashParsed);
     res += '<div class="woocommerce">';
     var showCategories = false;
-    if (hashParsed.category || hashParsed.all) {
+    if (hashParsed.group || hashParsed.all) {
       showCategories = true;
     }
 
@@ -779,8 +781,8 @@ function generatePage1(groupHash){
             <div class="block_product_thumbnail"><a href="{URL}" onclick='interceptUrl(this)' class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="1" height="1" src="{IMAGE}" style="width:auto;" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt=""></a></div><a href="{URL}" onclick='interceptUrl(this)' class="woocommerce-loop-product__title">{TITLE}</a>
             {PRICE}
           </div>`;
-          var priceSimple = `<span class="price"><span class="woocommerce-Price-amount amount">{PRICE}<span class="woocommerce-Price-currencySymbol">₴</span></span></span>`;
-          var priceDiscount = `<span class="price"><del><span class="woocommerce-Price-amount amount">{PRICE}<span class="woocommerce-Price-currencySymbol">₴</span></span></del> <ins><span class="woocommerce-Price-amount amount">{PRICEDISCOUNT}<span class="woocommerce-Price-currencySymbol">₴</span></span></ins></span>`;
+          var priceSimple = `<span class="price"><span class="woocommerce-Price-amount amount">{PRICE}<span class="woocommerce-Price-currencySymbol"> грн</span></span></span>`;
+          var priceDiscount = `<span class="price"><del><span class="woocommerce-Price-amount amount">{PRICE}<span class="woocommerce-Price-currencySymbol"> грн</span></span></del> <ins><span class="woocommerce-Price-amount amount">{PRICEDISCOUNT}<span class="woocommerce-Price-currencySymbol"> грн</span></span></ins></span>`;
           // '
             r = r.replace(/\{URL\}/g,'#' + item.id);
             r = r.replace(/\{TITLE\}/g, item.title);
@@ -800,7 +802,7 @@ function generatePage1(groupHash){
             }
             res += r;
       });
-      if (!groupAdded && showCategories) {
+      if (showCategories) {
             res += '</div>';
       }
     })
@@ -1046,7 +1048,7 @@ function saveCart(){
               ` + carthtml + `
             </ul>
 
-  <p class="woocommerce-mini-cart__total total"><strong>Итого:</strong> <span class="woocommerce-Price-amount amount">TOTAL<span class="woocommerce-Price-currencySymbol">₴</span></span></p>
+  <p class="woocommerce-mini-cart__total total"><strong>Итого:</strong> <span class="woocommerce-Price-amount amount">TOTAL<span class="woocommerce-Price-currencySymbol"> грн</span></span></p>
 
   
   <p class="woocommerce-mini-cart__buttons buttons"><a href="/checkout/" class="button checkout wc-forward">Оформить</a></p></div></div></div></div>
@@ -1086,7 +1088,7 @@ function drawCart(calcOnly, plain){
   <tfoot>
     <tr class="order-total">
       <th colspan="4">Итого</th>
-      <td style='text-align:center'><strong><span class="woocommerce-Price-amount amount">TOTAL<span class="woocommerce-Price-currencySymbol">₴</span></span></strong> </td>
+      <td style='text-align:center'><strong><span class="woocommerce-Price-amount amount">TOTAL<span class="woocommerce-Price-currencySymbol"> грн</span></span></strong> </td>
       <td></td>
     </tr>
   </tfoot>
@@ -1103,7 +1105,7 @@ function drawCart(calcOnly, plain){
                 <small>COLOR</small>
                 </td>
                 <td class="product-total" >
-                  <span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol">₴</span></span>           </td>
+                  <span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol"> грн</span></span>           </td>
                 <td><a href='#' onclick='removeFromCart("INDEX");return false;'><i class='fa fa-remove'></i></a></td>
                 </tr>`;
 
@@ -1456,7 +1458,7 @@ var res = `<div class="swiper-container woocommerce tm_products_carousel_widget"
             <div class="block_product_thumbnail"><a href="LINK" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
             SALE
           <img width="1" height="1" src="IMAGE" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt=""></a></div><a href="LINK" class="woocommerce-loop-product__title">TITLE</a>
-            <span class="price">PRICEDISCOUNT<ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol">₴</span></span></ins></span>
+            <span class="price">PRICEDISCOUNT<ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol"> грн</span></span></ins></span>
           
           </div>`;
 
@@ -1472,7 +1474,7 @@ var res = `<div class="swiper-container woocommerce tm_products_carousel_widget"
             //slide = slide.replace(/PRICEDISCOUNT/g, "");
             var price = item.price;
             if (item.pricediscount) { 
-              slide = slide.replace(/PRICEDISCOUNT/g, '<del><span class="woocommerce-Price-amount amount">' + parseInt(item.price) + '<span class="woocommerce-Price-currencySymbol">₴</span></span></del>' );
+              slide = slide.replace(/PRICEDISCOUNT/g, '<del><span class="woocommerce-Price-amount amount">' + parseInt(item.price) + '<span class="woocommerce-Price-currencySymbol"> грн</span></span></del>' );
               slide = slide.replace(/PRICE/g, parseInt(item.pricediscount));
             } else {
               slide = slide.replace(/PRICEDISCOUNT/g, "");
