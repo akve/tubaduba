@@ -1,0 +1,125 @@
+<style>
+    .smtable input[type=text], .smtable select, .smtable textarea {
+        width: 100%;
+    }
+    .smtable input.small {
+        width:40px;
+    }
+</style>
+<div class="close" ng-click="cancel()"></div>
+<div class="modal-header">
+    <h3 class="modal-title">Edit item</h3>
+</div>
+<div class="modal-body col-md-12" style="height: 500px; overflow:auto; ">
+    <div style="display: flex;">
+        <div style='width:50%;'>
+            <table class='smtable'>
+                <tr><td>Название</td>
+                    <td><input type="text" ng-model="p.title" class="longer"></tr>
+                <tr><td>id</td>
+                    <td><input  type="text" ng-model="p.id" ></tr>
+                <tr><td>Группа</td>
+                    <td><select ng-model="p.group" ng-options="c.id as c.title for c in config.groups"></select></tr>
+                <tr><td>Цена</td>
+                    <td><input ng-model="p.price"  type="text"></tr>
+                <tr><td>Цена с дисконтом</td>
+                    <td><input ng-model="p.pricediscount"  type="text"></tr>
+                <tr><td>Описание</td>
+                    <td><textarea ng-model="p.description" class='longer'></textarea></tr>
+                <tr><td>Картинки на список</td>
+                    <td>1.<input ng-model="p.images_main[0]" class="longer"  type="text"><br>
+                        2.<input ng-model="p.images_main[1]" class="longer"  type="text"></tr>
+                <tr><td>Тип размера</td>
+                    <td><select ng-model="p.sizes" ng-options="c.id as c.title for c in sizetypes"></select></tr>
+                <tr><td>
+                    <label><input type="checkbox" value=true ng-model="p.isnew">Новое</label><br>
+                    <label><input type="checkbox" value=true ng-model="p.featured">На главной</label><br>
+                    <a ng-click="p.invisible = !p.invisible">
+                        <i class="fa fa-eye" style="color:{{p.invisible?'red':'green'}}"></i>
+                    </a>
+
+                    <!--<a ng-click="moveUpField(config.layer1, $index)"><i class='fa fa-arrow-up'></i></a>
+                    <a ng-click="moveDownField(config.layer1, $index)"><i class='fa fa-arrow-down'></i></a>
+                    <a ng-click="config.layer1.splice($index,1)"><i class='fa fa-remove'></i></a>-->
+                    <br>
+                    <!--<a ng-click='p.extended=false'>свернуть</a>-->
+                </td></tr>
+            </table>
+        </div>
+        <div style='width:50%;'>
+            <table class='smtable' >
+                <tr><th>Цвет</th><th>Диаметр</th><th>&nbsp;&nbsp;&nbsp;действия</th></tr>
+                <tr ng-repeat="color in p.colors">
+                    <td><select ng-model="color.id" ng-options="col.id as col.id for col in config.colorCodes"></select>
+                    </td>
+                    <td><input ng-model="color.d" class='small' ng-if="p.sizes !='numbers'"></td>
+                    <td>
+                        <a ng-click="color.invisible = !color.invisible">
+                            <i class="fa fa-eye" style="color:{{color.invisible?'red':'green'}}"></i>
+                        </a>
+                        <a ng-click="moveUpField(p.colors, $index)"><i class='fa fa-arrow-up'></i></a>
+                        <a ng-click="moveDownField(p.colors, $index)"><i class='fa fa-arrow-down'></i></a>
+                        <a ng-click="p.colors.splice($index,1)"><i class='fa fa-remove'></i></a>
+                    </td>
+                </tr>
+            </table>
+            <a ng-click="addColor(p)">добавить цвет</a><br>
+            ----
+            <table class='smtable' >
+                <tr><th>Категории</th><th>| <a ng-click="addCategory(p)"> добавить</a><br></th></tr>
+                <tr ng-repeat="category in p.categories">
+                    <td><select ng-model="category.id" ng-options="cat.id as cat.id for cat in config.categories"></select>
+                    </td>
+                    <td>
+
+                        <a ng-click="p.categories.splice($index,1)"><i class='fa fa-remove'></i></a>
+                    </td>
+                </tr>
+            </table>
+
+            ----
+            <table class='smtable' >
+                <tr><th>Типы</th><th>| <a ng-click="addDresstype(p)">добавить </a>&nbsp;</th></tr>
+                <tr ng-repeat="dtype in p.dresstypes">
+                    <td><select ng-model="dtype.id" ng-options="dtype.id as dtype.id for dtype in config.dresstypes"></select>
+                    </td>
+                    <td>
+
+                        <a ng-click="p.dresstypes.splice($index,1)"><i class='fa fa-remove'></i></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <table class='smtable' >
+            <tr><th>Картинки:</th><th>| <a ng-click="p.images.push({path:''})">добавить</a></th></tr>
+            <tr ng-repeat="i in p.images">
+
+                <td><input ng-model="i.path" class='larger' type="text" style="width: 500px;"></td>
+                <td>
+                    <a ng-click="moveUpField(p.images, $index)"><i class='fa fa-arrow-up'></i></a>
+                    <a ng-click="moveDownField(p.images, $index)"><i class='fa fa-arrow-down'></i></a>
+                    <a ng-click="p.images.splice($index,1)"><i class='fa fa-remove'></i></a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button
+            type="submit"
+            class="btn btn-danger"
+            ng-click="delete()" >
+        {{'Delete'}}
+    </button>
+    <button
+            type="submit"
+            class="btn btn-primary"
+            ng-click="save()" >
+        {{'Save'}}
+    </button>
+    <a class="btn btn-inverted cancel" ng-click="cancel()">{{'Close'}}</a>
+</div>

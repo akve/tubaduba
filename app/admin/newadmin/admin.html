@@ -1,0 +1,238 @@
+<!-- There's no head for this so we'll put it at the top of this file -->
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-sanitize.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-animate.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-aria.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
+
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
+<link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+<script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.css">
+<link rel="stylesheet" type="text/css" href="/app/admin/vendor/angular-growl.css">
+<link rel="stylesheet" type="text/css" href="/app/admin/vendor/bootstrap.css">
+<script src="/app/admin/vendor/angular-growl.min.js"></script>
+<script src="/app/admin/newadmin/angular-dnd.js"></script>
+
+
+<script>var basepath = "/";var templatepath = '/app/admin/';</script>
+<script src="/app/admin/newadmin/app.js"></script>
+<script src="/app/admin/newadmin/controllers.js"></script>
+
+<script src="/app/admin/store-config.php"></script>
+
+<style type="text/css">
+button.md-small {
+    font-size: 11px;
+    min-height: 26px;
+    line-height: 26px;
+}
+button.md-small.green {background-color: #4CAF50; color: #000}
+button.md-small.red {background-color: #E57373; color: #000}
+button.md-small.blue {background-color: #90CAF9;}
+.success-message {
+    background-color: #DCEDC8;
+    margin: 10px;
+    padding: 10px;
+    width: 50%;
+}
+
+.longer {
+	width:300px;
+}
+.small {
+	width:40px;
+}
+.smtable tr {
+	margin-bottom:3px;
+}
+.smtable tr td {
+	padding:2px;
+}
+textarea {
+	height:60px;
+}
+.filter {
+	display: flex;
+	width: 100%;
+}
+.filter .filteritem {
+	padding-left:15px;
+	}
+	a:hover {
+		cursor: pointer;
+	}
+
+</style>
+
+<div class="admin-body" ng-app="trnadmin" ng-controller="AdminController">
+	<div growl></div>
+	<h1>Manage products</h1>
+
+	<!--<select ng-model="country">
+		<option value="ua" ng-selected='country=="ua"'>UA</option>
+		<option value="ru" ng-selected='country=="ru"'>RU</option>
+	</select>
+
+
+	<font size="+2"><a ng-click='load()'>Load</a></font> | <small>... <a ng-click='process()'>1st process</a></small>
+	<a ng-click="itemModal()">test</a>-->
+
+	<div ng-cloak>
+		<md-content>
+			<md-tabs md-dynamic-height md-border-bottom>
+				<md-tab label="Товары">
+					<md-content class="md-padding">
+						<h1 class="md-display-2">Товары</h1>
+
+						<div class="filter panel">
+							<div class="filteritem">
+								<label>Тип</label>
+								<select ng-model="filter.dresstype" ng-options="dtype.id as dtype.id for dtype in config.dresstypes" ng-change="applyFilter('dresstype', this)"></select>
+							</div>
+							<div class="filteritem">
+								<label>Группа</label>
+								<select ng-model="filter.group" ng-options="dtype.id as dtype.id for dtype in config.groups" ng-change="applyFilter('group', this)"></select>
+							</div>
+							<div class="filteritem">
+								<label>Категория</label>
+								<select ng-model="filter.category" ng-options="dtype.id as dtype.id for dtype in config.categories" ng-change="applyFilter('category', this)"></select>
+							</div>
+							<div class="filteritem">
+								<a ng-click="applyFilter('clear', this)">Все</a>
+							</div>
+
+						</div>
+
+						<table>
+							<tr>
+								<td>&nbsp;</td>
+								<td>Имя</td>
+								<td>Новое?</td>
+								<td>На главной?</td>
+								<td>Видим</td>
+							</tr>
+							<tr ng-repeat="p in layer1Filtered" style='{{($index % 2 == 1)? "background:#EEEEEE":""}}'
+								ui-on-Drop="onDrop($event,$data,men)"
+								ui-draggable="true" drag="p"
+								on-drop-success="dropSuccessHandler($event,$index)"
+								id="{{p.id}}"
+							>
+								<td>
+									<a ng-click="moveUpFieldFiltered($index)"><i class='fa fa-arrow-up'></i></a>
+									<a ng-click="moveDownFieldFiltered($index)"><i class='fa fa-arrow-down'></i></a>
+								</td>
+								<td><a ng-click='itemModal(p)'>{{p.title}}</a></td>
+								<td>
+									<label><input type="checkbox" ng-checked="p.isnew" ng-click="changeFld(p, 'isnew')"></label>
+								</td>
+								<td>
+									<label><input type="checkbox" ng-checked="p.featured" ng-click="changeFld(p, 'featured')"></label>
+								</td>
+								<td>
+									<a ng-click="changeFld(p, 'invisible')">
+										<i class="fa fa-eye" style="color:{{p.invisible?'red':'green'}}"></i>
+									</a>
+								</td>
+
+							</tr>
+						</table>
+						<a ng-click="addItem()">добавить товар</a>
+
+					</md-content>
+				</md-tab>
+				<md-tab label="Цвета">
+					<md-content class="md-padding">
+						<h1 class="md-display-2">Цвета</h1>
+
+						<table class='smtable'>
+							<tr><th>код/имя</th><th>картинка</th><th>большая картинка</th><th></th></tr>
+							<tr ng-repeat="c in config.colorCodes">
+								<td><input ng-model="c.id"></td>
+								<td><input ng-model="c.path" class='longer'></td>
+								<td><input ng-model="c.path_big" class='longer'></td>
+								<td><a ng-click="config.colorCodes.splice($index,1)"><i class='fa fa-remove'></i></a>
+							</tr>
+							<tr><td colspan="3"><a ng-click="config.colorCodes.push({id:'',path:''})">добавить</a></td></tr>
+						</table>
+
+					</md-content>
+				</md-tab>
+				<md-tab label="Категории">
+					<md-content class="md-padding">
+						<h1 class="md-display-2">Категории</h1>
+						<table class='smtable'>
+							<tr><th>код</th><th>название</th><th>картинка</th><th></th></tr>
+							<tr ng-repeat="c in config.categories">
+								<td><input ng-model="c.id"></td>
+								<td><input ng-model="c.title"></td>
+								<td><input ng-model="c.path" class='longer'></td>
+								<td>
+									<a ng-click="moveUpField(config.categories, $index)"><i class='fa fa-arrow-up'></i></a>
+									<a ng-click="moveDownField(config.categories, $index)"><i class='fa fa-arrow-down'></i></a>
+
+									<a ng-click="config.categories.splice($index,1)"><i class='fa fa-remove'></i></a>
+							</tr>
+							<tr><td colspan="3"><a ng-click="config.categories.push({id:'',path:'',title:''})">добавить</a></td></tr></table>
+					</md-content>
+				</md-tab>
+
+				<md-tab label="Типы">
+					<md-content class="md-padding">
+						<h1 class="md-display-2">Типы</h1>
+						<table class='smtable'>
+							<tr><th>код</th><th>название</th><th>картинка</th><th></th></tr>
+							<tr ng-repeat="c in config.dresstypes">
+								<td><input ng-model="c.id"></td>
+								<td><input ng-model="c.title"></td>
+								<td><input ng-model="c.path" class='longer'></td>
+								<td>
+									<a ng-click="moveUpField(config.dresstypes, $index)"><i class='fa fa-arrow-up'></i></a>
+									<a ng-click="moveDownField(config.dresstypes, $index)"><i class='fa fa-arrow-down'></i></a>
+
+									<a ng-click="config.dresstypes.splice($index,1)"><i class='fa fa-remove'></i></a>
+							</tr>
+							<tr><td colspan="3"><a ng-click="config.dresstypes.push({id:'',path:'',title:''})">добавить</a></td></tr>
+						</table>
+					</md-content>
+				</md-tab>
+
+				<md-tab label="Группы">
+					<md-content class="md-padding">
+						<h1 class="md-display-2">Группы</h1>
+						<table class='smtable'>
+							<tr><th>код</th><th>название</th><th>название для меню</th><th>картинка</th><th>Часть меню</th><th></th></tr>
+							<tr ng-repeat="c in config.groups">
+								<td><input ng-model="c.id"></td>
+								<td><input ng-model="c.title" class='longer'></td>
+								<td><input ng-model="c.title_smaller"></td>
+								<td><input ng-model="c.img"></td>
+								<td><select ng-model="c.upgroup">
+									<option value="" ng-selected="!c.upgroup">--нет--</option>
+									<option ng-repeat='f in config.groups' value='{{f.id}}' ng-selected='f.id==c.upgroup'>{{f.title}}</option>
+								</select></td>
+								<td>
+									<select ng-model="c.invisible">
+										<option value="1" ng-selected="c.invisible.toString() == '1'">Hidden</option>
+										<option value="0" ng-selected="c.invisible.toString() != '1'">Visible</option>
+									</select>
+									<a ng-click="moveUpField(config.groups, $index)"><i class='fa fa-arrow-up'></i></a>
+									<a ng-click="moveDownField(config.groups, $index)"><i class='fa fa-arrow-down'></i></a>
+									<a ng-click="config.groups.splice($index,1)"><i class='fa fa-remove'></i></a>
+							</tr>
+							<tr><td colspan="3"><a ng-click="config.groups.push({id:'',title:''})">добавить</a></td></tr>
+						</table>
+					</md-content>
+				</md-tab>
+
+
+			</md-tabs>
+		</md-content>
+	</div>
+
+	<button ng-click="save()">Save</button>
+
+</div>
