@@ -1,6 +1,6 @@
 <?php
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 // ********************************
 // EMAIL
@@ -23,11 +23,11 @@ if (true) {
 		$to = array("tubadubauk@gmail.com", $_POST['email']) ;
 	}
 	require_once dirname( __FILE__ ) . '/swiftmailer/swiftmailer-5.x/lib/swift_required.php';
-	
+
 	// Mail Transport
 	$transport = Swift_SmtpTransport::newInstance('ssl://smtp.gmail.com', 465)
 	    ->setUsername('tubadubauk@gmail.com') // Your Gmail Username
-	    ->setPassword('Adeshguruji108'); // Your Gmail Password
+	    ->setPassword('gxzkztrecpazuzsf'); // Your Gmail Password
 
 	// Mailer
 	$mailer = Swift_Mailer::newInstance($transport);
@@ -46,7 +46,7 @@ if (true) {
 	}
 }
 
-// ******************************* 
+// *******************************
 // DRIVE
 
 if ($_POST['country'] == "ukraine") {
@@ -99,45 +99,45 @@ if ($_POST['country'] == "ukraine") {
 // ********************************
 // SMS
 if ($_POST['country'] == "ukraine") {
-	try {  
+	try {
 		$number = $_POST['phone'];
-	    // Підключаємося до серверу  
-	    $client = new SoapClient('http://turbosms.in.ua/api/wsdl.html');   
+	    // Підключаємося до серверу
+	    $client = new SoapClient('http://turbosms.in.ua/api/wsdl.html');
 
-	    // Можна переглянути список доступних функцій серверу   
-	    //print_r($client->__getFunctions());   
+	    // Можна переглянути список доступних функцій серверу
+	    //print_r($client->__getFunctions());
 
-	    // Дані авторизації   
-	    $auth = [   
-	        'login' => 'akve',   
-	        'password' => 'dogpile0'   
-	    ];   
+	    // Дані авторизації
+	    $auth = [
+	        'login' => 'akve',
+	        'password' => 'dogpile0'
+	    ];
 
-	    // Авторизуємося на сервері   
-	    $result = $client->Auth($auth);   
+	    // Авторизуємося на сервері
+	    $result = $client->Auth($auth);
 
-	    // Результат авторизації    
-	    //echo $result->AuthResult . PHP_EOL;   
+	    // Результат авторизації
+	    //echo $result->AuthResult . PHP_EOL;
 
-	    // Отримуємо кількість доступних кредитів  
-	    $result = $client->GetCreditBalance();   
+	    // Отримуємо кількість доступних кредитів
+	    $result = $client->GetCreditBalance();
 	    if ($result->GetCreditBalanceResult > 0) {
-		    $text = "Благодарим за заказ) Мы очень скоро свяжемся с вами, чтобы уточнить все нюансы."; //iconv('windows-1251', 'utf-8', 'Проверка ) ');   
+		    $text = "Благодарим за заказ) Мы очень скоро свяжемся с вами, чтобы уточнить все нюансы."; //iconv('windows-1251', 'utf-8', 'Проверка ) ');
 
-		    // Відправляємо повідомлення на один номер.   
-		    // Підпис відправника може містити англійські букви і цифри. Максимальна довжина - 11 символів.   
-		    // Номер вказується в повному форматі, включно з плюсом і кодом країни   
-		    $sms = [   
-		        'sender' => 'Tuba-Duba',   
-		        'destination' => $number,   
-		        'text' => $text   
-		    ];  
-		    $result = $client->SendSMS($sms);  
+		    // Відправляємо повідомлення на один номер.
+		    // Підпис відправника може містити англійські букви і цифри. Максимальна довжина - 11 символів.
+		    // Номер вказується в повному форматі, включно з плюсом і кодом країни
+		    $sms = [
+		        'sender' => 'Tuba-Duba',
+		        'destination' => $number,
+		        'text' => $text
+		    ];
+		    $result = $client->SendSMS($sms);
 		    echo "OK:1";
 	    }
 
-	} catch(Exception $e) {  
-	    echo 'Ошибка: ' . $e->getMessage() . PHP_EOL;  
-	}  
+	} catch(Exception $e) {
+	    echo 'Ошибка: ' . $e->getMessage() . PHP_EOL;
+	}
 }
 ?>

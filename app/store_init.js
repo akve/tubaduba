@@ -23,6 +23,7 @@ jQuery(document).ready(function($) {
   if (window.history && window.history.pushState) {
 
     window.history.pushState('forward', null, hist[hist.length - 1]);
+    initCountry();
     generateShop();
 
     $(window).on('popstate', function() {
@@ -80,19 +81,19 @@ var _T = function(s) {
   s = "" + s;
   if (s.indexOf("[R:") >= 0 || s.indexOf("[E:") >= 0 || s.indexOf("[U:") >= 0) {
     if (LANG == "ru") {
-      s = s.replace(/\[E\:(.*?)\]/g, "");
-      s = s.replace(/\[U\:(.*?)\]/g, "");
-      s = s.replace(/\[R\:(.*?)\]/g, "$1");
+      s = s.replace(/\[E\:(.*?)\]/gs, "");
+      s = s.replace(/\[U\:(.*?)\]/gs, "");
+      s = s.replace(/\[R\:(.*?)\]/gs, "$1");
     }
     if (LANG == "en") {
-      s = s.replace(/\[U\:(.*?)\]/g, "");
-      s = s.replace(/\[R\:(.*?)\]/g, "");
-      s = s.replace(/\[E\:(.*?)\]/g, "$1");
+      s = s.replace(/\[U\:(.*?)\]/gs, "");
+      s = s.replace(/\[R\:(.*?)\]/gs, "");
+      s = s.replace(/\[E\:(.*?)\]/gs, "$1");
     }
     if (LANG == "ua") {
-      s = s.replace(/\[E\:(.*?)\]/g, "");
-      s = s.replace(/\[R\:(.*?)\]/g, "");
-      s = s.replace(/\[U\:(.*?)\]/g, "$1");
+      s = s.replace(/\[E\:(.*?)\]/gs, "");
+      s = s.replace(/\[R\:(.*?)\]/gs, "");
+      s = s.replace(/\[U\:(.*?)\]/gs, "$1");
     }
   }
   return s;
@@ -184,8 +185,8 @@ function initCountry() {
   }
   //    hideClasses();
   generateShop(); // shop
+  addCartLink();
   checkoutInit(); // order
-
 }
 
 function interceptUrl(obj) {
@@ -210,9 +211,31 @@ function checkInterceptHrefs() {
       e.preventDefault();
       history.pushState({}, "", href);
       generateShop();
+      setTimeout(()=>{
+        console.log('hiding');
+        if ($(".is-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar:visible").length > 0) {
+          $(".navbar-toggle.active").click();
+        }
+      }, 100);
     }
   });
   //},100);
+}
+
+function addCartLink(){
+  let html = `<div class="cart-contents">
+			<a href="/checkout"><img src="/i/shopping-cart.png" height="32" width="32"/><span class="count">0</span></a>
+		</div>`;
+  if ($("#nav-cart-link").length === 0) {
+    if ($("#nv-primary-navigation-main:visible").length) {
+      // this is big screen
+      $("#nv-primary-navigation-main:visible").append(html)
+    } else {
+      if ($(".item--inner.builder-item--nav-icon:visible").length) {
+        $(".item--inner.builder-item--nav-icon:visible").append(html);
+      }
+    }
+  }
 }
 
 function createCookie(name, value, days) {

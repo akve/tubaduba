@@ -41,6 +41,9 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 		</div>
 		<div id="header-menu-sidebar-inner" class="header-menu-sidebar-inner">
 			<?php render_components( HeaderBuilder::BUILDER_NAME ); ?>
+			<div class="col-sm-12">
+			    <div class="shopBreadcrumbs mobile-nav"></div>
+            </div>
 		</div>
 	</div>
 </div>

@@ -1,21 +1,20 @@
 function generateFeatured(fromItemId, fromItemGroup) {
   if (!$(".shopFrontPage") && !fromItemId) return;
 
-  var res = `<div class="swiper-container woocommerce tm_products_carousel_widget">
+  var res = `<div class="swiper-container tm_products_carousel_widget featured-carousel">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper tm-products-carousel-widget-wrapper tm-products-carousel-widget-wrapper">
         <!-- Slides -->
         SLIDES
     </div>
-    <div id="swiper-carousel-5a08913f6b0a9-next" class="swiper-button-next tm-products-carousel-widget-button-next" style="display: block;"></div>
+    <div id="swiper-featured-next" class="swiper-button-next " style="display: block;"></div>
 
-    <div id="swiper-carousel-5a08913f6b0a9-prev" class="swiper-button-prev tm-products-carousel-widget-button-prev swiper-button-disabled" style="display: block;"></div>
+    <div id="swiper-featured-prev" class="swiper-button-prev " style="display: block;"></div>
 </div>`;
-  var template = `<div class="swiper-slide post-2024 product type-product status-publish has-post-thumbnail product_cat-dharma has-thumb  instock sale shipping-taxable purchasable product-type-simple tm-products-carousel-widget-slide swiper-slide-active" style="width: 270px; margin-right: 30px;">
+  var template = `<div class="swiper-slide" style="width: 270px; margin-right: 30px;">
 
-            <!--<div class="block_product_thumbnail"><a href="LINK" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-            SALE
-          <img width="1" height="1" src="IMAGE" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt=""></a></div>--><a href="LINK" class="woocommerce-loop-product__title">TITLE</a>
+          <img width="1" height="1" src="IMAGE" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="">
+          <a href="LINK" class="title">TITLE</a>
             <span class="price">PRICEDISCOUNT<ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol"> грн</span></span></ins></span>
 
           </div>`;
@@ -53,66 +52,41 @@ function generateFeatured(fromItemId, fromItemGroup) {
   if (fromItemId) {
     //res = res.replace("swiper-container","swiper-item-container");
     $(".additional-items").html(res);
-    var mySwiper = new Swiper('.swiper-container', {
-      "slidesPerView": 4,
-      "slidesPerGroup": 1,
-      "slidesPerColumn": 1,
-      "spaceBetween": 50,
-      "speed": 500,
-      "loop": false,
-      "freeMode": false,
-      "grabCursor": true,
-      "mousewheelControl": false,
-      "paginationClickable": true,
-      "nextButton": "#swiper-carousel-5a08913f6b0a9-next",
-      "prevButton": "#swiper-carousel-5a08913f6b0a9-prev",
-      "pagination": "#swiper-carousel-5a08911ab4c92-pagination",
-      "breakpoints": {
-        "480": {
-          "slidesPerView": 2,
-          "spaceBetween": 8
-        },
-        "768": {
-          "slidesPerView": 2,
-          "spaceBetween": 12
-        },
-        "992": {
-          "slidesPerView": 3,
-          "spaceBetween": 15
-        }
-      }
-    });
 
   } else {
     $(".shopFrontPage").html(res);
-    var mySwiper = new Swiper('.swiper-container', {
-      "slidesPerView": 4,
-      "slidesPerGroup": 1,
-      "slidesPerColumn": 1,
-      "spaceBetween": 100,
-      "speed": 500,
-      "loop": false,
-      "freeMode": false,
-      "grabCursor": true,
-      "mousewheelControl": false,
-      "paginationClickable": true,
-      "nextButton": "#swiper-carousel-5a08913f6b0a9-next",
-      "prevButton": "#swiper-carousel-5a08913f6b0a9-prev",
-      "pagination": "#swiper-carousel-5a08911ab4c92-pagination",
-      "breakpoints": {
-        "480": {
-          "slidesPerView": 2,
-          "spaceBetween": 8
-        },
-        "768": {
-          "slidesPerView": 2,
-          "spaceBetween": 15
-        },
-        "992": {
-          "slidesPerView": 3,
-          "spaceBetween": 23
-        }
-      }
-    });
   }
+  var mySwiper = new Swiper('.swiper-container', {
+    "slidesPerView": 4,
+    "slidesPerGroup": 1,
+    "slidesPerColumn": 1,
+    "spaceBetween": 100,
+    "speed": 500,
+    "loop": false,
+    "freeMode": false,
+    "grabCursor": true,
+    "mousewheelControl": false,
+    "paginationClickable": true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    "nextButton": "#swiper-featured-next",
+    "prevButton": "#swiper-featured-prev",
+    "pagination": "#swiper-carousel-5a08911ab4c92-pagination",
+    "breakpoints": {
+      "480": {
+        "slidesPerView": 2,
+        "spaceBetween": 8
+      },
+      "768": {
+        "slidesPerView": 2,
+        "spaceBetween": 15
+      },
+      "992": {
+        "slidesPerView": 3,
+        "spaceBetween": 23
+      }
+    }
+  });
 }

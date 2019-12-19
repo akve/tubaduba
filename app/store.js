@@ -25,14 +25,14 @@ function generateShop() {
 
     }
     if ($('.shopTopBreadcrumbs').length) {
-      if (window.innerWidth < 768) {
-        $("#sidebar").hide();
+      if (window.innerWidth <= 960) {
+        $(".nv-sidebar-wrap.nv-left").hide();
         $(".sidebar-expander").css({
           display: 'flex'
         });
       } else {
         if (isList) {
-          $("#sidebar").show();
+          $(".nv-sidebar-wrap.nv-left").show();
           $(".sidebar-expander").hide();
         }
       }
@@ -146,7 +146,7 @@ function widgetFilter(hash) {
     "<div class='filter-title'>" + _T("[R:Сезоны][U:Сезони]") + "</div>" + html2 +
 
     "<div class='filter-title'>" + _T("[R:Коллекции][U:Колекцiї]") + "</div>" + html;
-  $("#shopBreadcrumbs").html('<div class="breadcrumbs">' + html + '</div>');
+  $(".shopBreadcrumbs").html('<div class="breadcrumbs">' + html + '</div>');
   if (!$(".rd-mobilemenu_ul li.shop").length) {
     var h = $(".rd-mobilemenu_ul").html();
     h = h + "<li class='shop'></li>";
@@ -249,7 +249,9 @@ function generateBC(hash) {
 
 function generatePage2(hash) {
 
-  var singleImage = `<div class="easyzoom"><a href="IMAGE"><img data-u="image" src="IMAGE"></a><img data-u="thumb" src="IMAGETHUMB"></div>`;
+
+
+  var singleImage = `<div class="swiper-slide" ><div class="swiper-zoom-container"><img src="IMAGE"/></div></div>`;//<div class="easyzoom"><a href="IMAGE"><img data-u="image" src="IMAGE"></a><img data-u="thumb" src="IMAGETHUMB"></div>`;
 
   var consts = {
     W1: 378,
@@ -258,42 +260,24 @@ function generatePage2(hash) {
     HTHUMB: 120,
     WTHUMB: 79
   };
-  //single-product-images single-product-images-horizontal
   var htmlImages = `
-      <div class=""
-           id="jssor_1"
-           style="width: W1px;height:H1px;">
-          <div class="enlarge"></div>
-          <!-- Loading Screen -->
-          <div data-u="loading">
-            <div
-              style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-            <div style="position:absolute;display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-          </div>
+  <div class="page2-swiper-wrapper" style="width: W1px;height:H1px;">
+    <div class="swiper-container gallery-top">
+        <div class="swiper-wrapper">
+          IMAGETHUMBS
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div>
+    <div class="swiper-container gallery-thumbs">
+      <div class="swiper-wrapper">
+        IMAGETHUMBS
+      </div>
+    </div>
+  </div>
+    `;
 
-          <div data-u="slides" class="single-product-main_image"
-               style="width: W1px; height: HSMpx;">
-              IMAGETHUMBS
-          </div>
-          <!-- Thumbnail Navigator -->
-          <div data-u="thumbnavigator" class="jssort01-99-66"
-               style="left: 0px; bottom: 0;width: W1px; height: HTHUMBpx;">
-            <!-- Thumbnail Item Skin Begin -->
-            <div data-u="slides">
-              <div data-u="prototype" class="p"
-                   style="height: HTHUMBpx; width: WTHUMBpx">
-                <div class="w">
-                  <div data-u="thumbnailtemplate" class="t"></div>
-                </div>
-                <div class="c"></div>
-              </div>
-            </div>
-            <span u="arrowleft" class="jssora11l"></span>
-            <span u="arrowright" class="jssora11r"></span>
-            <!-- Thumbnail Item Skin End -->
-
-          </div>
-      </div>`;
   var isSmall = window.innerWidth <= 1024;
   for (var i in consts) {
     if (isSmall) {
@@ -312,18 +296,18 @@ function generatePage2(hash) {
 
   var price = `<p class="price" style='margin:0'><del><span class="woocommerce-Price-amount amount">PRICEDISCOUNT<span class="woocommerce-Price-currencySymbol"> грн</span></span></del> <ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol"> грн</span></span></ins></p>`;
   var priceSimple = `<p class="price" style='margin:0'><ins><span class="woocommerce-Price-amount amount">PRICE<span class="woocommerce-Price-currencySymbol"> грн</span></span></ins></p>`;
-
+  var w = $(".nv-single-page-wrap.col").outerWidth();
   var newHTML = `
-  <div class='woocommerce'><div id="product" class="product type-product status-publish has-post-thumbnail product_cat-spring-autumn has-thumb first instock sale shipping-taxable purchasable product-type-simple">
+  <div class='woocommerce'><div id="product" class="product container" style="width: ${w}px">
 
     <div class="row">
-      <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+      <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
         <div class="single-image-container">
           IMAGECONTAINER
         </div>
       </div>
 
-      <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+      <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
         <div class="summary entry-summary" style="border-bottom: 1px solid #c6c6c6;margin-top:0;margin-bottom:0">
 
           <h2 itemprop="name" class="product_title entry-title">TITLE</h2>
@@ -423,7 +407,7 @@ function generatePage2(hash) {
       images += singleImage.replace(/IMAGETHUMB/g, img.path).replace(/IMAGE/g, img.path);
     });
     htmlImages = htmlImages.replace(/IMAGETHUMBS/g, images);
-    htmlImages = htmlImages.replace(/JSSORINDEX/g, JSSORINDEX);
+    //htmlImages = htmlImages.replace(/JSSORINDEX/g, JSSORINDEX);
     var pricetext;
     if (item.pricediscount) {
       htmlImages += '<span class="onsale">Sale</span>';
@@ -488,9 +472,9 @@ function generatePage2(hash) {
 
 
     var form = "";
-    form += _T('<div class="help-title">[R:добавить][U:додати]</div> <div class="orderButton buttons" ><a onclick="proceedStoreOrder(true)" class="button"><i class="fa fa-cart-plus" style="font-size: 16px;"></i>&nbsp;[R:В корзину][U:В кошик]</a></div>');
+    form += _T('<div class="help-title">[R:добавить][U:додати]</div> <div class="orderButton buttons" ><a onclick="proceedStoreOrder(true)" class="button btn"><i class="fa fa-cart-plus" style="font-size: 16px;"></i>&nbsp;[R:В корзину][U:В кошик]</a></div>');
     newHTML = newHTML.replace(/FORM-BUTTON1/g, form);
-    form = _T('<div class="help-title">[R:или купить в 1 клик][U:або придбати в 1 клiк]</div> <div class="order-oneclick buttons"><input type="text" id="phone" value="+38" placeholder="+38(___)-___-__-__" /><a onclick="oneClickOrder()" class="button" style="padding: 10px 16px 9px 16px;">OK</a></div>');
+    form = _T('<div class="help-title">[R:или купить в 1 клик][U:або придбати в 1 клiк]</div> <div class="order-oneclick buttons"><input type="text" id="phone" value="+38" placeholder="+38(___)-___-__-__" /><a onclick="oneClickOrder()" class="button btn" style="padding: 10px 16px 9px 16px;">OK</a></div>');
     newHTML = newHTML.replace(/FORM-BUTTON2/g, form);
 
     newHTML = newHTML.replace(/FORM-BUTTONS/g, form);
@@ -501,10 +485,8 @@ function generatePage2(hash) {
     $(".shopSecond .inner").html(res);
     $("#phone").mask("(999) 999-99-99");
 
-    initJSSOR();
     prefillOrder();
     changeColor(item.id, 0, true);
-    console.log('?????');
     generateFeatured(item.id, item.group);
     //$(".shopSecond").show('slow');
 
@@ -523,8 +505,36 @@ function generatePage2(hash) {
     });
   }
 
+  initSwiperOnProductDetails();
+
   checkInterceptHrefs();
 
+}
+
+function initSwiperOnProductDetails(){
+  var galleryThumbs = new Swiper('.gallery-thumbs', {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    loop: true,
+    freeMode: true,
+
+    loopedSlides: 5, //looped slides should be the same
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+  });
+  var galleryTop = new Swiper('.gallery-top', {
+    spaceBetween: 10,
+    loop:true,
+    zoom:true,
+    loopedSlides: 5, //looped slides should be the same
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+      swiper: galleryThumbs,
+    },
+  });
 }
 
 function onChangeTab(tabId) {
@@ -629,307 +639,6 @@ function expandSidebar() {
   }, 500);
 }
 
-
-function generatePage1(groupHash) {
-
-  var isAlreadyFirst = false; //$(".shopFirst:visible").length > 0;
-  if (!isAlreadyFirst || !isFirstShopLoaded) {
-    console.log("...", groupHash);
-    $(".shopSecond").hide('slow');
-
-    $(".shopFirst").show();
-    var res = "";
-    var hashParsed = parseHash(groupHash);
-    generateBC(hashParsed);
-    res += '<div class="woocommerce">';
-    var showCategories = false;
-    if (hashParsed.group || hashParsed.all) {
-      showCategories = true;
-    }
-
-    if (!showCategories) {
-      res += "<div class='row products'>";
-    }
-    tStore.groups.forEach(function(group) {
-      var groupAdded = false;
-      if (group.invisible == '1' || (hashParsed.group && hashParsed.group.indexOf(group.id) < 0)) return;
-      tStore.layer1.forEach(function(item) {
-        if (item.group != group.id) return;
-        if (item.invisible) return;
-        /* FILTER */
-        if (!item.isnew && hashParsed.isnew) return;
-        if (hashParsed.category) {
-          if (!item.categories) return;
-          var hasCategory = false;
-          item.categories.forEach(function(cat) {
-            if (hashParsed.category.indexOf(cat.id) >= 0) hasCategory = true;
-          });
-          if (!hasCategory) return;
-        }
-        if (hashParsed.dresstype) {
-          if (!item.dresstypes) return;
-          var hasDresstype = false;
-          item.dresstypes.forEach(function(cat) {
-            if (hashParsed.dresstype.indexOf(cat.id) >= 0) hasDresstype = true;
-          });
-          if (!hasDresstype) return;
-        }
-        if (hashParsed.sale) {
-          if (item.price && item.pricediscount) {
-            var p1 = parseInt(item.price);
-            var p2 = parseInt(item.pricediscount);
-            if (p1 == p2) return;
-          } else {
-            return;
-          }
-        }
-        if (!groupAdded && showCategories) {
-          res += _T("<h2 class='cat-group-header'>[R:Коллекция][U:Колекцiя]: " + group.title + "</h2><div class='row products'>");
-        }
-        groupAdded = true;
-
-        var r = `
-          <div class="product-list-item col-xs-6 col-sm-6 col-md-4">
-            <div class="thumbnail img-hover-zoom">
-              <a href="{URL}" onclick='interceptUrl(this)' class="link">
-                  <img width="1" height="1" src="{IMAGE}" style="width:auto;" class="wp-post-image" alt="">
-              </a>
-            </div>
-            <a href="{URL}" onclick='interceptUrl(this)' class="title">{TITLE}</a>
-            <div class="price">{PRICE}</div>
-          </div>`;
-        var priceSimple = `<span class="price"><span class="woocommerce-Price-amount amount">{PRICE}<span class="woocommerce-Price-currencySymbol"> грн</span></span></span>`;
-        var priceDiscount = `<span class="price"><del><span class="woocommerce-Price-amount amount">{PRICE}<span class="woocommerce-Price-currencySymbol"> грн</span></span></del> <ins><span class="woocommerce-Price-amount amount">{PRICEDISCOUNT}<span class="woocommerce-Price-currencySymbol"> грн</span></span></ins></span>`;
-        // '
-        r = r.replace(/\{URL\}/g, generateHash({
-          id: item.id
-        }));
-        r = r.replace(/\{TITLE\}/g, item.title);
-        if (!item.images.length) {
-          r = r.replace(/\{IMAGE\}/g, '/wp-content/plugins/woocommerce/assets/images/placeholder.png');
-        } else {
-          r = r.replace(/\{IMAGE\}/g, item.images[0].path);
-        }
-        if (item.pricediscount) {
-          priceDiscount = priceDiscount.replace("{PRICE}", parseInt(item.price));
-          priceDiscount = priceDiscount.replace("{PRICEDISCOUNT}", parseInt(item.pricediscount));
-          r = r.replace("{PRICE}", priceDiscount);
-        } else {
-          priceSimple = priceSimple.replace("{PRICE}", parseInt(item.price));
-          r = r.replace("{PRICE}", priceSimple);
-          //res += "<div style='display:inline;'>"+item.price+"</div>";
-        }
-        res += r;
-      });
-      if (showCategories) {
-        res += '</div>';
-      }
-    })
-    if (!showCategories) {
-      res += "</div>";
-    }
-  }
-  $(".shopFirst .inner").html(res);
-
-  isFirstShopLoaded = true;
-
-  checkInterceptHrefs();
-
-}
-
-function startZoom() {
-  var hash = getCurrentHash();
-  var item = tStore.layer2[hash];
-  var res = "";
-  res += '<center><div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails"><a href="' + item.images[0].path + '">';
-  res += '<img src="' + item.images[0].path + '" alt="" width="250" height="385" /></a></div></center>';
-
-  res += '<ul class="zoom-thumbnails">'
-  item.images.forEach(function(img, idx) {
-    if (idx == 0) return;
-    if (idx > 7) return;
-    res += '<li><a href="' + img.path + '" data-standard="' + img.path + '">';
-    res += '<img src="' + img.path + '" alt="" width=40/></a></li>';
-  });
-  res += '</ul>';
-
-  $("#zoomDialog").html(res);
-
-
-  $("#zoomDialog").dialog({
-    autoOpen: false,
-    modal: true,
-    show: {
-      effect: "fade",
-      duration: 1000
-    },
-    dialogClass: "no-title",
-    hide: {
-      effect: "explode",
-      duration: 1000
-    }
-
-  });
-
-
-  var isWide = window.innerWidth > 1000;
-
-
-  var img = {
-    w: 800,
-    h: 486
-  };
-
-  $("#zoomDialog").dialog("option", "width", isWide ? "700" : "350");
-  $("#zoomDialog").dialog("option", "height", isWide ? "540" : "400");
-  $("#zoomDialog").dialog("open");
-  $('.ui-widget-overlay').on("click", function() {
-    //Close the dialog
-    $("#zoomDialog").dialog("close");
-  });
-
-  //var dialog = {w:$( "#dialog" ).width(),h:$( "#dialog" ).height()};
-  //var realImg = {w:$( "#dialog img" ).width(),h:$( "#dialog img" ).height()};
-  //if (dialog.w > realImg.w ) {
-  //  $( "#dialog img" ).css({"padding-left":((dialog.w - realImg.w)/2)});
-  //}
-
-  // Instantiate EasyZoom instances
-  var $easyzoom = $('.easyzoom').easyZoom();
-
-
-  // Setup thumbnails example
-  var api1 = $easyzoom.filter('.easyzoom--with-thumbnails').data('easyZoom');
-
-  $('.zoom-thumbnails').on('click', 'a', function(e) {
-    var $this = $(this);
-
-    e.preventDefault();
-
-    // Use EasyZoom's `swap` method
-    api1.swap($this.data('standard'), $this.attr('href'));
-  });
-}
-
-
-var JSSORINDEX = 1;
-var jssor_1_slider;
-/* ORIGINAL */
-function initJSSOR() {
-  //console.log('INITJSS', $('#jssor_1'));
-  //console.trace()
-  delete jssor_1_slider;
-
-  var jssor_options = {
-    orientation: "1",
-    cols: "4",
-    spaceX: "21",
-    spaceY: "21"
-  };
-  var jssor_1_options = {
-    $Loop: 0,
-    $DragOrientation: 1,
-    $ThumbnailNavigatorOptions: {
-      $Class: $JssorThumbnailNavigator$,
-      $Cols: parseInt(jssor_options.cols),
-      $SpacingX: parseInt(jssor_options.spaceX),
-      $SpacingY: parseInt(jssor_options.spaceY),
-      $Orientation: parseInt(jssor_options.orientation),
-      $Loop: 0,
-      $ArrowNavigatorOptions: {
-        $Class: $JssorArrowNavigator$
-      }
-    }
-  };
-
-
-
-  jssor_1_slider = new $JssorSlider$("jssor_" + JSSORINDEX, jssor_1_options),
-    easyzoom = [],
-    easyZoomApi = [];
-  //JSSORINDEX +=1;
-
-  //responsive code begin
-  //you can remove responsive code if you don't want the slider scales while window resizing
-  function ScaleSlider() {
-    var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
-    if (refSize) {
-      refSize = Math.min(refSize, 960);
-      refSize = Math.max(refSize, 290);
-      jssor_1_slider.$ScaleWidth(refSize);
-    } else {
-      window.setTimeout(ScaleSlider, 30);
-    }
-  }
-
-  function zoom() {
-    if (768 > Math.min($(window).width(), screen.width)) {
-      easyZoomApi.forEach(function(item, i, arr) {
-        if (item.$image) {
-          item.teardown();
-        }
-      });
-      $('.single-product-main_image:last > div.easyzoom').on('click', function(event) {
-        event.preventDefault();
-      });
-    } else {
-      easyZoomApi.forEach(function(item, i, arr) {
-        if (!item.$image) {
-          item._init();
-        }
-      });
-    }
-  }
-  //ScaleSlider();
-  //$( window ).bind( "load", ScaleSlider );
-  //$( window ).bind( "resize", ScaleSlider );
-  //$( window ).bind( "orientationchange", ScaleSlider );
-
-  //$( window ).bind( "resize", zoom );
-  //$( window ).bind( "orientationchange", zoom );
-  //responsive code end
-
-  var items = [];
-  $('.single-product-main_image:last').find('.easyzoom').each(function() {
-    items.push({
-      src: $(this).find('> a').attr('href')
-    });
-  });
-
-  jssor_1_slider.$On($JssorSlider$.$EVT_STATE_CHANGE, function(slideIndex, progress) {
-
-    if (!easyzoom.length) {
-      $('.single-product-main_image:last > div.easyzoom').each(function(n) {
-        easyzoom[n] = $(this).easyZoom();
-        easyZoomApi[n] = easyzoom[n].data('easyZoom');
-      });
-    }
-
-    if (768 > Math.min($(window).width(), screen.width)) {
-      if (easyZoomApi[slideIndex].$image) {
-        easyZoomApi[slideIndex].teardown();
-      }
-    } else {
-      if (!easyZoomApi[slideIndex].$image) {
-        easyZoomApi[slideIndex]._init();
-      }
-    }
-
-    $('.single-product-images .enlarge').click(function() {
-
-      $.magnificPopup.open({
-        items: items,
-        gallery: {
-          enabled: true
-        },
-        type: 'image'
-      }, slideIndex);
-    });
-  });
-  // STRANGE FIX...
-  $("#jssor_1 > div").css('width', '420px');
-  $("#jssor_1").css('width', '420px');
-}
 
 function generateWidgets(hash) {
   console.log("widgets to be set...");

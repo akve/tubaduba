@@ -1,9 +1,40 @@
 /* override parent CSS*/
+@media (min-width: 960px) {
+  .nv-sidebar-wrap.nv-left {
+    max-width: 25%;
+  }
+  .nv-single-page-wrap col {
+    max-width: 75%;
+  }
+}
+@media (max-width: 960px) {
+  .nv-sidebar-wrap.nv-left {
+    display: none;
+  }
+  .nv-single-page-wrap col {
+    max-width: 100%;
+  }
+}
 .nv-single-page-wrap.col {
-  padding:0 !important;
+  padding:10px !important;
+}
+
+.builder-item--nav-icon {
+  display: flex;
 }
 /* custom */
-
+.shopBreadcrumbs {
+  &.mobile-nav {
+    border-left: 1px solid #008000;
+    padding-left: 10px;
+    a {
+      color: #8dc63f;
+    }
+  }
+  .widget_product_categories {
+    padding-left: 10px;
+  }
+}
 .shopTopBreadcrumbs {
   .breadcrumbs {
     display: flex;
@@ -35,7 +66,7 @@
   /* [3] Finally, transforming the image when container gets hovered */
   .img-hover-zoom:hover img {
     filter: grayscale(0);
-    transform: scale(1.5);
+    transform: scale(1.2);
   }
   .title {
     display: block;
@@ -43,5 +74,100 @@
   }
   .price {
     text-align: center;
+  }
+}
+
+.page2-swiper-wrapper {
+  .swiper-container {
+    width: 100%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .swiper-slide {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+  .gallery-top {
+    height: 80%;
+    width: 100%;
+  }
+  .gallery-thumbs {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+  }
+  .gallery-thumbs .swiper-slide {
+    height: 100%;
+    opacity: 0.4;
+  }
+  .gallery-thumbs .swiper-slide-thumb-active {
+    opacity: 1;
+  }
+}
+
+.featured-carousel {
+  .title {
+    display: block;
+    text-align: center;
+  }
+  .price {
+    display: block;
+    text-align: center;
+  }
+}
+
+#orderDetails {
+  input, textarea {
+    width:50%;
+  }
+  .woocommerce-shipping-fields, .woocommerce-billing-fields {
+    label {
+      width:150px;
+    }
+  }
+}
+
+.builder-item--nav-icon {
+  #cart-contents {
+    float:right;
+
+  }
+}
+
+.cart-contents {
+
+  img {
+    padding-top:10px;
+  }
+  span.count {
+    border-radius: 10px;
+    background: #d2dbaa;
+    padding-left: 3px;
+    width: 16px;
+    padding-right: 3px;
+    text-align: center;
+    line-height: 10px;
+    height: 16px;
+    padding-top: 2px;  }
+}
+
+.wc-tabs {
+  display: flex;
+  list-style-type: none !important;
+  overflow: hidden;
+  position: relative;
+  padding-left:0;
+  li {
+    margin-right: 15px;
+    padding-bottom:0px;
+    a {
+      text-decoration: none !important;
+      padding-bottom: 0 !important;
+    }
+  }
+  .active {
+    border-bottom: 3px solid #d2dbaa;
   }
 }

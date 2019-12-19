@@ -39,6 +39,7 @@ $header_classes = apply_filters( 'nv_header_classes', 'header' );
     <script type="text/javascript" src="/app/store_init.js?ver=2.5.5"></script>
     <script type="text/javascript" src="/app/store.js?ver=2.5.5"></script>
     <script type="text/javascript" src="/app/store_generatefeatured.js?ver=2.5.5"></script>
+    <script type="text/javascript" src="/app/store_listing.js?ver=2.5.5"></script>
     <script type="text/javascript" src="/app/store_order.js?ver=2.5.5"></script>
 
       <link rel='stylesheet' id='magnific-popup-css'  href='/app/assets/js/vendor/swiper/package/css/swiper.min.css' type='text/css' media='all' />

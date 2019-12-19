@@ -299,7 +299,7 @@ function sendOrder(isFromReadyShop, singleClickPhone) {
     }).val("В процессе...");
   }
   $.LoadingOverlay("show");
-  var jqxhr = $.post("/sendorder.php", data, function(response) {
+  var jqxhr = $.post("/sender/sendorder.php", data, function(response) {
     $("button#proceedOrder").css({
       opacity: 1
     }).val(_T("[R:Оформить заказ][U:Оформити замовлення]"));
@@ -387,10 +387,12 @@ function saveCart() {
   if (cart.length > 0) {
     $(".checkout-text").html(cart.length);
     $(".checkout-text").show('bounce');
+    $('.cart-contents .count').show();
   } else {
     $(".checkout-text").hide();
+    $('.cart-contents .count').hide();
   }
-  $('.cart-contents .count span').html(cart.length);
+  $('.cart-contents .count').html(cart.length);
   $('.cart-contents').click(function() {
     //document.location = '/checkout';
     onSwitchToCart();

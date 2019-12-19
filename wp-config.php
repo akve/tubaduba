@@ -97,7 +97,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	} catch (Exception $e) {
 
 	}
-	if ($lang != "en" && $lang != "ua") {
+	if ($lang != "ua") { // $lang != "en"
 		$lang = "ru";
 	}
 	$text = preg_replace('/\[U\:(.*?)\]/si', $lang=="ua"?'$1':"", $text);

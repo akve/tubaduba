@@ -1,8 +1,31 @@
 /* override parent CSS*/
+@media (min-width: 960px) {
+  .nv-sidebar-wrap.nv-left {
+    max-width: 25%; }
+
+  .nv-single-page-wrap col {
+    max-width: 75%; } }
+@media (max-width: 960px) {
+  .nv-sidebar-wrap.nv-left {
+    display: none; }
+
+  .nv-single-page-wrap col {
+    max-width: 100%; } }
 .nv-single-page-wrap.col {
-  padding: 0 !important; }
+  padding: 10px !important; }
+
+.builder-item--nav-icon {
+  display: flex; }
 
 /* custom */
+.shopBreadcrumbs.mobile-nav {
+  border-left: 1px solid #008000;
+  padding-left: 10px; }
+  .shopBreadcrumbs.mobile-nav a {
+    color: #8dc63f; }
+.shopBreadcrumbs .widget_product_categories {
+  padding-left: 10px; }
+
 .shopTopBreadcrumbs .breadcrumbs {
   display: flex; }
   .shopTopBreadcrumbs .breadcrumbs__wrap {
@@ -24,11 +47,76 @@
     transition: transform .5s ease-in-out, filter .5s ease-in-out; }
   .product-list-item .img-hover-zoom:hover img {
     filter: grayscale(0);
-    transform: scale(1.5); }
+    transform: scale(1.2); }
   .product-list-item .title {
     display: block;
     text-align: center; }
   .product-list-item .price {
     text-align: center; }
+
+.page2-swiper-wrapper .swiper-container {
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto; }
+.page2-swiper-wrapper .swiper-slide {
+  overflow: hidden;
+  background-size: cover;
+  background-position: center; }
+.page2-swiper-wrapper .gallery-top {
+  height: 80%;
+  width: 100%; }
+.page2-swiper-wrapper .gallery-thumbs {
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0; }
+.page2-swiper-wrapper .gallery-thumbs .swiper-slide {
+  height: 100%;
+  opacity: 0.4; }
+.page2-swiper-wrapper .gallery-thumbs .swiper-slide-thumb-active {
+  opacity: 1; }
+
+.featured-carousel .title {
+  display: block;
+  text-align: center; }
+.featured-carousel .price {
+  display: block;
+  text-align: center; }
+
+#orderDetails input, #orderDetails textarea {
+  width: 50%; }
+#orderDetails .woocommerce-shipping-fields label, #orderDetails .woocommerce-billing-fields label {
+  width: 150px; }
+
+.builder-item--nav-icon #cart-contents {
+  float: right; }
+
+.cart-contents img {
+  padding-top: 10px; }
+.cart-contents span.count {
+  border-radius: 10px;
+  background: #d2dbaa;
+  padding-left: 3px;
+  width: 16px;
+  padding-right: 3px;
+  text-align: center;
+  line-height: 10px;
+  height: 16px;
+  padding-top: 2px; }
+
+.wc-tabs {
+  display: flex;
+  list-style-type: none !important;
+  overflow: hidden;
+  position: relative;
+  padding-left: 0; }
+  .wc-tabs li {
+    margin-right: 15px;
+    padding-bottom: 0px; }
+    .wc-tabs li a {
+      text-decoration: none !important;
+      padding-bottom: 0 !important; }
+  .wc-tabs .active {
+    border-bottom: 3px solid #d2dbaa; }
 
 /*# sourceMappingURL=app.css.map */
